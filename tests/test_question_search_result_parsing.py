@@ -15,4 +15,3 @@ def test_parsing():
     assert 'http://www.senat.fr/questions/base/2016/qSEQ16030791G.html' == search_result.results[0].url
     assert u'Partenariat entre La Poste et l\'État : maisons de services au public' == search_result.results[0].title
     assert '16' == search_result.results[0].legislature
-    assert 'QG' == search_result.results[0].question_type

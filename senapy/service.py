@@ -9,6 +9,31 @@ __all__ = ['QuestionSearchService']
 
 
 class QuestionSearchService(object):
+    """Search for questions and build an iterator to iterate over all questions
+
+    Search is parametrized by the following dict params :
+        :param off: offset
+        :param rch: ?
+        :param aff:
+            "ar": avec réponse
+            "sr": sans réponse
+            "ens": tout
+        :param radio: date params
+            "dp": depuis
+            "deau": de YYYYMMDD au YYYYMMDD
+
+        :param du: YYYYMMDD
+        :param au: YYYYMMDD
+        :param appr: text search in given field
+            "titre": in title
+        :param idNature: question teyp
+            "QE": question écrite
+            "QOSD": question orale sans débat
+            "QOAD": question orale avec débat
+            "QOAE": question orale avec débat et portant sur un sujet européen
+            "QAG": question d'actualité au Gouvernement
+            "QC": question crible thématique
+    """
     def __init__(self):
         self.search_url = "http://www.senat.fr/basile/rechercheQuestion.do"
         self.size = 10
@@ -17,13 +42,11 @@ class QuestionSearchService(object):
             'rch': 'qa',
             'de': '20150101',
             'au': '20150201',
-            'dp': '1 an',
             'radio': 'deau',
-            'appr': 'text',
-            'aff': 'ar',
+            'aff': 'ens',
             'tri': 'dd',
-            '_na': 'QG',
             'afd': 'ppr',
+            'idNature': ''
         }
 
     def get(self, params):
