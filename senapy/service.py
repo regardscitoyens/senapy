@@ -71,6 +71,6 @@ class QuestionSearchService(object):
 
         yield search_results
 
-        for start in range(1, search_results.total_count, self.size):
-            params['off'] = start * 10
+        for offset in range(self.size, search_results.total_count, self.size):
+            params['off'] = offset
             yield self.get(params)
