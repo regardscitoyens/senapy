@@ -39,5 +39,5 @@ setup(
 
     packages=['senapy', 'senapy.parsing'],
 
-    install_requires=['pathlib', 'Click', 'requests', 'beautifulsoup4'],
+    install_requires=['pathlib', 'Click', 'requests', 'beautifulsoup4', 'html5lib'],
 )
