@@ -2,6 +2,7 @@ import json, sys
 from pprint import pprint as pp
 from urllib.parse import urljoin, parse_qs, urlparse
 
+import requests
 import dateparser
 from bs4 import BeautifulSoup
 
@@ -15,11 +16,11 @@ def format_date(date):
     return parsed.strftime("%Y-%m-%d")
 
 
-def parse(filename):
+def parse(html, url_senat=None):
     data = {}
 
-    base_data = json.load(open(filename))
-    soup = BeautifulSoup(base_data['html'], 'html5lib')
+    # base_data = json.load(open(filename))
+    soup = BeautifulSoup(html, 'html5lib')
 
     # open('test.html', 'w').write(base_data['html'])
     # del base_data['html']
@@ -59,7 +60,7 @@ def parse(filename):
     # TOPARSE: ordonnance_line
 
     data['urgence'] = acceleree_line is not None
-    data['url_dossier_senat'] = base_data['url_du_dossier']
+    data['url_dossier_senat'] = url_senat
     data['senat_id'] = data['url_dossier_senat'].split('/')[-1].replace('.html', '')
 
     # TODO: selecteur foireux ?
@@ -139,14 +140,14 @@ def parse(filename):
                     # TODO: "Texte de la commission"
                     # TODO: assemblée "ppl, ppr, -a0" (a verif)
                     if '/leg/' in href or nice_text in ('texte', 'texte de la commission'):
-                        step['source_url'] = urljoin(base_data['url_du_dossier'], href)
+                        step['source_url'] = urljoin(url_senat, href)
                         break
             # sinon prendre une url random
             if 'source_url' not in step:
                 links = item.select('.list-disc-02 a')
                 if len(links) > 0:
                     # TODO: damien tu fait de la daube la !
-                    step['source_url'] = urljoin(base_data['url_du_dossier'], item.select('.list-disc-02 a')[-1].attrs['href'])
+                    step['source_url'] = urljoin(url_senat, item.select('.list-disc-02 a')[-1].attrs['href'])
                 else:
                     # TODO: NO TEXT LINK ! TAKE NUMERO AND DATE
                     log_error('ITEM WITHOUT URL TO TEXT - ' + step['institution'] + '.' + step['stage'] + '.' + step['step'])
@@ -161,7 +162,13 @@ def parse(filename):
 
 
 if __name__ == '__main__':
-    data = parse(sys.argv[1])
+    url = sys.argv[1]
+    if url.startswith('http'):
+        html = requests.get(url).text
+        data = parse(html, url)
+    else:
+        html = open(url).read()
+        data = parse(html)
     print(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True))
 
 

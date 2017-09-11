@@ -1,6 +1,6 @@
-import csv, pprint, requests, json, time
+import csv, pprint, requests, json, time, sys
 
-FILE = 'dossiers-legislatifs.csv'
+FILE = sys.argv[1] if len(sys.argv) > 1 else 'dossiers-legislatifs.csv'
 
 # import chardet
 # encoding = chardet.detect(open(FILE, 'rb').read())['encoding']
