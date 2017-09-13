@@ -64,7 +64,7 @@ def parse(html, url_senat=None):
         data['url_dossier_senat'] = url_senat
         data['senat_id'] = data['url_dossier_senat'].split('/')[-1].replace('.html', '')
     else:
-        url_senat = 'http://senat.fr/'
+        url_senat = 'http://www.senat.fr/'
 
     # TODO: selecteur foireux ?
     for link in soup.select('h4.title.title-06.link-type-02 a'):
