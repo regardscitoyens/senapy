@@ -134,34 +134,38 @@ def parse(html, url_senat=None):
                     step_step = 'hemicycle'
                 elif 'picto_timeline_07_' in img:
                     curr_institution = 'gouvernement'
+                if curr_stage == 'c. constit.':
+                    curr_institution = 'conseil constitutionnel'
+                    curr_stage = 'constitutionnalité'
+                    step_step = None
             step['institution'] = curr_institution
             step['stage'] = curr_stage
-            step['step'] = step_step
+            if curr_stage not in ('constitutionnalité', 'promulgation'):
+                step['step'] = step_step
 
             good_urls = []
-            if curr_stage != 'c. constit.':
-                ## TROUVONS LES TEXTES
-                for link in item.select('.list-disc-02 a'):
-                    if 'href' in link.attrs:
-                        href = link.attrs['href']
-                        nice_text = link.text.lower().strip()
-                        # TODO: "Texte de la commission"
-                        # TODO: assemblée "ppl, ppr, -a0" (a verif)
-                        if '/leg/' in href or nice_text in ('texte', 'texte de la commission') or 'jo n°' in nice_text:
-                            good_urls.append(urljoin(url_senat, href))
-                if not good_urls:
-                    # sinon prendre une url d'un peu moins bonne qualité
-                    if 'source_url' not in step:
-                        for link in item.select('.list-disc-02 a'):
-                            if 'href' in link.attrs:
-                                href = link.attrs['href']
-                                nice_text = link.text.lower().strip()
-                                if nice_text == 'rapport':
-                                    step['source_url'] = urljoin(url_senat, href)
-                                    break
-                    if 'source_url' not in step:
-                        # TODO: NO TEXT LINK ! TAKE NUMERO AND DATE
-                        log_error('ITEM WITHOUT URL TO TEXT - ' + step['institution'] + '.' + step['stage'] + '.' + step['step'])
+            ## TROUVONS LES TEXTES
+            for link in item.select('a'):
+                if 'href' in link.attrs:
+                    href = link.attrs['href']
+                    nice_text = link.text.lower().strip()
+                    # TODO: "Texte de la commission"
+                    # TODO: assemblée "ppl, ppr, -a0" (a verif)
+                    if '/leg/' in href or nice_text in ('texte', 'texte de la commission', 'décision du conseil constitutionnel') or 'jo n°' in nice_text:
+                        good_urls.append(urljoin(url_senat, href))
+            if not good_urls:
+                # sinon prendre une url d'un peu moins bonne qualité
+                if 'source_url' not in step:
+                    for link in item.select('.list-disc-02 a'):
+                        if 'href' in link.attrs:
+                            href = link.attrs['href']
+                            nice_text = link.text.lower().strip()
+                            if nice_text == 'rapport':
+                                step['source_url'] = urljoin(url_senat, href)
+                                break
+                if 'source_url' not in step:
+                    # TODO: NO TEXT LINK ! TAKE NUMERO AND DATE
+                    log_error('ITEM WITHOUT URL TO TEXT - %s.%s.%s' % (step['institution'], step['stage'], step.get('step')))
 
             if good_urls:
                 for url in good_urls:
