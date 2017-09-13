@@ -81,85 +81,98 @@ def parse(html, url_senat=None):
 
     curr_institution = None
     curr_stage = None
-    for i, item in enumerate(soup.select('#box-timeline .box-inner > .item')):
-        step = {}
-        step_shortcut = steps_shortcuts[i]
+    for item in soup.select('#box-timeline > div > div'):
+        if 'timeline-' in item.attrs.get('id', ''):
+            step = {}
 
-        step['date'] = None
-        if step_shortcut.select('em'):
-            step['date'] = format_date(step_shortcut.select('em')[-1].text.strip())
-        else:
-            # TODO: date sometimes is not on the shortcut
-            log_error('SHORCUT WITHOUT DATE')
+            timeline_index = int(item.attrs['id'].split('-')[1]) - 1
+            step_shortcut = steps_shortcuts[timeline_index]
 
-        if i == 0:
-            data['beginning'] = step['date']
-        
-        step_step = step_shortcut.find('a').attrs['title'].split('|')[-1].split('-')[-1].lower().strip()
-        if 'commission' in step_step:
-            step_step = 'commission'
-        elif 'séance' in step_step:
-            step_step = 'hemicycle'
-
-        # TODO: ca me parait bizarre cette histoire
-        # stage = 1ere lecture|2nd lecture|CMP
-        # institution = assemblee|senat|CMP|gouvernement
-        # step = depot|commission|hemicycle
-        if len(step_shortcut.select('em')) > 0:
-            titre = step_shortcut.select('em')[0].text.lower().strip()
-            if titre == 'loi' or 'promulgation' in titre:
-                curr_stage = 'promulgation'
+            step['date'] = None
+            if step_shortcut.select('em'):
+                step['date'] = format_date(step_shortcut.select('em')[-1].text.strip())
             else:
-                curr_stage = step_shortcut.find('a').attrs['title'].split('|')[-1].split('-')[0].lower().strip()
-                if curr_stage == 'cmp':
-                    curr_stage = 'CMP'
-            img = step_shortcut.find('img').attrs['src']
-            if 'picto_timeline_01_' in img:
-                curr_institution = 'assemblee'
-                step_step = 'depot'
-            elif 'picto_timeline_02_' in img:
-                curr_institution = 'senat'
-                step_step = 'depot'
-            elif 'picto_timeline_05_' in img:
-                curr_institution = 'CMP'
+                # TODO: date sometimes is not on the shortcut
+                log_error('SHORCUT WITHOUT DATE')
+
+            if timeline_index == 0:
+                data['beginning'] = step['date']
+            
+            step_step = step_shortcut.find('a').attrs['title'].split('|')[-1].split('-')[-1].lower().strip()
+            if 'commission' in step_step:
                 step_step = 'commission'
-            elif 'picto_timeline_03_' in img:
-                step_step = 'commission'
-            elif 'picto_timeline_04_' in img:
+            elif 'séance' in step_step:
                 step_step = 'hemicycle'
-            elif 'picto_timeline_07_' in img:
-                curr_institution = 'gouvernement'
-        step['institution'] = curr_institution
-        step['stage'] = curr_stage
-        step['step'] = step_step
 
-        if curr_stage != 'c. constit.':
-            ## TROUVONS LES TEXTES
-            # on essaye de trouver une url potable
-            for link in item.select('.list-disc-02 a'):
-                if 'href' in link.attrs:
-                    href = link.attrs['href']
-                    nice_text = link.text.lower().strip()
-                    # TODO: "Texte de la commission"
-                    # TODO: assemblée "ppl, ppr, -a0" (a verif)
-                    if '/leg/' in href or nice_text in ('texte', 'texte de la commission'):
-                        step['source_url'] = urljoin(url_senat, href)
-                        break
-            # sinon prendre une url random
-            if 'source_url' not in step:
-                links = item.select('.list-disc-02 a')
-                if len(links) > 0:
-                    # TODO: damien tu fait de la daube la !
-                    step['source_url'] = urljoin(url_senat, item.select('.list-disc-02 a')[-1].attrs['href'])
+            # TODO: ca me parait bizarre cette histoire
+            # stage = 1ere lecture|2nd lecture|CMP
+            # institution = assemblee|senat|CMP|gouvernement
+            # step = depot|commission|hemicycle
+            if len(step_shortcut.select('em')) > 0:
+                titre = step_shortcut.select('em')[0].text.lower().strip()
+                if titre == 'loi' or 'promulgation' in titre:
+                    curr_stage = 'promulgation'
                 else:
-                    # TODO: NO TEXT LINK ! TAKE NUMERO AND DATE
-                    log_error('ITEM WITHOUT URL TO TEXT - ' + step['institution'] + '.' + step['stage'] + '.' + step['step'])
-            # TODO: multiple text for one text (ex: mariage homo)
+                    curr_stage = step_shortcut.find('a').attrs['title'].split('|')[-1].split('-')[0].lower().strip()
+                    if curr_stage == 'cmp':
+                        curr_stage = 'CMP'
+                img = step_shortcut.find('img').attrs['src']
+                if 'picto_timeline_01_' in img:
+                    curr_institution = 'assemblee'
+                    step_step = 'depot'
+                elif 'picto_timeline_02_' in img:
+                    curr_institution = 'senat'
+                    step_step = 'depot'
+                elif 'picto_timeline_05_' in img:
+                    curr_institution = 'CMP'
 
-        if 'source_url' in step:
-            step['source_url'] = step['source_url'].replace(';jsessionid=','')
+                    # there is no "depot" step for a CMP
+                    continue
+                elif 'picto_timeline_03_' in img:
+                    step_step = 'commission'
+                elif 'picto_timeline_04_' in img:
+                    step_step = 'hemicycle'
+                elif 'picto_timeline_07_' in img:
+                    curr_institution = 'gouvernement'
+            step['institution'] = curr_institution
+            step['stage'] = curr_stage
+            step['step'] = step_step
 
-        data['steps'].append(step)
+            good_urls = []
+            if curr_stage != 'c. constit.':
+                ## TROUVONS LES TEXTES
+                for link in item.select('.list-disc-02 a'):
+                    if 'href' in link.attrs:
+                        href = link.attrs['href']
+                        nice_text = link.text.lower().strip()
+                        # TODO: "Texte de la commission"
+                        # TODO: assemblée "ppl, ppr, -a0" (a verif)
+                        if '/leg/' in href or nice_text in ('texte', 'texte de la commission') or 'jo n°' in nice_text:
+                            good_urls.append(urljoin(url_senat, href))
+                if not good_urls:
+                    # sinon prendre une url d'un peu moins bonne qualité
+                    if 'source_url' not in step:
+                        for link in item.select('.list-disc-02 a'):
+                            if 'href' in link.attrs:
+                                href = link.attrs['href']
+                                nice_text = link.text.lower().strip()
+                                if nice_text == 'rapport':
+                                    step['source_url'] = urljoin(url_senat, href)
+                                    break
+                    if 'source_url' not in step:
+                        # TODO: NO TEXT LINK ! TAKE NUMERO AND DATE
+                        log_error('ITEM WITHOUT URL TO TEXT - ' + step['institution'] + '.' + step['stage'] + '.' + step['step'])
+
+            if good_urls:
+                for url in good_urls:
+                    url = url.replace(';jsessionid=','') # cleaning
+                    sub_step = {**step} # dubstep
+                    sub_step['source_url'] = url
+                    data['steps'].append(sub_step)
+            else:
+                if 'source_url' in step:
+                    step['source_url'] = step['source_url'].replace(';jsessionid=','')
+                data['steps'].append(step)
 
     return data
 
