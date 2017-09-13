@@ -46,7 +46,7 @@ def parse(html, url_senat=None):
         elif 'accélérée' in line.text:
             acceleree_line = line
         else:
-            log_error('UNKNOWN SUBTITLE')
+            log_error('UNKNOWN SUBTITLE: %s' % line.text)
     if promulgee_line:
         data['end'] = format_date(promulgee_line.find('strong').text.split(' du ')[1].strip()) # promulgation
         data['end_jo'] = format_date(promulgee_line.text.split('JO n')[1].split(' du ')[1].split('(')[0].strip()) # inscription aux JO
@@ -180,7 +180,7 @@ def parse(html, url_senat=None):
 
             if good_urls:
                 for url in good_urls:
-                    clean_url = url['url'].replace(';jsessionid=','') # cleaning
+                    clean_url = url['url'].replace(';jsessionid=', '') # cleaning
                     sub_step = {**step} # dubstep
                     sub_step['source_url'] = clean_url
                     sub_step['institution'] = url['institution']
