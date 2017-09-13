@@ -11,3 +11,10 @@ pip install senapy
 
 ## Search services
  * **QuestionSearchService** to search for questions
+
+
+## Dossiers Legislatifs
+
+ - Parse one: `python tests/dosleg/parser.py URL_or_filepath`
+ - Download all: `python tests/dosleg/download_from_csv.py dest_directory/`
+ - Dowload recents: `python tests/dosleg/download_from_csv.py dest_directory/`

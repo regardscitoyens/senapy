@@ -1,8 +1,14 @@
-import os, random, json, difflib
+"""
+Test if the parser has regressions by comparing the output with verified output
+"""
 
-from parser import parse
+import os, random, json, difflib, sys
 
-DIR = 'tests/verified_senat_dossiers/'
+from senapy.dosleg.parser import parse
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DIR = sys.argv[1] if len(sys.argv) > 1 \
+    else os.path.join(BASE_DIR, 'resources/verified_dosleg/')
 
 for test_dir in os.listdir(DIR):
     path = DIR + test_dir
