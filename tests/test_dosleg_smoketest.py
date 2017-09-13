@@ -11,7 +11,7 @@ def test_dosleg_smoketest():
         else os.path.join(BASE_DIR, 'resources/recents_dosleg/')
 
     files = os.listdir(DIR)
-    random.shuffle(files)
+    # random.shuffle(files)
 
     for file in files:
         path = os.path.join(DIR, file)

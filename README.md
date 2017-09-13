@@ -15,6 +15,7 @@ pip install senapy
 
 ## Dossiers Legislatifs
 
- - Parse one: `python tests/dosleg/parser.py URL_or_filepath`
+ - Parse one: `python senapy/dosleg/parser.py URL_or_filepath`
+    - warning: for now the file must be in UTF-8
  - Download all: `python tests/dosleg/download_from_csv.py dest_directory/`
  - Dowload recents: `python tests/dosleg/download_from_csv.py dest_directory/`
