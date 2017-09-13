@@ -146,13 +146,24 @@ def parse(html, url_senat=None):
             good_urls = []
             ## TROUVONS LES TEXTES
             for link in item.select('a'):
+                line = link.parent
                 if 'href' in link.attrs:
                     href = link.attrs['href']
                     nice_text = link.text.lower().strip()
                     # TODO: "Texte de la commission"
                     # TODO: assemblée "ppl, ppr, -a0" (a verif)
                     if '/leg/' in href or nice_text in ('texte', 'texte de la commission', 'décision du conseil constitutionnel') or 'jo n°' in nice_text:
-                        good_urls.append(urljoin(url_senat, href))
+                        url = urljoin(url_senat, href)
+                        line_text = line.text.lower()
+                        institution = curr_institution
+                        if 'par l\'assemblée' in line_text:
+                            institution = 'assemblee'
+                        elif 'par le sénat' in line_text:
+                            institution = 'senat'
+                        good_urls.append({
+                            'url': url,
+                            'institution': institution,
+                        })
             if not good_urls:
                 # sinon prendre une url d'un peu moins bonne qualité
                 if 'source_url' not in step:
@@ -169,9 +180,10 @@ def parse(html, url_senat=None):
 
             if good_urls:
                 for url in good_urls:
-                    url = url.replace(';jsessionid=','') # cleaning
+                    clean_url = url['url'].replace(';jsessionid=','') # cleaning
                     sub_step = {**step} # dubstep
-                    sub_step['source_url'] = url
+                    sub_step['source_url'] = clean_url
+                    sub_step['institution'] = url['institution']
                     data['steps'].append(sub_step)
             else:
                 if 'source_url' in step:
