@@ -12,7 +12,10 @@ with open(path.join(here, 'senapy', '__version.py')) as __version:
 assert __version__ is not None
 
 with open(path.join(here, 'README.md')) as readme:
-    LONG_DESC = readme.read().decode('utf-8')
+    LONG_DESC = readme.read()
+
+with open(path.join(here, 'requirements.txt')) as f:
+    requirements = f.read().splitlines()
 
 setup(
     name='senapy',
@@ -32,12 +35,12 @@ setup(
         'Development Status :: 1 - Planning',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
     ],
 
     keywords='scraping politics data',
 
     packages=['senapy', 'senapy.parsing'],
 
-    install_requires=['pathlib', 'Click', 'requests', 'beautifulsoup4', 'html5lib'],
+    install_requires=requirements,
 )

@@ -1,0 +1,7 @@
+pathlib
+click
+requests
+beautifulsoup4
+html5lib
+dateparser
+python-slugify

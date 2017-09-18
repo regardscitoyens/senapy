@@ -2,7 +2,7 @@
 
 import re
 
-from urlparse import urlparse, parse_qs
+from urllib.parse import parse_qs, urlparse
 
 
 class QuestionSummary(object):

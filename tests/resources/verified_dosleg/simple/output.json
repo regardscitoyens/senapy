@@ -1,0 +1,64 @@
+{
+  "assemblee_id": "allemagne_vehicules",
+  "assemblee_legislature": 13,
+  "beginning": "2008-07-23",
+  "end": "2011-01-03",
+  "end_jo": "2011-01-04",
+  "legifrance_cidTexte": "JORFTEXT000023355697",
+  "long_title": "Loi autorisant l'approbation de l'accord entre le Gouvernement de la République française et le Gouvernement de la République fédérale d'Allemagne concernant l'échange de renseignements sur les titulaires du certificat d'immatriculation de véhicules contenus dans les fichiers nationaux d'immatriculation des véhicules dans le but de sanctionner les infractions aux règles de la circulation",
+  "long_title_descr": "projet de loi Accord France-Allemagne concernant l'échange de renseignements sur les titulaires du certificat d'immatriculation de véhicules",
+  "short_title": "Infractions routières",
+  "steps": [
+    {
+      "date": "2008-07-23",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/pjl07-488.html",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2010-07-07",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/pjl09-638.html",
+      "stage": "1ère lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2010-07-12",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/tas09-141.html",
+      "stage": "1ère lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2010-07-12",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/projets/pl2726.asp",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2010-12-08",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/rapports/r3023.asp",
+      "stage": "1ère lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2010-12-21",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0583.asp",
+      "stage": "1ère lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2011-01-03",
+      "institution": "gouvernement",
+      "source_url": "http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000023355697",
+      "stage": "promulgation"
+    }
+  ],
+  "urgence": false,
+  "url_dossier_assemblee": "http://www.assemblee-nationale.fr/13/dossiers/allemagne_vehicules.asp",
+  "url_jo": "http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000023355697"
+}
