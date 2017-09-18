@@ -2,6 +2,7 @@ pathlib
 click
 requests
 beautifulsoup4
+lxml
 html5lib
 dateparser
 python-slugify
