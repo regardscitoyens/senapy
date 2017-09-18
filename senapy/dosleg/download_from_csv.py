@@ -1,6 +1,6 @@
 import csv, pprint, json, time, sys
 
-import chardet, requests, slugify
+import requests, slugify
 
 
 # TODO: download CSV from http://data.senat.fr/data/dosleg/dossiers-legislatifs.csv

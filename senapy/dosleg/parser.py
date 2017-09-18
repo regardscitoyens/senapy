@@ -20,7 +20,7 @@ def parse(html, url_senat=None):
     data = {}
 
     # base_data = json.load(open(filename))
-    soup = BeautifulSoup(html, 'html5lib')
+    soup = BeautifulSoup(html, 'lxml')
 
     # open('test.html', 'w').write(base_data['html'])
     # del base_data['html']

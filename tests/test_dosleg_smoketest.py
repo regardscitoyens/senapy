@@ -7,8 +7,7 @@ from senapy.dosleg.parser import parse
 
 def test_dosleg_smoketest():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    DIR = sys.argv[1] if len(sys.argv) > 1 \
-        else os.path.join(BASE_DIR, 'resources/recents_dosleg/')
+    DIR = os.path.join(BASE_DIR, 'resources/recents_dosleg/')
 
     files = os.listdir(DIR)
     # random.shuffle(files)
