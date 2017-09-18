@@ -25,7 +25,7 @@ def parse(html, url_senat=None):
     # open('test.html', 'w').write(base_data['html'])
     # del base_data['html']
     # pp(base_data)
-    
+
     data['short_title'] = soup.select('.title-dosleg')[0].text.strip()
 
     if not soup.select('.title .subtitle-01'):
@@ -97,7 +97,8 @@ def parse(html, url_senat=None):
 
             if timeline_index == 0:
                 data['beginning'] = step['date']
-            
+
+            # TODO review this part
             step_step = step_shortcut.find('a').attrs['title'].split('|')[-1].split('-')[-1].lower().strip()
             if 'commission' in step_step:
                 step_step = 'commission'
@@ -134,6 +135,7 @@ def parse(html, url_senat=None):
                     step_step = 'hemicycle'
                 elif 'picto_timeline_07_' in img:
                     curr_institution = 'gouvernement'
+
                 if curr_stage == 'c. constit.':
                     curr_institution = 'conseil constitutionnel'
                     curr_stage = 'constitutionnalité'
@@ -152,7 +154,13 @@ def parse(html, url_senat=None):
                     nice_text = link.text.lower().strip()
                     # TODO: "Texte de la commission"
                     # TODO: assemblée "ppl, ppr, -a0" (a verif)
-                    if '/leg/' in href or nice_text in ('texte', 'texte de la commission', 'décision du conseil constitutionnel') or 'jo n°' in nice_text:
+                    #
+                    if (
+                        ('/leg/' in href and '/' not in href.replace('/leg/', ''))
+                        or nice_text in ('texte', 'texte de la commission', 'décision du conseil constitutionnel') \
+                        or 'jo n°' in nice_text
+                        ):
+
                         url = urljoin(url_senat, href)
                         line_text = line.text.lower()
                         institution = curr_institution
@@ -189,6 +197,17 @@ def parse(html, url_senat=None):
                 if 'source_url' in step:
                     step['source_url'] = step['source_url'].replace(';jsessionid=','')
                 data['steps'].append(step)
+
+            # TODO: if not both CMP.hemicycle.{senat|assemblee}, there's a problem
+            if step.get('stage') == 'CMP' and step.get('step') == 'hemicycle' and (not good_urls or len(good_urls) != 2):
+                log_error('CMP.hemicycle WITHOUT BOTH SENAT AND ASSEMBLEE')
+                # todo: add empty missing step
+                institutions_found = [url['institution'] for url in good_urls]
+                if 'assemblee' not in institutions_found:
+                    sub_step = {**step} # dubstep
+                    sub_step['source_url'] = None
+                    sub_step['institution'] = 'assemblee'
+                    data['steps'].append(sub_step)
 
     return data
 
@@ -236,3 +255,10 @@ if __name__ == '__main__':
 
 # 3eme lecture
 # http://www.senat.fr/dossier-legislatif/pjl08-460.html
+
+# senat manque commision assemblee en CMP
+# http://www.senat.fr/dossier-legislatif/pjl08-582.html
+
+# todo: order CMP hemicycle senat->assemblee
+
+# http://www.assemblee-nationale.fr/13/cr-cafe/09-10/c0910061.asp => assemblee choper compte-rendus
