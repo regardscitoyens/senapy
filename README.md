@@ -1,4 +1,5 @@
 # senapy
+[![Build Status](https://travis-ci.org/regardscitoyens/senapy.svg?branch=master)](https://travis-ci.org/regardscitoyens/senapy)
 A python client for http://senat.fr website
 
 ## Main goal
