@@ -1,0 +1,51 @@
+{
+    "legislature": "13",
+    "procedure": "PJL",
+    "senat_url": null,
+    "steps": [
+        {
+            "acts": [
+                {
+                    "date": "2008-07-23T00:00:00",
+                    "type": "DEPOT_INITIATIVE",
+                    "url": "http://www.senat.fr/leg/pjl07-488.html"
+                },
+                {
+                    "date": "2010-07-12T00:00:00",
+                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
+                    "url": "http://www.senat.fr/seances/s201007/s20100712/st20100712000.html"
+                },
+                {
+                    "date": "2010-07-12T00:00:00",
+                    "status": "ADOPTE",
+                    "type": "DECISION",
+                    "url": "http://www.senat.fr/leg/tas09-141.html"
+                }
+            ],
+            "type": "SENAT_PREMIERE_LECTURE"
+        },
+        {
+            "acts": [
+                {
+                    "date": "2010-07-12T00:00:00",
+                    "type": "DEPOT_INITIATIVE",
+                    "url": "http://www.assemblee-nationale.fr/13/projets/pl2726.asp"
+                },
+                {
+                    "date": "2010-12-21T00:00:00",
+                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
+                    "url": "http://www.assemblee-nationale.fr/13/cri/2010-2011/20110089.asp"
+                },
+                {
+                    "date": "2010-12-21T00:00:00",
+                    "status": "ADOPTE",
+                    "type": "DECISION",
+                    "url": "http://www.assemblee-nationale.fr/13/ta/ta0583.asp"
+                }
+            ],
+            "type": "AN_PREMIERE_LECTURE"
+        }
+    ],
+    "title": "Allemagne : échange de renseignements sur les titulaires du certificat d'immatriculation de véhicules",
+    "url": "http://www.assemblee-nationale.fr/13/dossiers/allemagne_vehicules.asp"
+}

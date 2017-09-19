@@ -142,6 +142,7 @@ def parse(html, url_senat=None):
                     step_step = None
             step['institution'] = curr_institution
             step['stage'] = curr_stage
+
             if curr_stage not in ('constitutionnalité', 'promulgation'):
                 step['step'] = step_step
 
