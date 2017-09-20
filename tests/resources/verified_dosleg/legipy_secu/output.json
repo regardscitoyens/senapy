@@ -7,6 +7,7 @@
   "legifrance_cidTexte": "JORFTEXT000017726554",
   "long_title": "Loi de financement de la sécurité sociale pour 2008",
   "long_title_descr": "projet de loi de financement de la sécurité sociale de financement de la sécurité sociale pour 2008",
+  "senat_id": "plfss2008",
   "short_title": "Sécurité sociale",
   "steps": [
     {
@@ -87,5 +88,6 @@
   ],
   "urgence": false,
   "url_dossier_assemblee": "http://www.assemblee-nationale.fr/13/dossiers/plfss2008.asp",
+  "url_dossier_senat": "http://www.senat.fr/dossierleg/plfss2008.html",
   "url_jo": "http://legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000017726554"
 }

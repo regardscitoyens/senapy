@@ -4,7 +4,7 @@ from urllib.parse import urljoin, parse_qs, urlparse
 
 import requests
 import dateparser
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Comment
 
 
 def log_error(error):
@@ -60,6 +60,11 @@ def parse(html, url_senat=None):
     # TOPARSE: ordonnance_line
 
     data['urgence'] = acceleree_line is not None
+    if not url_senat:
+        # the url is in a comment like "<!-- URL_SENAT=XXXX !-->" for downloaded pages
+        comment = soup.find(text=lambda text:isinstance(text, Comment) and 'URL_SENAT' in text)
+        if comment:
+            url_senat = comment.split('=')[1].strip()
     if url_senat:
         data['url_dossier_senat'] = url_senat
         data['senat_id'] = data['url_dossier_senat'].split('/')[-1].replace('.html', '')
