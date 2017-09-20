@@ -1,0 +1,91 @@
+{
+  "assemblee_id": "plfss2008",
+  "assemblee_legislature": 13,
+  "beginning": "2007-10-11",
+  "end": "2007-12-19",
+  "end_jo": "2007-12-21",
+  "legifrance_cidTexte": "JORFTEXT000017726554",
+  "long_title": "Loi de financement de la sécurité sociale pour 2008",
+  "long_title_descr": "projet de loi de financement de la sécurité sociale de financement de la sécurité sociale pour 2008",
+  "short_title": "Sécurité sociale",
+  "steps": [
+    {
+      "date": "2007-10-11",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/projets/pl0284.asp",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2007-10-17",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/rapports/r0295-tI.asp",
+      "stage": "1ère lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2007-10-30",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0048.asp",
+      "stage": "1ère lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2007-11-06",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/pjl07-067.html",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2007-11-07",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/rap/l07-072-1/l07-072-1.html",
+      "stage": "1ère lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2007-11-12",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/tas07-023.html",
+      "stage": "1ère lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2007-11-20",
+      "institution": "CMP",
+      "source_url": "http://www.senat.fr/rap/l07-087/l07-087.html",
+      "stage": "CMP",
+      "step": "commission"
+    },
+    {
+      "date": "2007-11-22",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0053.asp",
+      "stage": "CMP",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2007-11-22",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/tas07-026.html",
+      "stage": "CMP",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2007-12-13",
+      "institution": "conseil constitutionnel",
+      "source_url": "http://www.conseil-constitutionnel.fr/conseil-constitutionnel/francais/les-decisions/acces-par-date/decisions-depuis-1959/2007/2007-558-dc/decision-n-2007-558-dc-du-13-decembre-2007.1184.html",
+      "stage": "constitutionnalité"
+    },
+    {
+      "date": "2007-12-19",
+      "institution": "gouvernement",
+      "source_url": "http://legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000017726554",
+      "stage": "promulgation"
+    }
+  ],
+  "urgence": false,
+  "url_dossier_assemblee": "http://www.assemblee-nationale.fr/13/dossiers/plfss2008.asp",
+  "url_jo": "http://legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000017726554"
+}

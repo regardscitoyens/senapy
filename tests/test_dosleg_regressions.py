@@ -7,6 +7,7 @@ from os.path import join
 from senapy.dosleg.parser import parse
 from .tools.compare_thelawfactory_and_me import compare
 from .tools.compare_with_anpy import compare as compare_anpy
+from .tools.compare_with_legipy import compare as compare_legipy
 
 def test_dosleg_regressions():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -40,5 +41,12 @@ def test_dosleg_regressions():
             anpy = json.load(open(join(path, 'anpy.json')))
             score_ok, score_nok = compare_anpy(anpy, output)
             last_score_ok, last_score_nok = [int(x) for x in open(join(path, 'anpy_scores')).read().split('\n') if x]
+            assert score_ok == last_score_ok
+            assert score_nok == last_score_nok
+
+        if os.path.exists(join(path, 'legipy.json')):
+            legipy = json.load(open(join(path, 'anpy.json')))
+            score_ok, score_nok = compare_legipy(legipy, output)
+            last_score_ok, last_score_nok = [int(x) for x in open(join(path, 'legipy_scores')).read().split('\n') if x]
             assert score_ok == last_score_ok
             assert score_nok == last_score_nok
