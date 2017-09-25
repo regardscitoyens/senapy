@@ -1,14 +1,31 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import sys, json
+import csv, pprint, json, time, sys, os
+from urllib.parse import urljoin
+
+import requests, slugify
 
 import requests
+from bs4 import BeautifulSoup
+from slugify import slugify
 
-from senapy.dosleg.parser import parse
 
 if len(sys.argv) < 2:
-    print('USAGE: senapy-cli (URL|HTML_FILE)')
-else:
+    print("""USAGE:
+    - senapy-cli parse (URL|HTML_FILE)
+    - senapy-cli download_recents <dir/>
+    - senapy-cli download_from_csv <dir/>
+    """)
+    sys.exit()
+
+
+if sys.argv[1] == 'parse':
+    from senapy.dosleg.parser import parse
+
+    if len(sys.argv) < 3:
+        print('USAGE: senapy-cli parse c')
+        sys.exit()
+
     url = sys.argv[1]
     if url.startswith('http'):
         html = requests.get(url).text
@@ -18,3 +35,63 @@ else:
         data = parse(html)
 
     print(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True))
+
+
+elif sys.argv[1] == 'download_recent':
+    dest = sys.argv[2] if len(sys.argv) > 2 else 'senat_dossiers/'
+    print('saving to', dest)
+
+    if not os.path.exists(dest):
+        os.makedirs(dest)
+
+    html = requests.get('http://www.senat.fr/dossiers-legislatifs/textes-recents.html').text
+    soup = BeautifulSoup(html, 'html5lib')
+
+    for link in soup.select('#main .box.box-type-02 .box-inner.gradient-01 a'):
+        href = link.attrs['href']
+        if '/dossier-legislatif/' in href:
+            print(link.attrs['href'])
+            print(link.text.strip())
+            print()
+
+            dest_file = dest + slugify(link.attrs['href'])
+            if os.path.exists(dest_file):
+                continue
+
+            resp = requests.get('http://www.senat.fr' + link.attrs['href'])
+            url = urljoin('http://www.senat.fr/', href)
+            open(dest_file, 'w').write(resp.text
+                + ('\n<!-- URL_SENAT=%s -->' % url))
+
+
+elif sys.argv[1] == 'download_from_csv':
+    csv_resp = requests.get("http://data.senat.fr/data/dosleg/dossiers-legislatifs.csv")
+
+    lines = [{k.lower().replace(' ' ,'_'): v for k,v in line.items()}
+                for line in list(csv.DictReader(csv_resp.text.split('\n'), delimiter=';'))]
+
+    dest = sys.argv[2] if len(sys.argv) > 2 else 'senat_dossiers/'
+
+    if not os.path.exists(dest):
+        os.makedirs(dest)
+
+    lines.sort(key=lambda line:int(line['date_initiale'].split('/')[-1])) # sort by year
+
+    for line in lines:
+        year = int(line['date_initiale'].split('/')[-1])
+        if year >= 2008:
+            print(year)
+            print(line['titre'])
+
+            dest_file = dest + slugify(line['url_du_dossier'])
+            if os.path.exists(dest_file):
+                continue
+
+            resp = requests.get(line['url_du_dossier'])
+            open(dest_file, 'w').write(resp.text
+                + ('\n<!-- URL_SENAT=%s -->' % line['url_du_dossier']))
+            #pprint.pprint(line)
+            time.sleep(0.2)
+
+else:
+    print('INVALID COMMAND')
