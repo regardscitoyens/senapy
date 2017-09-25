@@ -43,4 +43,6 @@ setup(
     packages=['senapy', 'senapy.parsing'],
 
     install_requires=requirements,
+
+    scripts=['bin/senapy-cli'],
 )

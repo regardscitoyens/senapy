@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import sys, json
+
+import requests
+
+from senapy.dosleg.parser import parse
+
+if len(sys.argv) < 2:
+    print('USAGE: senapy-cli (URL|HTML_FILE)')
+else:
+    url = sys.argv[1]
+    if url.startswith('http'):
+        html = requests.get(url).text
+        data = parse(html, url)
+    else:
+        html = open(url).read()
+        data = parse(html)
+
+    print(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True))
