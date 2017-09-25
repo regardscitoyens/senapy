@@ -7,6 +7,7 @@
   "legifrance_cidTexte": "JORFTEXT000022521532",
   "long_title": "Loi relative à l'action extérieure de l'État",
   "long_title_descr": "projet de loi relatif à l'action extérieure de l'État",
+  "senat_id": "pjl08-582",
   "short_title": "Action extérieure de l'État",
   "steps": [
     {
@@ -81,5 +82,6 @@
   ],
   "urgence": true,
   "url_dossier_assemblee": "http://www.assemblee-nationale.fr/13/dossiers/action_exterieure.asp",
+  "url_dossier_senat": "http://www.senat.fr/dossier-legislatif/pjl08-582.html",
   "url_jo": "http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000022521532"
 }

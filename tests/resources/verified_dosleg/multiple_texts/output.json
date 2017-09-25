@@ -6,6 +6,7 @@
   "end_jo": "2015-07-26",
   "long_title": "Loi relative au renseignement",
   "long_title_descr": "projet de loi relatif au renseignement",
+  "senat_id": "pjl14-424",
   "short_title": "Renseignement",
   "steps": [
     {
@@ -86,5 +87,6 @@
   ],
   "urgence": true,
   "url_dossier_assemblee": "http://www.assemblee-nationale.fr/14/dossiers/renseignement.asp",
+  "url_dossier_senat": "http://www.senat.fr/dossier-legislatif/pjl14-424.html",
   "url_jo": "http://www.legifrance.gouv.fr/eli/loi/2015/7/24/PRMX1504410L/jo/texte"
 }
