@@ -1,4 +1,5 @@
 import sys, os
+from urllib.parse import urljoin
 
 import requests
 from bs4 import BeautifulSoup
@@ -20,4 +21,6 @@ for link in soup.select('#main .box.box-type-02 .box-inner.gradient-01 a'):
         print(link.text.strip())
         print()
         resp = requests.get('http://www.senat.fr' + link.attrs['href'])
-        open(dest + slugify(link.attrs['href']) + '.html', 'w').write(resp.text)
+        url = urljoin('http://www.senat.fr/', href)
+        open(dest + slugify(link.attrs['href']) + '.html', 'w').write(resp.text
+            + ('\n<!-- URL_SENAT=%s -->' % url))
