@@ -61,15 +61,15 @@
     },
     {
       "date": "2007-11-22",
-      "institution": "assemblee",
-      "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0053.asp",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/tas07-026.html",
       "stage": "CMP",
       "step": "hemicycle"
     },
     {
       "date": "2007-11-22",
-      "institution": "senat",
-      "source_url": "http://www.senat.fr/leg/tas07-026.html",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0053.asp",
       "stage": "CMP",
       "step": "hemicycle"
     },

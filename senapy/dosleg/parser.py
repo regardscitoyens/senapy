@@ -43,13 +43,13 @@ def parse(html, url_senat=None):
             promulgee_line = line
         elif 'ordonnance' in line.text:
             ordonnance_line = line
-        elif 'accélérée' in line.text:
+        elif 'accélérée' in line.text or 'Urgence déclarée' in line.text:
             acceleree_line = line
         else:
             log_error('UNKNOWN SUBTITLE: %s' % line.text)
     if promulgee_line:
         data['end'] = format_date(promulgee_line.find('strong').text.split(' du ')[1].strip()) # promulgation
-        data['end_jo'] = format_date(promulgee_line.text.split('JO n')[1].split(' du ')[1].split('(')[0].strip()) # inscription aux JO
+        data['end_jo'] = format_date(promulgee_line.text.split('JO ')[-1].split('du ')[-1].split('(')[0].strip()) # inscription aux JO
         if promulgee_line.find('a'):
             data['url_jo'] = promulgee_line.find('a').attrs['href'].replace(';jsessionid=','')
             url_jo_params = parse_qs(urlparse(data['url_jo']).query)
@@ -76,7 +76,11 @@ def parse(html, url_senat=None):
         if 'Assemblée' in link.text:
             data['url_dossier_assemblee'] = link.attrs['href']
             data['assemblee_id'] = data['url_dossier_assemblee'].split('/')[-1].replace('.asp', '')
-            data['assemblee_legislature'] = int(data['url_dossier_assemblee'].split('assemblee-nationale.fr/')[1].split('/')[0])
+            legislature = data['url_dossier_assemblee'].split('.fr/')[1].split('/')[0]
+            if legislature not in ('documents', 'dossiers', 'budget'): # strange link (old dosleg)
+                data['assemblee_legislature'] = int(legislature)
+            else:
+                log_error('NO LEGISLATURE IN AN LINK: ' + data['url_dossier_assemblee'])
 
     data['steps'] = []
     steps_shortcuts = soup.select('.list-timeline li') # icons on top
@@ -192,17 +196,18 @@ def parse(html, url_senat=None):
                     # TODO: NO TEXT LINK ! TAKE NUMERO AND DATE
                     log_error('ITEM WITHOUT URL TO TEXT - %s.%s.%s' % (step['institution'], step['stage'], step.get('step')))
 
+            steps_to_add = []
             if good_urls:
                 for url in good_urls:
                     clean_url = url['url'].replace(';jsessionid=', '') # cleaning
                     sub_step = {**step} # dubstep
                     sub_step['source_url'] = clean_url
                     sub_step['institution'] = url['institution']
-                    data['steps'].append(sub_step)
+                    steps_to_add.append(sub_step)
             else:
                 if 'source_url' in step:
                     step['source_url'] = step['source_url'].replace(';jsessionid=','')
-                data['steps'].append(step)
+                steps_to_add.append(step)
 
             # TODO: if not both CMP.hemicycle.{senat|assemblee}, there's a problem
             if step.get('stage') == 'CMP' and step.get('step') == 'hemicycle' and (not good_urls or len(good_urls) != 2):
@@ -213,7 +218,9 @@ def parse(html, url_senat=None):
                     sub_step = {**step} # dubstep
                     sub_step['source_url'] = None
                     sub_step['institution'] = 'assemblee'
-                    data['steps'].append(sub_step)
+                    steps_to_add.append(sub_step)
+
+            data['steps'] = steps_to_add # TODO: re-order based on "texte définitif"
 
     return data
 
