@@ -77,9 +77,9 @@ def parse(html, url_senat=None):
             data['url_dossier_assemblee'] = link.attrs['href']
             data['assemblee_id'] = data['url_dossier_assemblee'].split('/')[-1].replace('.asp', '')
             legislature = data['url_dossier_assemblee'].split('.fr/')[1].split('/')[0]
-            if legislature not in ('documents', 'dossiers', 'budget'): # strange link (old dosleg)
+            try:
                 data['assemblee_legislature'] = int(legislature)
-            else:
+            except ValueError: # strange link (old dosleg)
                 log_error('NO LEGISLATURE IN AN LINK: ' + data['url_dossier_assemblee'])
 
     data['steps'] = []
@@ -99,8 +99,10 @@ def parse(html, url_senat=None):
 
             step['date'] = None
             if step_shortcut.select('em'):
-                step['date'] = format_date(step_shortcut.select('em')[-1].text.strip())
-            else:
+                date_text = step_shortcut.select('em')[-1].text.strip()
+                if '/' in date_text:
+                    step['date'] = format_date(date_text)
+            if not step['date']:
                 # TODO: date sometimes is not on the shortcut
                 log_error('SHORCUT WITHOUT DATE')
 
@@ -122,7 +124,6 @@ def parse(html, url_senat=None):
                 titre = step_shortcut.select('em')[0].text.lower().strip()
                 if titre == 'loi' or 'promulgation' in titre:
                     curr_stage = 'promulgation'
-                    curr_institution = 'gouvernement'
                 else:
                     curr_stage = step_shortcut.find('a').attrs['title'].split('|')[-1].split('-')[0].lower().strip()
                     if curr_stage == 'cmp':
@@ -136,7 +137,6 @@ def parse(html, url_senat=None):
                     step_step = 'depot'
                 elif 'picto_timeline_05_' in img:
                     curr_institution = 'CMP'
-
                     # there is no "depot" step for a CMP
                     continue
                 elif 'picto_timeline_03_' in img:
@@ -145,11 +145,14 @@ def parse(html, url_senat=None):
                     step_step = 'hemicycle'
                 elif 'picto_timeline_07_' in img:
                     curr_institution = 'gouvernement'
+                elif 'picto_timeline_10_' in img:
+                    curr_institution = 'congrès'
 
-                if curr_stage == 'c. constit.':
-                    curr_institution = 'conseil constitutionnel'
-                    curr_stage = 'constitutionnalité'
-                    step_step = None
+            if curr_stage == 'c. constit.':
+                curr_institution = 'conseil constitutionnel'
+                curr_stage = 'constitutionnalité'
+                step_step = None
+
             step['institution'] = curr_institution
             step['stage'] = curr_stage
 
@@ -175,10 +178,11 @@ def parse(html, url_senat=None):
                         url = urljoin(url_senat, href)
                         line_text = line.text.lower()
                         institution = curr_institution
-                        if 'par l\'assemblée' in line_text:
-                            institution = 'assemblee'
-                        elif 'par le sénat' in line_text:
-                            institution = 'senat'
+                        if curr_stage != 'promulgation': # TODO: be more specific, have a way to force the curr_instituion
+                            if 'par l\'assemblée' in line_text:
+                                institution = 'assemblee'
+                            elif 'par le sénat' in line_text:
+                                institution = 'senat'
                         good_urls.append({
                             'url': url,
                             'institution': institution,
