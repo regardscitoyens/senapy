@@ -153,6 +153,14 @@ def parse(html, url_senat=None):
                 curr_stage = 'constitutionnalité'
                 step_step = None
 
+
+            # the picto can be the wrong one...also a depot step for a CMP doesn't makes sense
+            # ex: http://www.senat.fr/dossier-legislatif/taan99-406.html
+            if curr_stage == 'CMP' and step_step == 'depot':
+                curr_institution = 'CMP'
+                log_error('DEPOT STEP FOR A CMP')
+                continue
+
             step['institution'] = curr_institution
             step['stage'] = curr_stage
 
@@ -166,9 +174,7 @@ def parse(html, url_senat=None):
                 if 'href' in link.attrs:
                     href = link.attrs['href']
                     nice_text = link.text.lower().strip()
-                    # TODO: "Texte de la commission"
                     # TODO: assemblée "ppl, ppr, -a0" (a verif)
-                    #
                     if (
                         ('/leg/' in href and '/' not in href.replace('/leg/', ''))
                         or nice_text in ('texte', 'texte de la commission', 'décision du conseil constitutionnel') \
