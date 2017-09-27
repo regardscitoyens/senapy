@@ -122,6 +122,7 @@ def parse(html, url_senat=None):
                 titre = step_shortcut.select('em')[0].text.lower().strip()
                 if titre == 'loi' or 'promulgation' in titre:
                     curr_stage = 'promulgation'
+                    curr_institution = 'gouvernement'
                 else:
                     curr_stage = step_shortcut.find('a').attrs['title'].split('|')[-1].split('-')[0].lower().strip()
                     if curr_stage == 'cmp':
@@ -220,7 +221,7 @@ def parse(html, url_senat=None):
                     sub_step['institution'] = 'assemblee'
                     steps_to_add.append(sub_step)
 
-            data['steps'] = steps_to_add # TODO: re-order based on "texte définitif"
+            data['steps'] += steps_to_add # TODO: re-order based on "texte définitif"
 
     return data
 
