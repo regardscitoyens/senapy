@@ -26,13 +26,13 @@ def parse(html, url_senat=None):
     # del base_data['html']
     # pp(base_data)
 
-    data['short_title'] = soup.select('.title-dosleg')[0].text.strip()
+    data['short_title'] = soup.select_one('.title-dosleg').text.strip()
 
     if not soup.select('.title .subtitle-01'):
         log_error('NO TITLE - MAYBE A REDIRECT ?')
         return
 
-    data['long_title'] = soup.select('.title .subtitle-01')[0].text.strip()[:-2]
+    data['long_title'] = soup.select_one('.title .subtitle-01').text.strip()[:-2]
     data['long_title_descr'] = soup.find("meta", {"name":"Description"})['content']
 
     promulgee_line = None
@@ -97,6 +97,11 @@ def parse(html, url_senat=None):
             timeline_index = int(item.attrs['id'].split('-')[1]) - 1
             step_shortcut = steps_shortcuts[timeline_index]
 
+            section_title = item
+            while section_title.previous_sibling and section_title.previous_sibling.name != 'h3':
+                section_title = section_title.previous_sibling
+            section_title = section_title.previous_sibling.text if section_title.previous_sibling else ''
+
             step['date'] = None
             if step_shortcut.select('em'):
                 date_text = step_shortcut.select('em')[-1].text.strip()
@@ -120,8 +125,8 @@ def parse(html, url_senat=None):
             # stage = 1ere lecture|2nd lecture|CMP
             # institution = assemblee|senat|CMP|gouvernement
             # step = depot|commission|hemicycle
-            if len(step_shortcut.select('em')) > 0:
-                titre = step_shortcut.select('em')[0].text.lower().strip()
+            if step_shortcut.select_one('em'):
+                titre = step_shortcut.select_one('em').text.lower().strip()
                 if titre == 'loi' or 'promulgation' in titre:
                     curr_stage = 'promulgation'
                 else:
@@ -231,8 +236,11 @@ def parse(html, url_senat=None):
                     step['source_url'] = step['source_url'].replace(';jsessionid=','')
                 steps_to_add.append(step)
 
+            if step.get('stage') == 'CMP' and step.get('step') == 'hemicycle' and 'désaccord' in section_title:
+                step['echec'] = True
+
             # TODO: if not both CMP.hemicycle.{senat|assemblee}, there's a problem
-            if step.get('stage') == 'CMP' and step.get('step') == 'hemicycle' and (not good_urls or len(good_urls) != 2):
+            if step.get('stage') == 'CMP' and step.get('step') == 'hemicycle' and not step.get('echec') and (not good_urls or len(good_urls) != 2):
                 log_error('CMP.hemicycle WITHOUT BOTH SENAT AND ASSEMBLEE')
                 # todo: add empty missing step
                 institutions_found = [url['institution'] for url in good_urls]
