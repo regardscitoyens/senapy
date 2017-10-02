@@ -1,0 +1,156 @@
+{
+  "assemblee_id": "transparence_vie_publique_pjl#vie_publique_transparence",
+  "assemblee_legislature": 14,
+  "beginning": "2013-04-24",
+  "end": "2013-10-11",
+  "end_jo": "2013-10-12",
+  "legifrance_cidTexte": "JORFTEXT000028056223",
+  "long_title": "Loi relative à la transparence de la vie publique",
+  "long_title_descr": "projet de loi organique relatif à la transparence de la vie publique",
+  "senat_id": "pjl12-688",
+  "short_title": "Transparence de la vie publique",
+  "steps": [
+    {
+      "date": "2013-04-24",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/14/projets/pl1004.asp",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2013-06-05",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/14/ta-commission/r1108-a0.asp",
+      "stage": "1ère lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2013-06-25",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0161.asp",
+      "stage": "1ère lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2013-06-26",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/pjl12-688.html",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2013-07-01",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/pjl12-723.html",
+      "stage": "1ère lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2013-07-09",
+      "echec": true,
+      "institution": "senat",
+      "stage": "1ère lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2013-07-09",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/pjl12-732.html",
+      "stage": "1ère lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2013-07-12",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/tas12-192.html",
+      "stage": "1ère lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2013-07-16",
+      "institution": "CMP",
+      "source_url": "http://www.senat.fr/leg/pjl12-771.html",
+      "stage": "CMP",
+      "step": "commission"
+    },
+    {
+      "date": "2013-07-17",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/14/projets/pl1249.asp",
+      "stage": "nouv. lect.",
+      "step": "depot"
+    },
+    {
+      "date": "2013-07-17",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/14/ta-commission/r1279-a0.asp",
+      "stage": "nouv. lect.",
+      "step": "commission"
+    },
+    {
+      "date": "2013-07-23",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0191.asp",
+      "stage": "nouv. lect.",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2013-07-23",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/pjl12-797.html",
+      "stage": "nouv. lect.",
+      "step": "depot"
+    },
+    {
+      "date": "2013-07-24",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/pjl12-802.html",
+      "stage": "nouv. lect.",
+      "step": "commission"
+    },
+    {
+      "date": "2013-07-25",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/tas12-210.html",
+      "stage": "nouv. lect.",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2013-07-26",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0191.asp",
+      "stage": "l. définitive",
+      "step": "depot"
+    },
+    {
+      "date": "2013-09-10",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/14/rapports/r1346.asp",
+      "stage": "l. définitive",
+      "step": "commission"
+    },
+    {
+      "date": "2013-09-17",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0209.asp",
+      "stage": "l. définitive",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2013-10-09",
+      "institution": "conseil constitutionnel",
+      "source_url": "http://www.conseil-constitutionnel.fr/conseil-constitutionnel/francais/les-decisions/acces-par-date/decisions-depuis-1959/2013/2013-675-dc/decision-n-2013-675-dc-du-09-octobre-2013.138242.html",
+      "stage": "constitutionnalité"
+    },
+    {
+      "date": "2013-10-11",
+      "institution": "gouvernement",
+      "source_url": "http://legifrance.gouv.fr/affichTexte.doAD043F23DFA1BEB18F8DD1768537D04B.tpdjo09v_1?cidTexte=JORFTEXT000028056223&dateTexte=&oldAction=rechJO&categorieLien=id&idJO=JORFCONT000028056220",
+      "stage": "promulgation"
+    }
+  ],
+  "urgence": true,
+  "url_dossier_assemblee": "http://www.assemblee-nationale.fr/14/dossiers/transparence_vie_publique_pjl.asp#vie_publique_transparence",
+  "url_dossier_senat": "http://www.senat.fr/dossier-legislatif/pjl12-688.html",
+  "url_jo": "http://legifrance.gouv.fr/affichTexte.doAD043F23DFA1BEB18F8DD1768537D04B.tpdjo09v_1?cidTexte=JORFTEXT000028056223&dateTexte=&oldAction=rechJO&categorieLien=id&idJO=JORFCONT000028056220"
+}

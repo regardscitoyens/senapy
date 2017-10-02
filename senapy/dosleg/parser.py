@@ -175,6 +175,10 @@ def parse(html, url_senat=None):
             # nouv delib contains all the other steps, making it confusing
             # because there's no text for a nouv delib
             if curr_institution != 'nouv. délib.':
+
+                if 'Texte renvoyé en commission' in item.text:
+                    step['echec'] = True
+
                 ## TROUVONS LES TEXTES
                 for link in item.select('a'):
                     line = link.parent
@@ -293,3 +297,6 @@ if __name__ == '__main__':
 # todo: order CMP hemicycle senat->assemblee
 
 # http://www.assemblee-nationale.fr/13/cr-cafe/09-10/c0910061.asp => assemblee choper compte-rendus
+
+# Texte renvoyé en commission
+# Echec en commission - "Résultat des travaux de la commission n° 732 (2012-2013) déposé le 9 juillet 2013"
