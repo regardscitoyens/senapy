@@ -1,4 +1,4 @@
-import json, sys
+import json, sys, re
 from pprint import pprint as pp
 from urllib.parse import urljoin, parse_qs, urlparse
 
@@ -90,6 +90,7 @@ def parse(html, url_senat=None):
 
     curr_institution = None
     curr_stage = None
+    error_detection_last_date = None
     for item in soup.select('#box-timeline > div div'):
         if 'timeline-' in item.attrs.get('id', ''):
             step = {}
@@ -205,9 +206,19 @@ def parse(html, url_senat=None):
                                     institution = 'assemblee'
                                 elif 'par le sénat' in line_text:
                                     institution = 'senat'
+
+                            date = re.match(r".*?(\d\d? \w\w\w\w+ \d\d\d\d)", line_text)
+                            if date and date.group(1):
+                                date = format_date(date.group(1))
+
+                                if error_detection_last_date and dateparser.parse(error_detection_last_date) > dateparser.parse(date):
+                                    log_error('DATE ORDER IS INCORRECT - last=%s - found=%s' % (error_detection_last_date, date))
+                                error_detection_last_date = date
+
                             good_urls.append({
                                 'url': url,
                                 'institution': institution,
+                                'date': date,
                             })
                 if not good_urls:
                     # sinon prendre une url d'un peu moins bonne qualité
@@ -226,16 +237,18 @@ def parse(html, url_senat=None):
             steps_to_add = []
             if good_urls:
                 for url in good_urls:
-                    clean_url = url['url'].replace(';jsessionid=', '') # cleaning
+                    clean_url = url['url']
                     sub_step = {**step} # dubstep
                     sub_step['source_url'] = clean_url
                     sub_step['institution'] = url['institution']
+                    # sub_step['source_date'] = url['date']
                     steps_to_add.append(sub_step)
             else:
                 if 'source_url' in step:
-                    step['source_url'] = step['source_url'].replace(';jsessionid=','')
+                    step['source_url'] = step['source_url']
                 steps_to_add.append(step)
 
+            # TODO: remove CMP.CMP.hemicycle
             if step.get('stage') == 'CMP' and step.get('step') == 'hemicycle' and 'désaccord' in section_title:
                 step['echec'] = True
 
@@ -249,6 +262,11 @@ def parse(html, url_senat=None):
                     sub_step['source_url'] = None
                     sub_step['institution'] = 'assemblee'
                     steps_to_add.append(sub_step)
+
+            # clean urls
+            for step in steps_to_add:
+                if step.get('source_url'):
+                    step['source_url'] = step['source_url'].replace(';jsessionid=','')
 
             data['steps'] += steps_to_add # TODO: re-order based on "texte définitif"
 
@@ -295,16 +313,9 @@ if __name__ == '__main__':
 # Comptes rendus des réunions des commissions
 # Compte rendu intégral des débats
 
-
-# 3eme lecture
-# http://www.senat.fr/dossier-legislatif/pjl08-460.html
-
 # senat manque commision assemblee en CMP
 # http://www.senat.fr/dossier-legislatif/pjl08-582.html
 
-# todo: order CMP hemicycle senat->assemblee
-
 # http://www.assemblee-nationale.fr/13/cr-cafe/09-10/c0910061.asp => assemblee choper compte-rendus
 
-# Texte renvoyé en commission
 # Echec en commission - "Résultat des travaux de la commission n° 732 (2012-2013) déposé le 9 juillet 2013"
