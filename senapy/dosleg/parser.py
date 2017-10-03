@@ -248,20 +248,25 @@ def parse(html, url_senat=None):
                     step['source_url'] = step['source_url']
                 steps_to_add.append(step)
 
-            # TODO: remove CMP.CMP.hemicycle
-            if step.get('stage') == 'CMP' and step.get('step') == 'hemicycle' and 'désaccord' in section_title:
-                step['echec'] = True
-
-            # TODO: if not both CMP.hemicycle.{senat|assemblee}, there's a problem
-            if step.get('stage') == 'CMP' and step.get('step') == 'hemicycle' and not step.get('echec') and (not good_urls or len(good_urls) != 2):
-                log_error('CMP.hemicycle WITHOUT BOTH SENAT AND ASSEMBLEE')
-                # todo: add empty missing step
-                institutions_found = [url['institution'] for url in good_urls]
-                if 'assemblee' not in institutions_found:
-                    sub_step = {**step} # dubstep
-                    sub_step['source_url'] = None
-                    sub_step['institution'] = 'assemblee'
-                    steps_to_add.append(sub_step)
+            # remove CMP.CMP.hemicycle if it's a fail
+            if step.get('stage') == 'CMP' and step.get('step') == 'hemicycle':
+                if not good_urls:
+                    last_step = data['steps'][-1]
+                    if data['steps'][-1].get('stage') == 'CMP' and step.get('step') == 'hemicycle':
+                        if 'désaccord' in section_title:
+                            last_step['echec'] = True
+                        else:
+                            log_error('CMP.hemicycle with no links and no fail indicated')
+                        continue
+                elif len(good_urls) != 2:
+                    log_error('CMP.hemicycle WITHOUT BOTH SENAT AND ASSEMBLEE')
+                    # todo: add empty missing step
+                    institutions_found = [url['institution'] for url in good_urls]
+                    if 'assemblee' not in institutions_found:
+                        sub_step = {**step} # dubstep
+                        sub_step['source_url'] = None
+                        sub_step['institution'] = 'assemblee'
+                        steps_to_add.append(sub_step)
 
             # clean urls
             for step in steps_to_add:
