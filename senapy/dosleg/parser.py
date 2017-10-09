@@ -71,6 +71,13 @@ def parse(html, url_senat=None):
     else:
         url_senat = 'http://www.senat.fr/'
 
+    # objet du texte (very basic)
+    for div in soup.select('#main div.scroll'):
+        if div.find('h3') and 'Objet du texte' in div.find('h3').text:
+            data['objet_du_texte'] = div.text.replace('Objet du texte\n','') \
+                .replace("Lire le billet de l'Espace presse",'').strip()
+            continue
+
     # TODO: selecteur foireux ?
     for link in soup.select('h4.title.title-06.link-type-02 a'):
         if 'Assemblée' in link.text:
@@ -134,6 +141,12 @@ def parse(html, url_senat=None):
                     curr_stage = step_shortcut.find('a').attrs['title'].split('|')[-1].split('-')[0].lower().strip()
                     if curr_stage == 'cmp':
                         curr_stage = 'CMP'
+
+                # sometimes the lecture info is in the date, why not ?
+                # ex: http://www.senat.fr/dossier-legislatif/a82831259.html
+                if 'lecture' in date_text:
+                    curr_stage = date_text
+
                 img = step_shortcut.find('img').attrs['src']
                 if 'picto_timeline_01_' in img:
                     curr_institution = 'assemblee'
@@ -175,6 +188,13 @@ def parse(html, url_senat=None):
                 step['stage'] = curr_stage
                 if curr_stage not in ('constitutionnalité', 'promulgation'):
                     step['step'] = step_step
+
+            # fill in for special case like http://www.senat.fr/dossier-legislatif/csm.html
+            if curr_institution == 'congrès' and not curr_stage:
+                step['stage'] = 'congrès'
+            if curr_institution == 'congrès' and not step_step:
+                step['step'] = 'congrès'
+
 
             good_urls = []
 
