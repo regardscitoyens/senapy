@@ -27,7 +27,7 @@ def compare(proc, me, verbose=True):
     test = test_test(proc, me)
     test('url', 'url_dossier_assemblee')
     test('title', 'long_title_descr')
-    test('senat_url')
+    test('senat_url', 'url_dossier_senat')
     test('legislature', 'legislature', lambda x: int(x))
 
     myprint()
