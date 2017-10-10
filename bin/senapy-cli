@@ -109,6 +109,7 @@ elif sys.argv[1] == 'parse_directory':
     for file in files:
         html = open(file).read()
         filepath = sys.argv[3] + file.split('/')[-1]
+        filepath = filepath.replace('http-www-senat-fr-', '')
 
         if os.path.exists(filepath):
             continue

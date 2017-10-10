@@ -1,5 +1,5 @@
 {
-  "assemblee_id": "transparence_vie_publique_pjl#vie_publique_transparence",
+  "assemblee_id": "transparence_vie_publique_pjl",
   "assemblee_legislature": 14,
   "beginning": "2013-04-24",
   "end": "2013-10-11",
@@ -69,7 +69,7 @@
     },
     {
       "date": "2013-07-16",
-      "institution": "CMP",
+      "institution": "senat",
       "source_url": "http://www.senat.fr/leg/pjl12-771.html",
       "stage": "CMP",
       "step": "commission"
@@ -151,7 +151,7 @@
     }
   ],
   "urgence": true,
-  "url_dossier_assemblee": "http://www.assemblee-nationale.fr/14/dossiers/transparence_vie_publique_pjl.asp#vie_publique_transparence",
+  "url_dossier_assemblee": "http://www.assemblee-nationale.fr/14/dossiers/transparence_vie_publique_pjl.asp",
   "url_dossier_senat": "http://www.senat.fr/dossier-legislatif/pjl12-688.html",
   "url_jo": "http://legifrance.gouv.fr/affichTexte.doAD043F23DFA1BEB18F8DD1768537D04B.tpdjo09v_1?cidTexte=JORFTEXT000028056223&dateTexte=&oldAction=rechJO&categorieLien=id&idJO=JORFCONT000028056220"
 }

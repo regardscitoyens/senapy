@@ -81,7 +81,7 @@ def parse(html, url_senat=None):
     # TODO: selecteur foireux ?
     for link in soup.select('h4.title.title-06.link-type-02 a'):
         if 'Assemblée' in link.text:
-            data['url_dossier_assemblee'] = link.attrs['href']
+            data['url_dossier_assemblee'] = link.attrs['href'].split('#')[0]
             data['assemblee_id'] = data['url_dossier_assemblee'].split('/')[-1].replace('.asp', '')
             legislature = data['url_dossier_assemblee'].split('.fr/')[1].split('/')[0]
             try:
@@ -213,7 +213,7 @@ def parse(html, url_senat=None):
                         nice_text = link.text.lower().strip()
                         # TODO: assemblée "ppl, ppr, -a0" (a verif)
                         if (
-                            ('/leg/' in href and '/' not in href.replace('/leg/', ''))
+                            ('/leg/' in href and '/' not in href.replace('/leg/', '') and 'avis-ce' not in href)
                             or nice_text in ('texte', 'texte de la commission', 'décision du conseil constitutionnel') \
                             or 'jo n°' in nice_text
                             ):
@@ -226,6 +226,12 @@ def parse(html, url_senat=None):
                                     institution = 'assemblee'
                                 elif 'par le sénat' in line_text:
                                     institution = 'senat'
+                                else:
+                                    if curr_stage == 'CMP' and not step.get('echec'):
+                                        if 'assemblee-nationale.fr' in href:
+                                            institution = 'assemblee'
+                                        else:
+                                            institution = 'senat'
 
                             date = re.match(r".*?(\d\d? \w\w\w\w+ \d\d\d\d)", line_text)
                             if date and date.group(1):
