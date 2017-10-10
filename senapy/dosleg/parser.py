@@ -227,7 +227,7 @@ def parse(html, url_senat=None):
                                 elif 'par le sénat' in line_text:
                                     institution = 'senat'
                                 else:
-                                    if curr_stage == 'CMP' and not step.get('echec'):
+                                    if curr_stage == 'CMP' and 'texte' in nice_text and not step.get('echec'):
                                         if 'assemblee-nationale.fr' in href:
                                             institution = 'assemblee'
                                         else:
