@@ -81,7 +81,7 @@ def compare(proc, me, verbose=True):
     i = 0
     for step_proc in proc['steps']:
         if type(step_proc) is list:
-            myprint('INVALID STEP (LIST):', step_proc)
+            myprint('INVALID STEP DETECTED (LIST)')
             continue
         for act in step_proc.get('acts', []):
 

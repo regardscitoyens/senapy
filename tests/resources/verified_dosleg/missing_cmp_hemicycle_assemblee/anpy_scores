@@ -4,7 +4,7 @@ OK legislature ( 13 )
 
 STEPS:
 
-INVALID STEP (LIST): [{'date': '2012-02-15T00:00:00', 'url': 'http://www.assemblee-nationale.fr/13/rap-info/i4356.asp', 'type': 'DEPOT_RAPPORT'}]
+INVALID STEP DETECTED (LIST)
  - step 1
 OK date ( 2009-07-22 )
 OK url ( http://www.senat.fr/leg/pjl08-582.html )
