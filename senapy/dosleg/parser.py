@@ -224,6 +224,10 @@ def parse(html, url_senat=None):
                             ('/leg/' in href and '/' not in href.replace('/leg/', '') and 'avis-ce' not in href)
                             or nice_text in ('texte', 'texte de la commission', 'décision du conseil constitutionnel') \
                             or 'jo n°' in nice_text
+
+                            # TODO: parse the whole block for date + url
+                            # ex: http://www.senat.fr/dossier-legislatif/pjl08-641.html
+                            or 'conseil-constitutionnel.fr/decision.' in href
                             ):
 
                             url = urljoin(url_senat, href)
