@@ -15,14 +15,15 @@ def format_date(date):
     parsed = dateparser.parse(date, languages=['fr'])
     return parsed.strftime("%Y-%m-%d")
 
+
 def clean_legifrance_url(url):
-    url = url.replace(';jsessionid=','')
     scheme, netloc, path, params, query, fragment = urlparse(url)
     url_jo_params = parse_qs(query)
     if 'cidTexte' in url_jo_params:
         query = 'cidTexte=' + url_jo_params['cidTexte'][0]
-        return urlunparse((scheme, netloc, path, params, query, fragment))
-    return url
+    return urlunparse((scheme, netloc, path, '', query, fragment))
+
+
 def parse(html, url_senat=None):
     data = {}
 

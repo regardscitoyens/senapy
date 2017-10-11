@@ -114,6 +114,7 @@ elif sys.argv[1] == 'parse_directory':
         if os.path.exists(filepath):
             continue
 
+        print('parsing', file)
         data = parse(html)
         json.dump(data, open(filepath, 'w'), ensure_ascii=False, indent=2, sort_keys=True)
 

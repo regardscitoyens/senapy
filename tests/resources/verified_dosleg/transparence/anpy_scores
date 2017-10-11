@@ -139,7 +139,7 @@ OK type ( assemblee )
 
  - step 20
 !! NOK !! date  diff: 2013-07-15 VS 2013-10-11
-!! NOK !! url  diff: http://www.senat.fr/leg/tas12-193.html VS http://legifrance.gouv.fr/affichTexte.doAD043F23DFA1BEB18F8DD1768537D04B.tpdjo09v_1?cidTexte=JORFTEXT000028056223
+!! NOK !! url  diff: http://www.senat.fr/leg/tas12-193.html VS http://legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000028056223
 !! NOK !! type  diff: hemicycle VS None
 !! NOK !! type  diff: 1ère lecture VS promulgation
 !! NOK !! type  diff: senat VS gouvernement
