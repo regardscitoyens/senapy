@@ -32,13 +32,29 @@
     {
       "date": "2017-07-19",
       "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/15/projets/pl0104.asp",
       "stage": "1ère lecture",
       "step": "depot"
     },
     {
       "date": "2017-09-14",
       "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/15/ta-commission/r0164-a0.asp",
       "stage": "1ère lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2017-10-03",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/15/ta/ta0019.asp",
+      "stage": "1ère lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2017-10-09",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/pjl17-017.html",
+      "stage": "CMP",
       "step": "commission"
     }
   ],

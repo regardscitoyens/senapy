@@ -1,6 +1,6 @@
 import json, sys, re
 from pprint import pprint as pp
-from urllib.parse import urljoin, parse_qs, urlparse
+from urllib.parse import urljoin, parse_qs, urlparse, urlunparse
 
 import requests
 import dateparser
@@ -15,7 +15,14 @@ def format_date(date):
     parsed = dateparser.parse(date, languages=['fr'])
     return parsed.strftime("%Y-%m-%d")
 
-
+def clean_legifrance_url(url):
+    url = url.replace(';jsessionid=','')
+    scheme, netloc, path, params, query, fragment = urlparse(url)
+    url_jo_params = parse_qs(query)
+    if 'cidTexte' in url_jo_params:
+        query = 'cidTexte=' + url_jo_params['cidTexte'][0]
+        return urlunparse((scheme, netloc, path, params, query, fragment))
+    return url
 def parse(html, url_senat=None):
     data = {}
 
@@ -51,7 +58,7 @@ def parse(html, url_senat=None):
         data['end'] = format_date(promulgee_line.find('strong').text.split(' du ')[1].strip()) # promulgation
         data['end_jo'] = format_date(promulgee_line.text.split('JO ')[-1].split('du ')[-1].split('(')[0].strip()) # inscription aux JO
         if promulgee_line.find('a'):
-            data['url_jo'] = promulgee_line.find('a').attrs['href'].replace(';jsessionid=','')
+            data['url_jo'] = clean_legifrance_url(promulgee_line.find('a').attrs['href'])
             url_jo_params = parse_qs(urlparse(data['url_jo']).query)
             if 'cidTexte' in url_jo_params:
                 data['legifrance_cidTexte'] = url_jo_params['cidTexte'][0]
@@ -297,8 +304,10 @@ def parse(html, url_senat=None):
 
             # clean urls
             for step in steps_to_add:
-                if step.get('source_url'):
-                    step['source_url'] = step['source_url'].replace(';jsessionid=','')
+                url = step.get('source_url')
+                if url:
+                    if 'legifrance.gouv.fr' in url:
+                        step['source_url'] = clean_legifrance_url(url)
 
             data['steps'] += steps_to_add # TODO: re-order based on "texte définitif"
 

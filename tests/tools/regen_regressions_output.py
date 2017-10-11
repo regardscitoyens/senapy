@@ -19,9 +19,10 @@ for file in os.listdir(DIR):
     output = parse(open(path+'/input.html'))
     json.dump(output, open(DIR+file+'/output.json', 'w'), ensure_ascii=False, indent=2, sort_keys=True)
 
-    html = requests.get(output['url_dossier_assemblee']).text # oulala, can change !
-    result = DossierParser(output['url_dossier_assemblee'], html).parse()
-    open(DIR+file+'/anpy.json', 'w').write(json_dumps(result.to_dict(), ensure_ascii=False, indent=4, sort_keys=True))
+    if False: # enable this if you want to regen anpy.json
+        html = requests.get(output['url_dossier_assemblee']).text # oulala, can change !
+        result = DossierParser(output['url_dossier_assemblee'], html).parse()
+        open(DIR+file+'/anpy.json', 'w').write(json_dumps(result.to_dict(), ensure_ascii=False, indent=4, sort_keys=True))
 
     if os.path.exists(join(path, 'lawfactory.json')):
         proc = json.load(open(join(path, 'lawfactory.json')))

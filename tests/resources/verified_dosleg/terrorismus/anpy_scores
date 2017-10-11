@@ -27,25 +27,24 @@ OK type ( senat )
 
  - step 4
 OK date ( 2017-07-19 )
-!! NOK !! url  diff: http://www.assemblee-nationale.fr/15/projets/pl0104.asp VS None
+OK url ( http://www.assemblee-nationale.fr/15/projets/pl0104.asp )
 OK type ( depot )
 OK type ( 1ère lecture )
 OK type ( assemblee )
 
  - step 5
 OK date ( 2017-09-14 )
-!! NOK !! url  diff: http://www.assemblee-nationale.fr/15/ta-commission/r0164-a0.asp VS None
+OK url ( http://www.assemblee-nationale.fr/15/ta-commission/r0164-a0.asp )
 OK type ( commission )
 OK type ( 1ère lecture )
 OK type ( assemblee )
 
  - step 6
-  - step not in mine
-!! NOK !! date  diff: 2017-10-03 VS None
-!! NOK !! url  diff: http://www.assemblee-nationale.fr/15/ta/ta0019.asp VS None
-!! NOK !! type  diff: hemicycle VS None
-!! NOK !! type  diff: 1ère lecture VS None
-!! NOK !! type  diff: assemblee VS None
+OK date ( 2017-10-03 )
+OK url ( http://www.assemblee-nationale.fr/15/ta/ta0019.asp )
+OK type ( hemicycle )
+OK type ( 1ère lecture )
+OK type ( assemblee )
 
-NOK: 7
-OK: 26
+NOK: 0
+OK: 33
