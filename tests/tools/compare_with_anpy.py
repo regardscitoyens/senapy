@@ -1,47 +1,95 @@
 import json, sys
 
-def compare(proc, me, verbose=True):
-    score_ok = 0
-    score_nok = 0
+def type_to_step(type):
+    if not type:
+        return
+    if 'DEPOT_INITIATIVE' in type:
+        return 'depot'
+    if 'COMMISSION' in type:
+        return 'commission'
+    if 'DECISION' in type:
+        return 'hemicycle'
+    return type
 
-    myprint = print
-    if not verbose:
-        myprint = lambda *args: None
+
+def type_to_stage(type):
+    if not type:
+        return
+    if 'PREMIERE_LECTURE' in type:
+        return '1ère lecture'
+    if 'DEUXIEME_LECTURE' in type:
+        return '2ème lecture'
+    if 'TROISIEME_LECTURE' in type:
+        return '3ème lecture'
+    if 'NOUVELLE_LECTURE' in type:
+        return 'nouv. lect.'
+    if 'LECTURE_DEFINITIVE' in type:
+        return 'l. definitive'
+    if 'CMP' in type:
+        return 'CMP'
+    return type
+
+
+def type_to_instit(type):
+    if not type:
+        return
+    if 'AN_' in type:
+        return 'assemblee'
+    if 'SENAT_' in type:
+        return 'senat'
+    if 'CONSEIL_CONSTITUT' in type:
+        return 'conseil constitutionnel'
+    if 'CMP' in type:
+        return 'CMP'
+    return type
+
+
+def compare(proc, me, verbose=True):
+    score_nok, score_ok = 0, 0
+    log = ''
+
+    def myprint(*args):
+        nonlocal log
+        log += ' '.join(str(x) for x in args) + '\n'
 
     # i like to write cryptic function sometimes also
     def test_test(proc, me):
         def test(a, b=None, a_key=lambda a: a):
-            nonlocal score_nok, score_ok
+            nonlocal myprint, score_ok, score_nok
             if b is None:
                 b = a
             a_val = a_key(proc.get(a))
             b_val = me.get(b)
             if a_val != b_val:
-                print('!! NOK !!', a,' diff:', a_val, 'VS', b_val)
+                myprint('!! NOK !!', a,' diff:', a_val, 'VS', b_val)
                 score_nok += 1
             else:
-                print('OK', a, '(', a_val, ')')
+                myprint('OK', a, '(', a_val, ')')
                 score_ok += 1
         return test
 
     test = test_test(proc, me)
     test('url', 'url_dossier_assemblee')
-    test('title', 'long_title_descr')
+    # test('title', 'long_title_descr')
     test('senat_url', 'url_dossier_senat')
-    test('legislature', 'legislature', lambda x: int(x))
+    test('legislature', 'assemblee_legislature', lambda x: int(x))
 
     myprint()
     myprint('STEPS:')
-    n_steps = 0
-    for step in proc['steps']:
-        n_steps += len(step['acts'])
-    if n_steps != len(me['steps']):
-        myprint('!! NOK !! DIFFERENT NUMBER OF STEPS:', n_steps, 'VS', len(me['steps']))
     myprint()
 
     i = 0
     for step_proc in proc['steps']:
-        for act in step_proc['acts']:
+        if type(step_proc) is list:
+            myprint('INVALID STEP (LIST):', step_proc)
+            continue
+        for act in step_proc.get('acts', []):
+
+            if 'DEPOT_INITIATIVE' not in act['type'] \
+                and 'TEXTE' not in act['type'] \
+                and 'DECISION' not in act['type']:
+                continue
+
             myprint(' - step', i + 1)
 
             step_me = {}
@@ -56,35 +104,18 @@ def compare(proc, me, verbose=True):
             test('date', 'date', lambda date: date.split('T')[0] if date else None)
             test('url', 'source_url')
 
-            def type_to_step(type):
-                if 'DEPOT' in type:
-                    return 'depot'
-                if 'DISCUSSION' in type:
-                    return 'commission'
-                if 'DECISION' in type:
-                    return 'hemicycle'
             test('type', 'step', type_to_step)
-
-            def type_to_stage(type):
-                if 'PREMIERE_LECTURE' in type:
-                    return '1ère lecture'
-                if 'DEUXIEME_LECTURE' in type:
-                    return '2ème lecture'
-                # TODO
             test_step('type', 'stage', type_to_stage)
-
-            def type_to_instit(type):
-                if 'AN_' in type:
-                    return 'assemblee'
-                if 'SENAT_' in type:
-                    return 'senat'
             test_step('type', 'institution', type_to_instit)
             myprint()
             i += 1
 
     myprint('NOK:', score_nok)
     myprint('OK:', score_ok)
-    return score_nok, score_ok
+
+    if verbose:
+        print(log)
+    return log
 
 if __name__ == '__main__':
     proc = json.load(open(sys.argv[1]))

@@ -46,7 +46,7 @@
       "step": "commission"
     },
     {
-      "date": "2015-06-02",
+      "date": "2015-06-10",
       "institution": "senat",
       "source_url": "http://www.senat.fr/leg/tas14-111.html",
       "stage": "1ère lecture",
@@ -67,7 +67,7 @@
       "step": "hemicycle"
     },
     {
-      "date": "2015-06-23",
+      "date": "2015-06-24",
       "institution": "assemblee",
       "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0542.asp",
       "stage": "CMP",

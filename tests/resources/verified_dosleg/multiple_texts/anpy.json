@@ -19,6 +19,16 @@
                     "type": "PROCEDURE_ACCELEREE"
                 },
                 {
+                    "date": "2015-04-02T00:00:00",
+                    "type": "DEPOT_RAPPORT",
+                    "url": "http://www.assemblee-nationale.fr/14/rapports/r2697.asp"
+                },
+                {
+                    "date": "2015-04-03T00:00:00",
+                    "type": "TEXTE_COMMISSION",
+                    "url": "http://www.assemblee-nationale.fr/14/ta-commission/r2697-a0.asp"
+                },
+                {
                     "date": "2015-04-13T00:00:00",
                     "type": "DISCUSSION_SEANCE_PUBLIQUE",
                     "url": "http://www.assemblee-nationale.fr/14/cri/2014-2015/20150212.asp"
@@ -73,6 +83,16 @@
                     "date": "2015-05-05T00:00:00",
                     "type": "DEPOT_INITIATIVE",
                     "url": "http://www.senat.fr/leg/pjl14-424.html"
+                },
+                {
+                    "date": "2015-05-20T00:00:00",
+                    "type": "DEPOT_RAPPORT",
+                    "url": "http://www.senat.fr/rap/l14-460/l14-460.html"
+                },
+                {
+                    "date": "2015-05-20T00:00:00",
+                    "type": "TEXTE_COMMISSION",
+                    "url": "http://www.senat.fr/leg/pjl14-461.html"
                 },
                 {
                     "type": "DISCUSSION_SEANCE_PUBLIQUE",

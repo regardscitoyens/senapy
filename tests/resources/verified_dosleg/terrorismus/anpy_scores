@@ -1,0 +1,51 @@
+OK url ( http://www.assemblee-nationale.fr/15/dossiers/securite_interieure_lutte_terrorisme.asp )
+OK senat_url ( http://www.senat.fr/dossier-legislatif/pjl16-587.html )
+OK legislature ( 15 )
+
+STEPS:
+
+ - step 1
+OK date ( 2017-06-22 )
+OK url ( http://www.senat.fr/leg/pjl16-587.html )
+OK type ( depot )
+OK type ( 1ère lecture )
+OK type ( senat )
+
+ - step 2
+OK date ( 2017-07-12 )
+OK url ( http://www.senat.fr/leg/pjl16-630.html )
+OK type ( commission )
+OK type ( 1ère lecture )
+OK type ( senat )
+
+ - step 3
+OK date ( 2017-07-18 )
+OK url ( http://www.senat.fr/leg/tas16-115.html )
+OK type ( hemicycle )
+OK type ( 1ère lecture )
+OK type ( senat )
+
+ - step 4
+OK date ( 2017-07-19 )
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/15/projets/pl0104.asp VS None
+OK type ( depot )
+OK type ( 1ère lecture )
+OK type ( assemblee )
+
+ - step 5
+OK date ( 2017-09-14 )
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/15/ta-commission/r0164-a0.asp VS None
+OK type ( commission )
+OK type ( 1ère lecture )
+OK type ( assemblee )
+
+ - step 6
+  - step not in mine
+!! NOK !! date  diff: 2017-10-03 VS None
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/15/ta/ta0019.asp VS None
+!! NOK !! type  diff: hemicycle VS None
+!! NOK !! type  diff: 1ère lecture VS None
+!! NOK !! type  diff: assemblee VS None
+
+NOK: 7
+OK: 26

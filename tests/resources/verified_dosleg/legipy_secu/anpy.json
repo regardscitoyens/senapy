@@ -1,7 +1,7 @@
 {
     "legislature": "13",
     "procedure": "PJL",
-    "senat_url": null,
+    "senat_url": "http://www.senat.fr/dossierleg/plfss2008.html",
     "steps": [
         {
             "acts": [
@@ -9,6 +9,11 @@
                     "date": "2007-10-11T00:00:00",
                     "type": "DEPOT_INITIATIVE",
                     "url": "http://www.assemblee-nationale.fr/13/projets/pl0284.asp"
+                },
+                {
+                    "date": "2007-10-17T00:00:00",
+                    "type": "DEPOT_RAPPORT",
+                    "url": "http://www.assemblee-nationale.fr/13/rapports/r0295.asp"
                 },
                 {
                     "date": null,
@@ -128,6 +133,11 @@
                     "url": "http://www.assemblee-nationale.fr/13/projets/pl0415.asp"
                 },
                 {
+                    "date": "2007-11-20T00:00:00",
+                    "type": "DEPOT_RAPPORT",
+                    "url": "http://www.assemblee-nationale.fr/13/tribun/fiches_id/691.asp"
+                },
+                {
                     "date": null,
                     "type": "DISCUSSION_SEANCE_PUBLIQUE",
                     "url": "http://www.assemblee-nationale.fr/13/cra/2007-2008/061.asp"
@@ -154,7 +164,13 @@
             "type": "CMP"
         },
         {
-            "acts": [],
+            "acts": [
+                {
+                    "date": "2008-06-17T00:00:00",
+                    "type": "DEPOT_RAPPORT",
+                    "url": "http://www.assemblee-nationale.fr/13/rap-info/i0965.asp"
+                }
+            ],
             "type": "CONSEIL_CONSTITUT"
         }
     ],

@@ -1,7 +1,7 @@
 {
     "legislature": "13",
     "procedure": "PJL",
-    "senat_url": null,
+    "senat_url": "http://www.senat.fr/dossierleg/pjl07-488.html",
     "steps": [
         {
             "acts": [
@@ -9,6 +9,16 @@
                     "date": "2008-07-23T00:00:00",
                     "type": "DEPOT_INITIATIVE",
                     "url": "http://www.senat.fr/leg/pjl07-488.html"
+                },
+                {
+                    "date": "2010-07-07T00:00:00",
+                    "type": "DEPOT_RAPPORT",
+                    "url": "http://www.senat.fr/rap/l09-637/l09-637.html"
+                },
+                {
+                    "date": "2010-07-07T00:00:00",
+                    "type": "TEXTE_COMMISSION",
+                    "url": "http://www.senat.fr/leg/pjl09-638.html"
                 },
                 {
                     "date": "2010-07-12T00:00:00",
@@ -30,6 +40,11 @@
                     "date": "2010-07-12T00:00:00",
                     "type": "DEPOT_INITIATIVE",
                     "url": "http://www.assemblee-nationale.fr/13/projets/pl2726.asp"
+                },
+                {
+                    "date": "2010-12-08T00:00:00",
+                    "type": "DEPOT_RAPPORT",
+                    "url": "http://www.assemblee-nationale.fr/13/rapports/r3023.asp"
                 },
                 {
                     "date": "2010-12-21T00:00:00",

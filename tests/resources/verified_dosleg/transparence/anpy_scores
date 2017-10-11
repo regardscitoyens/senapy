@@ -1,0 +1,204 @@
+OK url ( http://www.assemblee-nationale.fr/14/dossiers/transparence_vie_publique_pjl.asp )
+OK senat_url ( http://www.senat.fr/dossier-legislatif/pjl12-688.html )
+OK legislature ( 14 )
+
+STEPS:
+
+ - step 1
+OK date ( 2013-04-24 )
+OK url ( http://www.assemblee-nationale.fr/14/projets/pl1004.asp )
+OK type ( depot )
+OK type ( 1ère lecture )
+OK type ( assemblee )
+
+ - step 2
+!! NOK !! date  diff: 2013-06-06 VS 2013-06-05
+OK url ( http://www.assemblee-nationale.fr/14/ta-commission/r1108-a0.asp )
+OK type ( commission )
+OK type ( 1ère lecture )
+OK type ( assemblee )
+
+ - step 3
+OK date ( 2013-06-25 )
+OK url ( http://www.assemblee-nationale.fr/14/ta/ta0161.asp )
+OK type ( hemicycle )
+OK type ( 1ère lecture )
+OK type ( assemblee )
+
+ - step 4
+OK date ( 2013-06-26 )
+OK url ( http://www.senat.fr/leg/pjl12-688.html )
+OK type ( depot )
+OK type ( 1ère lecture )
+OK type ( senat )
+
+ - step 5
+OK date ( 2013-07-03 )
+OK url ( http://www.senat.fr/leg/pjl12-723.html )
+OK type ( commission )
+OK type ( 1ère lecture )
+OK type ( senat )
+
+ - step 6
+OK date ( 2013-07-09 )
+!! NOK !! url  diff: http://www.senat.fr/leg/pjl12-732.html VS None
+!! NOK !! type  diff: commission VS hemicycle
+OK type ( 1ère lecture )
+OK type ( senat )
+
+ - step 7
+!! NOK !! date  diff: 2013-07-15 VS 2013-07-09
+!! NOK !! url  diff: http://www.senat.fr/leg/tas12-192.html VS http://www.senat.fr/leg/pjl12-732.html
+!! NOK !! type  diff: hemicycle VS commission
+OK type ( 1ère lecture )
+OK type ( senat )
+
+ - step 8
+!! NOK !! date  diff: 2013-07-16 VS 2013-07-15
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/14/projets/pl1249.asp VS http://www.senat.fr/leg/tas12-192.html
+!! NOK !! type  diff: depot VS hemicycle
+!! NOK !! type  diff: nouv. lect. VS 1ère lecture
+!! NOK !! type  diff: assemblee VS senat
+
+ - step 9
+!! NOK !! date  diff: 2013-07-17 VS 2013-07-16
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/14/ta-commission/r1279-a0.asp VS http://www.senat.fr/leg/pjl12-771.html
+OK type ( commission )
+!! NOK !! type  diff: nouv. lect. VS CMP
+!! NOK !! type  diff: assemblee VS CMP
+
+ - step 10
+!! NOK !! date  diff: 2013-07-23 VS 2013-07-17
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/14/ta/ta0191.asp VS http://www.assemblee-nationale.fr/14/projets/pl1249.asp
+!! NOK !! type  diff: hemicycle VS depot
+OK type ( nouv. lect. )
+OK type ( assemblee )
+
+ - step 11
+!! NOK !! date  diff: 2013-07-23 VS 2013-07-17
+!! NOK !! url  diff: http://www.senat.fr/leg/pjl12-797.html VS http://www.assemblee-nationale.fr/14/ta-commission/r1279-a0.asp
+!! NOK !! type  diff: depot VS commission
+OK type ( nouv. lect. )
+!! NOK !! type  diff: senat VS assemblee
+
+ - step 12
+!! NOK !! date  diff: 2013-07-24 VS 2013-07-23
+!! NOK !! url  diff: http://www.senat.fr/leg/pjl12-802.html VS http://www.assemblee-nationale.fr/14/ta/ta0191.asp
+!! NOK !! type  diff: commission VS hemicycle
+OK type ( nouv. lect. )
+!! NOK !! type  diff: senat VS assemblee
+
+ - step 13
+!! NOK !! date  diff: 2013-07-25 VS 2013-07-23
+!! NOK !! url  diff: http://www.senat.fr/leg/tas12-210.html VS http://www.senat.fr/leg/pjl12-797.html
+!! NOK !! type  diff: hemicycle VS depot
+OK type ( nouv. lect. )
+OK type ( senat )
+
+ - step 14
+!! NOK !! date  diff: 2013-09-17 VS 2013-07-24
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/14/ta/ta0209.asp VS http://www.senat.fr/leg/pjl12-802.html
+!! NOK !! type  diff: hemicycle VS commission
+!! NOK !! type  diff: l. definitive VS nouv. lect.
+!! NOK !! type  diff: assemblee VS senat
+
+ - step 15
+!! NOK !! date  diff: 2013-04-24 VS 2013-07-25
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/14/projets/pl1005.asp VS http://www.senat.fr/leg/tas12-210.html
+!! NOK !! type  diff: depot VS hemicycle
+!! NOK !! type  diff: 1ère lecture VS nouv. lect.
+!! NOK !! type  diff: assemblee VS senat
+
+ - step 16
+!! NOK !! date  diff: 2013-06-07 VS 2013-07-26
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/14/ta-commission/r1109-a0.asp VS http://www.assemblee-nationale.fr/14/ta/ta0191.asp
+!! NOK !! type  diff: commission VS depot
+!! NOK !! type  diff: 1ère lecture VS l. définitive
+OK type ( assemblee )
+
+ - step 17
+!! NOK !! date  diff: 2013-06-25 VS 2013-09-10
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/14/ta/ta0162.asp VS http://www.assemblee-nationale.fr/14/rapports/r1346.asp
+!! NOK !! type  diff: hemicycle VS commission
+!! NOK !! type  diff: 1ère lecture VS l. définitive
+OK type ( assemblee )
+
+ - step 18
+!! NOK !! date  diff: 2013-06-26 VS 2013-09-17
+!! NOK !! url  diff: http://www.senat.fr/leg/pjl12-689.html VS http://www.assemblee-nationale.fr/14/ta/ta0209.asp
+!! NOK !! type  diff: depot VS hemicycle
+!! NOK !! type  diff: 1ère lecture VS l. définitive
+!! NOK !! type  diff: senat VS assemblee
+
+ - step 19
+!! NOK !! date  diff: 2013-07-03 VS 2013-10-09
+!! NOK !! url  diff: http://www.senat.fr/leg/pjl12-724.html VS http://www.conseil-constitutionnel.fr/conseil-constitutionnel/francais/les-decisions/acces-par-date/decisions-depuis-1959/2013/2013-675-dc/decision-n-2013-675-dc-du-09-octobre-2013.138242.html
+!! NOK !! type  diff: commission VS None
+!! NOK !! type  diff: 1ère lecture VS constitutionnalité
+!! NOK !! type  diff: senat VS conseil constitutionnel
+
+ - step 20
+!! NOK !! date  diff: 2013-07-15 VS 2013-10-11
+!! NOK !! url  diff: http://www.senat.fr/leg/tas12-193.html VS http://legifrance.gouv.fr/affichTexte.doAD043F23DFA1BEB18F8DD1768537D04B.tpdjo09v_1?cidTexte=JORFTEXT000028056223&dateTexte=&oldAction=rechJO&categorieLien=id&idJO=JORFCONT000028056220
+!! NOK !! type  diff: hemicycle VS None
+!! NOK !! type  diff: 1ère lecture VS promulgation
+!! NOK !! type  diff: senat VS gouvernement
+
+ - step 21
+  - step not in mine
+!! NOK !! date  diff: 2013-07-16 VS None
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/14/projets/pl1250.asp VS None
+!! NOK !! type  diff: depot VS None
+!! NOK !! type  diff: nouv. lect. VS None
+!! NOK !! type  diff: assemblee VS None
+
+ - step 22
+  - step not in mine
+!! NOK !! date  diff: 2013-07-17 VS None
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/14/ta-commission/r1280-a0.asp VS None
+!! NOK !! type  diff: commission VS None
+!! NOK !! type  diff: nouv. lect. VS None
+!! NOK !! type  diff: assemblee VS None
+
+ - step 23
+  - step not in mine
+!! NOK !! date  diff: 2013-07-23 VS None
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/14/ta/ta0192.asp VS None
+!! NOK !! type  diff: hemicycle VS None
+!! NOK !! type  diff: nouv. lect. VS None
+!! NOK !! type  diff: assemblee VS None
+
+ - step 24
+  - step not in mine
+!! NOK !! date  diff: 2013-07-23 VS None
+!! NOK !! url  diff: http://www.senat.fr/leg/pjl12-798.html VS None
+!! NOK !! type  diff: depot VS None
+!! NOK !! type  diff: nouv. lect. VS None
+!! NOK !! type  diff: senat VS None
+
+ - step 25
+  - step not in mine
+!! NOK !! date  diff: 2013-07-24 VS None
+!! NOK !! url  diff: http://www.senat.fr/leg/pjl12-803.html VS None
+!! NOK !! type  diff: commission VS None
+!! NOK !! type  diff: nouv. lect. VS None
+!! NOK !! type  diff: senat VS None
+
+ - step 26
+  - step not in mine
+!! NOK !! date  diff: 2013-07-25 VS None
+!! NOK !! url  diff: http://www.senat.fr/leg/tas12-211.html VS None
+!! NOK !! type  diff: hemicycle VS None
+!! NOK !! type  diff: nouv. lect. VS None
+!! NOK !! type  diff: senat VS None
+
+ - step 27
+  - step not in mine
+!! NOK !! date  diff: 2013-09-17 VS None
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/14/ta/ta0208.asp VS None
+!! NOK !! type  diff: hemicycle VS None
+!! NOK !! type  diff: l. definitive VS None
+!! NOK !! type  diff: assemblee VS None
+
+NOK: 97
+OK: 41

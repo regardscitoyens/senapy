@@ -1,2 +1,71 @@
-88
-31
+OK url ( http://www.assemblee-nationale.fr/14/dossiers/renseignement.asp )
+OK senat_url ( http://www.senat.fr/dossier-legislatif/pjl14-424.html )
+OK legislature ( 14 )
+
+STEPS:
+
+ - step 1
+OK date ( 2015-03-19 )
+OK url ( http://www.assemblee-nationale.fr/14/projets/pl2669.asp )
+OK type ( depot )
+OK type ( 1ère lecture )
+OK type ( assemblee )
+
+ - step 2
+!! NOK !! date  diff: 2015-04-03 VS 2015-04-02
+OK url ( http://www.assemblee-nationale.fr/14/ta-commission/r2697-a0.asp )
+OK type ( commission )
+OK type ( 1ère lecture )
+OK type ( assemblee )
+
+ - step 3
+OK date ( 2015-05-05 )
+OK url ( http://www.assemblee-nationale.fr/14/ta/ta0511.asp )
+OK type ( hemicycle )
+OK type ( 1ère lecture )
+OK type ( assemblee )
+
+ - step 4
+OK date ( 2015-05-05 )
+OK url ( http://www.senat.fr/leg/pjl14-424.html )
+OK type ( depot )
+OK type ( 1ère lecture )
+OK type ( senat )
+
+ - step 5
+!! NOK !! date  diff: 2015-05-20 VS 2015-05-18
+OK url ( http://www.senat.fr/leg/pjl14-461.html )
+OK type ( commission )
+OK type ( 1ère lecture )
+OK type ( senat )
+
+ - step 6
+!! NOK !! date  diff: 2015-06-09 VS 2015-06-10
+OK url ( http://www.senat.fr/leg/tas14-111.html )
+OK type ( hemicycle )
+OK type ( 1ère lecture )
+OK type ( senat )
+
+ - step 7
+!! NOK !! date  diff: 2015-06-10 VS 2015-06-16
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/14/projets/pl2859.asp VS http://www.senat.fr/leg/pjl14-521.html
+!! NOK !! type  diff: depot VS commission
+OK type ( CMP )
+!! NOK !! type  diff: CMP VS senat
+
+ - step 8
+OK date ( 2015-06-23 )
+OK url ( http://www.senat.fr/leg/tas14-117.html )
+OK type ( hemicycle )
+OK type ( CMP )
+!! NOK !! type  diff: CMP VS senat
+
+ - step 9
+OK date ( 2015-06-24 )
+OK url ( http://www.assemblee-nationale.fr/14/ta/ta0542.asp )
+OK type ( hemicycle )
+OK type ( CMP )
+!! NOK !! type  diff: CMP VS assemblee
+
+NOK: 9
+OK: 39

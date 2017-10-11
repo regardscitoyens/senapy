@@ -267,7 +267,8 @@ def parse(html, url_senat=None):
                     sub_step = {**step} # dubstep
                     sub_step['source_url'] = clean_url
                     sub_step['institution'] = url['institution']
-                    # sub_step['source_date'] = url['date']
+                    if url['date']:
+                        sub_step['date'] = url['date']
                     steps_to_add.append(sub_step)
             else:
                 if 'source_url' in step:

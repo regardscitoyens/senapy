@@ -11,8 +11,7 @@ from .tools.compare_with_legipy import compare as compare_legipy
 
 def test_dosleg_regressions():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    DIR = sys.argv[1] if len(sys.argv) > 1 \
-        else join(BASE_DIR, 'resources/verified_dosleg/')
+    DIR = join(BASE_DIR, 'resources/verified_dosleg/')
 
     for test_dir in os.listdir(DIR):
         path = join(DIR, test_dir)
@@ -39,10 +38,7 @@ def test_dosleg_regressions():
 
         if os.path.exists(join(path, 'anpy.json')):
             anpy = json.load(open(join(path, 'anpy.json')))
-            score_ok, score_nok = compare_anpy(anpy, output)
-            last_score_ok, last_score_nok = [int(x) for x in open(join(path, 'anpy_scores')).read().split('\n') if x]
-            assert score_ok == last_score_ok
-            assert score_nok == last_score_nok
+            assert compare_anpy(anpy, output) == open(join(path, 'anpy_scores')).read()
 
         if os.path.exists(join(path, 'legipy.json')):
             legipy = json.load(open(join(path, 'legipy.json')))

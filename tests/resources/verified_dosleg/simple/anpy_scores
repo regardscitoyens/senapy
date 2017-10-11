@@ -1,2 +1,43 @@
-7
-27
+OK url ( http://www.assemblee-nationale.fr/13/dossiers/allemagne_vehicules.asp )
+!! NOK !! senat_url  diff: http://www.senat.fr/dossierleg/pjl07-488.html VS http://www.senat.fr/dossier-legislatif/pjl07-488.html
+OK legislature ( 13 )
+
+STEPS:
+
+ - step 1
+OK date ( 2008-07-23 )
+OK url ( http://www.senat.fr/leg/pjl07-488.html )
+OK type ( depot )
+OK type ( 1ère lecture )
+OK type ( senat )
+
+ - step 2
+OK date ( 2010-07-07 )
+OK url ( http://www.senat.fr/leg/pjl09-638.html )
+OK type ( commission )
+OK type ( 1ère lecture )
+OK type ( senat )
+
+ - step 3
+OK date ( 2010-07-12 )
+OK url ( http://www.senat.fr/leg/tas09-141.html )
+OK type ( hemicycle )
+OK type ( 1ère lecture )
+OK type ( senat )
+
+ - step 4
+OK date ( 2010-07-12 )
+OK url ( http://www.assemblee-nationale.fr/13/projets/pl2726.asp )
+OK type ( depot )
+OK type ( 1ère lecture )
+OK type ( assemblee )
+
+ - step 5
+!! NOK !! date  diff: 2010-12-21 VS 2010-12-08
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/13/ta/ta0583.asp VS http://www.assemblee-nationale.fr/13/rapports/r3023.asp
+!! NOK !! type  diff: hemicycle VS commission
+OK type ( 1ère lecture )
+OK type ( assemblee )
+
+NOK: 4
+OK: 24

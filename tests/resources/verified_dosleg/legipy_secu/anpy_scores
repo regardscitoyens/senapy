@@ -1,2 +1,57 @@
-103
-36
+OK url ( http://www.assemblee-nationale.fr/13/dossiers/plfss2008.asp )
+OK senat_url ( http://www.senat.fr/dossierleg/plfss2008.html )
+OK legislature ( 13 )
+
+STEPS:
+
+ - step 1
+OK date ( 2007-10-11 )
+OK url ( http://www.assemblee-nationale.fr/13/projets/pl0284.asp )
+OK type ( depot )
+OK type ( 1ère lecture )
+OK type ( assemblee )
+
+ - step 2
+!! NOK !! date  diff: 2007-10-30 VS 2007-10-17
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/13/ta/ta0048.asp VS http://www.assemblee-nationale.fr/13/rapports/r0295-tI.asp
+!! NOK !! type  diff: hemicycle VS commission
+OK type ( 1ère lecture )
+OK type ( assemblee )
+
+ - step 3
+!! NOK !! date  diff: 2007-11-06 VS 2007-10-30
+!! NOK !! url  diff: http://www.senat.fr/leg/pjl07-067.html VS http://www.assemblee-nationale.fr/13/ta/ta0048.asp
+!! NOK !! type  diff: depot VS hemicycle
+OK type ( 1ère lecture )
+!! NOK !! type  diff: senat VS assemblee
+
+ - step 4
+!! NOK !! date  diff: 2007-11-16 VS 2007-11-06
+!! NOK !! url  diff: http://www.senat.fr/leg/tas07-023.html VS http://www.senat.fr/leg/pjl07-067.html
+!! NOK !! type  diff: hemicycle VS depot
+OK type ( 1ère lecture )
+OK type ( senat )
+
+ - step 5
+!! NOK !! date  diff: 2007-11-19 VS 2007-11-07
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/13/projets/pl0415.asp VS http://www.senat.fr/rap/l07-072-1/l07-072-1.html
+!! NOK !! type  diff: depot VS commission
+!! NOK !! type  diff: CMP VS 1ère lecture
+!! NOK !! type  diff: CMP VS senat
+
+ - step 6
+!! NOK !! date  diff: 2007-11-22 VS 2007-11-16
+!! NOK !! url  diff: http://www.assemblee-nationale.fr/13/ta/ta0053.asp VS http://www.senat.fr/leg/tas07-023.html
+OK type ( hemicycle )
+!! NOK !! type  diff: CMP VS 1ère lecture
+!! NOK !! type  diff: CMP VS senat
+
+ - step 7
+!! NOK !! date  diff: 2007-11-23 VS 2007-11-20
+!! NOK !! url  diff: http://www.senat.fr/leg/tas07-026.html VS http://www.senat.fr/rap/l07-087/l07-087.html
+!! NOK !! type  diff: hemicycle VS commission
+OK type ( CMP )
+OK type ( CMP )
+
+NOK: 22
+OK: 16

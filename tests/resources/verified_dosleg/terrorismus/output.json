@@ -1,0 +1,48 @@
+{
+  "assemblee_id": "securite_interieure_lutte_terrorisme",
+  "assemblee_legislature": 15,
+  "beginning": "2017-06-22",
+  "long_title": "Projet de loi renforçant la sécurité intérieure et la lutte contre le terrorisme :\nprocédure accélérée engagée par le Gouvernement le 28 juin 20",
+  "long_title_descr": "projet de loi renforçant la sécurité intérieure et la lutte contre le terrorisme",
+  "objet_du_texte": "Depuis le 14 novembre 2015, la France vit sous le régime de l'état d'urgence. Les Gouvernements successifs ayant estimé que la persistance d'un péril imminent nécessitait de demander au Parlement de proroger l'état d'urgence par périodes successives.L'état d'urgence reste toutefois un régime à caractère temporaire justifié par des circonstances exceptionnelles. C'est pourquoi le Gouvernement estime nécessaire face au caractère durable des menaces liées aux nouvelles formes de terrorisme de doter l'État de nouveaux instruments permanents de prévention et de lutte contre le terrorisme, en réservant les outils de l'état d'urgence à une situation exceptionnelle.Le texte déposé au Sénat le 22 juin 2017  par Gérard COLLOMB, ministre d'État, ministre de l'intérieur est divisé en quatre chapitres : - Le chapitre Ier regroupe un ensemble de dispositions renforçant la prévention d'actes de terrorisme en créant dans le droit commun des outils adaptés à la lutte anti-terroriste contemporaine ;- Le chapitre II porte sur les mesures relatives aux techniques de renseignement ;- Le chapitre III comprend les dispositions relatives aux contrôles dans les zones frontalières ;- Le chapitre IV, enfin, contient les dispositions adaptant les mesures de ce projet de loi aux outre-mer.",
+  "senat_id": "pjl16-587",
+  "short_title": "Sécurité intérieure et lutte contre le terrorisme",
+  "steps": [
+    {
+      "date": "2017-06-22",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/pjl16-587.html",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2017-07-12",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/pjl16-630.html",
+      "stage": "1ère lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2017-07-18",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/tas16-115.html",
+      "stage": "1ère lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2017-07-19",
+      "institution": "assemblee",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2017-09-14",
+      "institution": "assemblee",
+      "stage": "1ère lecture",
+      "step": "commission"
+    }
+  ],
+  "urgence": false,
+  "url_dossier_assemblee": "http://www.assemblee-nationale.fr/15/dossiers/securite_interieure_lutte_terrorisme.asp",
+  "url_dossier_senat": "http://www.senat.fr/dossier-legislatif/pjl16-587.html"
+}
