@@ -112,6 +112,7 @@ elif sys.argv[1] == 'download_from_csv':
 
 elif sys.argv[1] == 'parse_directory':
     from senapy.dosleg.parser import parse
+    import tqdm
 
     files = glob.glob(sys.argv[2])
     random.shuffle(files)
@@ -121,7 +122,7 @@ elif sys.argv[1] == 'parse_directory':
         os.makedirs(dest)
 
     print(len(files), 'files to parse')
-    for file in files:
+    for file in tqdm.tqdm(files):
         html = open(file).read()
         filename = file.split('/')[-1]
         filepath = os.path.join(dest, filename)
@@ -129,8 +130,7 @@ elif sys.argv[1] == 'parse_directory':
         if os.path.exists(filepath):
             continue
 
-        print('parsing', file)
-        data = parse(html)
+        data = parse(html, verbose=False)
         json.dump(data, open(filepath, 'w'), ensure_ascii=False, indent=2, sort_keys=True)
 
 else:
