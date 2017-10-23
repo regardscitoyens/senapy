@@ -276,7 +276,7 @@ def parse(html, url_senat=None):
             if good_urls:
                 for url in good_urls:
                     clean_url = url['url']
-                    sub_step = {**step} # dubstep
+                    sub_step = dict(**step) # dubstep
                     sub_step['source_url'] = clean_url
                     sub_step['institution'] = url['institution']
                     if url['date']:
@@ -302,7 +302,7 @@ def parse(html, url_senat=None):
                     # todo: add empty missing step
                     institutions_found = [url['institution'] for url in good_urls]
                     if 'assemblee' not in institutions_found:
-                        sub_step = {**step} # dubstep
+                        sub_step = dict(**step) # dubstep
                         sub_step['source_url'] = None
                         sub_step['institution'] = 'assemblee'
                         steps_to_add.append(sub_step)
