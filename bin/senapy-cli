@@ -109,10 +109,14 @@ elif sys.argv[1] == 'parse_directory':
     files = glob.glob(sys.argv[2])
     random.shuffle(files)
 
+    dest = sys.argv[3]
+    if not os.path.exists(dest):
+        os.makedirs(dest)
+
     print(len(files), 'files to parse')
     for file in files:
         html = open(file).read()
-        filepath = os.path.join(sys.argv[3], file.split('/')[-1])
+        filepath = os.path.join(dest, file.split('/')[-1])
         filepath = filepath.replace('http-www-senat-fr-', '')
 
         if os.path.exists(filepath):
