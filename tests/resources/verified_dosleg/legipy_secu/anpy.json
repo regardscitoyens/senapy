@@ -1,179 +1,72 @@
 {
-    "legislature": "13",
-    "procedure": "PJL",
-    "senat_url": "http://www.senat.fr/dossierleg/plfss2008.html",
+    "long_title": "Sécurité sociale : loi de financement 2008",
     "steps": [
         {
-            "acts": [
-                {
-                    "date": "2007-10-11T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.assemblee-nationale.fr/13/projets/pl0284.asp"
-                },
-                {
-                    "date": "2007-10-17T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.assemblee-nationale.fr/13/rapports/r0295.asp"
-                },
-                {
-                    "date": null,
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/13/cra/2007-2008/019.asp"
-                },
-                {
-                    "date": null,
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/13/cra/2007-2008/020.asp"
-                },
-                {
-                    "date": null,
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/13/cra/2007-2008/022.asp"
-                },
-                {
-                    "date": null,
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/13/cra/2007-2008/023.asp"
-                },
-                {
-                    "date": null,
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/13/cra/2007-2008/024.asp"
-                },
-                {
-                    "date": null,
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/13/cra/2007-2008/025.asp"
-                },
-                {
-                    "date": null,
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/13/cra/2007-2008/026.asp"
-                },
-                {
-                    "date": null,
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/13/cra/2007-2008/027.asp"
-                },
-                {
-                    "date": null,
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/13/cra/2007-2008/028.asp"
-                },
-                {
-                    "date": null,
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/13/cra/2007-2008/029.asp"
-                },
-                {
-                    "date": null,
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/13/cra/2007-2008/030.asp"
-                },
-                {
-                    "date": null,
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/13/cra/2007-2008/031.asp"
-                },
-                {
-                    "date": null,
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/13/cra/2007-2008/033.asp"
-                },
-                {
-                    "date": "2007-10-30T00:00:00",
-                    "status": "ADOPTE",
-                    "type": "DECISION",
-                    "url": "http://www.assemblee-nationale.fr/13/ta/ta0048.asp"
-                }
-            ],
-            "type": "AN_PREMIERE_LECTURE"
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/13/projets/pl0284.asp",
+            "stage": "1ère lecture",
+            "step": "depot"
         },
         {
-            "acts": [
-                {
-                    "date": "2007-11-06T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.senat.fr/leg/pjl07-067.html"
-                },
-                {
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s200711/s20071112/st20071112000.html"
-                },
-                {
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s200711/s20071113/st20071113000.html"
-                },
-                {
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s200711/s20071114/st20071114000.html"
-                },
-                {
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s200711/s20071115/st20071115000.html"
-                },
-                {
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s200711/s20071116/st20071116000.html"
-                },
-                {
-                    "date": "2007-11-16T00:00:00",
-                    "status": "MODIFIE",
-                    "type": "DECISION",
-                    "url": "http://www.senat.fr/leg/tas07-023.html"
-                }
-            ],
-            "type": "SENAT_PREMIERE_LECTURE"
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/13/rapports/r0295.asp",
+            "stage": "1ère lecture",
+            "step": "commission"
         },
         {
-            "acts": [
-                {
-                    "date": "2007-11-19T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.assemblee-nationale.fr/13/projets/pl0415.asp"
-                },
-                {
-                    "date": "2007-11-20T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.assemblee-nationale.fr/13/tribun/fiches_id/691.asp"
-                },
-                {
-                    "date": null,
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/13/cra/2007-2008/061.asp"
-                },
-                {
-                    "date": "2007-11-22T00:00:00",
-                    "status": "ADOPTE",
-                    "type": "DECISION",
-                    "url": "http://www.assemblee-nationale.fr/13/ta/ta0053.asp"
-                },
-                {
-                    "date": "2007-11-23T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s200711/s20071123/st20071123000.html"
-                },
-                {
-                    "date": "2007-11-23T00:00:00",
-                    "status": "ADOPTE",
-                    "type": "DECISION",
-                    "url": "http://www.senat.fr/leg/tas07-026.html"
-                }
-            ],
-            "status": "ACCORD",
-            "type": "CMP"
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0048.asp",
+            "stage": "1ère lecture",
+            "step": "hemicycle"
         },
         {
-            "acts": [
-                {
-                    "date": "2008-06-17T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.assemblee-nationale.fr/13/rap-info/i0965.asp"
-                }
-            ],
-            "type": "CONSEIL_CONSTITUT"
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/pjl07-067.html",
+            "stage": "1ère lecture",
+            "step": "depot"
+        },
+        {
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/rap/l07-072-1/l07-072-1.html",
+            "stage": "1ère lecture",
+            "step": "commission"
+        },
+        {
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/tas07-023.html",
+            "stage": "1ère lecture",
+            "step": "hemicycle"
+        },
+        {
+            "institution": "CMP",
+            "source_url": "http://www.assemblee-nationale.fr/13/rapports/r0416.asp",
+            "stage": "CMP",
+            "step": "commission"
+        },
+        {
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0053.asp",
+            "stage": "CMP",
+            "step": "hemicycle"
+        },
+        {
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/tas07-026.html",
+            "stage": "CMP",
+            "step": "hemicycle"
+        },
+        {
+            "institution": "conseil constitutionnel",
+            "source_url": "http://www.conseil-constitutionnel.fr/decision/2007/2007558dc.htm",
+            "stage": "constitutionnalité",
+            "step": null
+        },
+        {
+            "institution": "gouvernement",
+            "source_url": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=BCFX0766311L",
+            "stage": "promulgation"
         }
     ],
-    "title": "Sécurité sociale : loi de financement 2008",
-    "url": "http://www.assemblee-nationale.fr/13/dossiers/plfss2008.asp"
+    "url_dossier_assemblee": "http://www.assemblee-nationale.fr/13/dossiers/plfss2008.asp",
+    "url_dossier_senat": "http://www.senat.fr/dossierleg/plfss2008.html"
 }

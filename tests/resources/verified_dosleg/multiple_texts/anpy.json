@@ -1,162 +1,74 @@
 {
-    "legislature": "14",
-    "procedure": "PJL",
-    "senat_url": "http://www.senat.fr/dossier-legislatif/pjl14-424.html",
+    "long_title": "Police et sécurité : renseignement",
     "steps": [
         {
-            "acts": [
-                {
-                    "date": "2015-03-19T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.assemblee-nationale.fr/14/projets/pl2669.asp"
-                },
-                {
-                    "type": "ETUDE_IMPACT",
-                    "url": "http://www.assemblee-nationale.fr/14/projets/pl2669-ei.asp"
-                },
-                {
-                    "date": "2015-03-19T00:00:00",
-                    "type": "PROCEDURE_ACCELEREE"
-                },
-                {
-                    "date": "2015-04-02T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.assemblee-nationale.fr/14/rapports/r2697.asp"
-                },
-                {
-                    "date": "2015-04-03T00:00:00",
-                    "type": "TEXTE_COMMISSION",
-                    "url": "http://www.assemblee-nationale.fr/14/ta-commission/r2697-a0.asp"
-                },
-                {
-                    "date": "2015-04-13T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2014-2015/20150212.asp"
-                },
-                {
-                    "date": "2015-04-13T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2014-2015/20150213.asp"
-                },
-                {
-                    "date": "2015-04-14T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2014-2015/20150214.asp"
-                },
-                {
-                    "date": "2015-04-14T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2014-2015/20150215.asp"
-                },
-                {
-                    "date": "2015-04-15T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2014-2015/20150216.asp"
-                },
-                {
-                    "date": "2015-04-15T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2014-2015/20150217.asp"
-                },
-                {
-                    "date": "2015-04-16T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2014-2015/20150218.asp"
-                },
-                {
-                    "date": "2015-05-05T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2014-2015/20150221.asp"
-                },
-                {
-                    "date": "2015-05-05T00:00:00",
-                    "status": "ADOPTE",
-                    "type": "DECISION",
-                    "url": "http://www.assemblee-nationale.fr/14/ta/ta0511.asp"
-                }
-            ],
-            "type": "AN_PREMIERE_LECTURE"
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/14/projets/pl2669.asp",
+            "stage": "1ère lecture",
+            "step": "depot"
         },
         {
-            "acts": [
-                {
-                    "date": "2015-05-05T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.senat.fr/leg/pjl14-424.html"
-                },
-                {
-                    "date": "2015-05-20T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.senat.fr/rap/l14-460/l14-460.html"
-                },
-                {
-                    "date": "2015-05-20T00:00:00",
-                    "type": "TEXTE_COMMISSION",
-                    "url": "http://www.senat.fr/leg/pjl14-461.html"
-                },
-                {
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s201506/s20150602/st20150602000.html"
-                },
-                {
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s201506/s20150603/st20150603000.html"
-                },
-                {
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s201506/s20150604/st20150604000.html"
-                },
-                {
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s201506/s20150609/st20150609000.html"
-                },
-                {
-                    "date": "2015-06-09T00:00:00",
-                    "status": "MODIFIE",
-                    "type": "DECISION",
-                    "url": "http://www.senat.fr/leg/tas14-111.html"
-                }
-            ],
-            "type": "SENAT_PREMIERE_LECTURE"
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/14/ta-commission/r2697-a0.asp",
+            "stage": "1ère lecture",
+            "step": "commission"
         },
         {
-            "acts": [
-                {
-                    "date": "2015-06-10T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.assemblee-nationale.fr/14/projets/pl2859.asp"
-                },
-                {
-                    "date": "2015-06-23T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s201506/s20150623/st20150623000.html"
-                },
-                {
-                    "date": "2015-06-23T00:00:00",
-                    "status": "ADOPTE",
-                    "type": "DECISION",
-                    "url": "http://www.senat.fr/leg/tas14-117.html"
-                },
-                {
-                    "date": "2015-06-24T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2014-2015/20150267.asp"
-                },
-                {
-                    "date": "2015-06-24T00:00:00",
-                    "status": "ADOPTE",
-                    "type": "DECISION",
-                    "url": "http://www.assemblee-nationale.fr/14/ta/ta0542.asp"
-                }
-            ],
-            "status": "ACCORD",
-            "type": "CMP"
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0511.asp",
+            "stage": "1ère lecture",
+            "step": "hemicycle"
         },
         {
-            "acts": [],
-            "type": "CONSEIL_CONSTITUT"
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/pjl14-424.html",
+            "stage": "1ère lecture",
+            "step": "depot"
+        },
+        {
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/pjl14-461.html",
+            "stage": "1ère lecture",
+            "step": "commission"
+        },
+        {
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/tas14-111.html",
+            "stage": "1ère lecture",
+            "step": "hemicycle"
+        },
+        {
+            "institution": "CMP",
+            "source_url": "http://www.assemblee-nationale.fr/14/ta-commission/r2868-a0.asp",
+            "stage": "CMP",
+            "step": "commission"
+        },
+        {
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/tas14-117.html",
+            "stage": "CMP",
+            "step": "hemicycle"
+        },
+        {
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0542.asp",
+            "stage": "CMP",
+            "step": "hemicycle"
+        },
+        {
+            "institution": "conseil constitutionnel",
+            "source_url": "http://www.conseil-constitutionnel.fr/decision/2015/2015713dc.htm",
+            "stage": "constitutionnalité",
+            "step": null
+        },
+        {
+            "institution": "gouvernement",
+            "source_url": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=PRMX1504410L",
+            "stage": "promulgation"
         }
     ],
-    "title": "Police et sécurité : renseignement",
-    "url": "http://www.assemblee-nationale.fr/14/dossiers/renseignement.asp"
+    "urgence": true,
+    "url_dossier_assemblee": "http://www.assemblee-nationale.fr/14/dossiers/renseignement.asp",
+    "url_dossier_senat": "http://www.senat.fr/dossier-legislatif/pjl14-424.html",
+    "url_jo": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=PRMX1504410L"
 }

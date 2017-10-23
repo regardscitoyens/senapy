@@ -7,7 +7,7 @@ import dateparser
 from bs4 import BeautifulSoup, Comment
 
 
-def log_error(error):
+def _log_error(error):
     print('## ERROR ###', error, file=sys.stderr)
 
 
@@ -16,16 +16,27 @@ def format_date(date):
     return parsed.strftime("%Y-%m-%d")
 
 
-def clean_legifrance_url(url):
-    scheme, netloc, path, params, query, fragment = urlparse(url)
-    url_jo_params = parse_qs(query)
-    if 'cidTexte' in url_jo_params:
-        query = 'cidTexte=' + url_jo_params['cidTexte'][0]
-    return urlunparse((scheme, netloc, path, '', query, fragment))
+def clean_url(url):
+    if 'legifrance.gouv.fr' in url:
+        scheme, netloc, path, params, query, fragment = urlparse(url)
+        url_jo_params = parse_qs(query)
+        if 'cidTexte' in url_jo_params:
+            query = 'cidTexte=' + url_jo_params['cidTexte'][0]
+        return urlunparse((scheme, netloc, path, '', query, fragment))
+    # url like 'pjl09-518.htmlhttp://www.assemblee-nationale.fr/13/ta/ta0518.asp'
+    if url.find('http://') > 0:
+        url = 'http://' + url.split('http://')[1]
+    # url like http://www.senat.fr/dossier-legislatif/www.conseil-constitutionnel.fr/decision/2012/2012646dc.htm
+    if 'www.conseil-'in url:
+        url = 'http://www.conseil-' + url.split('www.conseil-')[1]
+    return url
 
-
-def parse(html, url_senat=None):
+def parse(html, url_senat=None, verbose=True):
     data = {}
+
+    log_error = _log_error
+    if not verbose:
+        log_error = lambda x: None
 
     # base_data = json.load(open(filename))
     soup = BeautifulSoup(html, 'lxml')
@@ -59,7 +70,7 @@ def parse(html, url_senat=None):
         data['end'] = format_date(promulgee_line.find('strong').text.split(' du ')[1].strip()) # promulgation
         data['end_jo'] = format_date(promulgee_line.text.split('JO ')[-1].split('du ')[-1].split('(')[0].strip()) # inscription aux JO
         if promulgee_line.find('a'):
-            data['url_jo'] = clean_legifrance_url(promulgee_line.find('a').attrs['href'])
+            data['url_jo'] = clean_url(promulgee_line.find('a').attrs['href'])
             url_jo_params = parse_qs(urlparse(data['url_jo']).query)
             if 'cidTexte' in url_jo_params:
                 data['legifrance_cidTexte'] = url_jo_params['cidTexte'][0]
@@ -138,7 +149,7 @@ def parse(html, url_senat=None):
                 step_step = 'hemicycle'
 
             # TODO: ca me parait bizarre cette histoire
-            # stage = 1ere lecture|2nd lecture|CMP
+            # stage = 1ere lecture|2eme lecture|CMP
             # institution = assemblee|senat|CMP|gouvernement
             # step = depot|commission|hemicycle
             if step_shortcut.select_one('em'):
@@ -190,7 +201,14 @@ def parse(html, url_senat=None):
                 log_error('DEPOT STEP FOR A CMP')
                 continue
 
+            # no commissions for l. définitive
+            if curr_stage == 'l. définitive' and step_step == 'commission':
+                continue
+
             step['institution'] = curr_institution
+
+            # standardize on 1ère lecture / 2ème lecture
+            curr_stage = curr_stage.replace('eme', 'ème')
 
             if curr_institution != 'nouv. délib.':
                 step['stage'] = curr_stage
@@ -202,7 +220,6 @@ def parse(html, url_senat=None):
                 step['stage'] = 'congrès'
             if curr_institution == 'congrès' and not step_step:
                 step['step'] = 'congrès'
-
 
             good_urls = []
 
@@ -230,6 +247,11 @@ def parse(html, url_senat=None):
                             or 'conseil-constitutionnel.fr/decision.' in href
                             ):
 
+                            # motion for a referendum for example
+                            # ex: http://www.senat.fr/dossier-legislatif/pjl12-349.html
+                            if '/leg/motion' in href:
+                                continue
+
                             url = urljoin(url_senat, href)
                             line_text = line.text.lower()
                             institution = curr_institution
@@ -239,7 +261,8 @@ def parse(html, url_senat=None):
                                 elif 'par le sénat' in line_text:
                                     institution = 'senat'
                                 else:
-                                    if curr_stage == 'CMP' and 'texte' in nice_text and not step.get('echec'):
+                                    if curr_stage == 'CMP' and step_step == 'hemicycle' \
+                                        and 'texte' in nice_text and not step.get('echec'):
                                         if 'assemblee-nationale.fr' in href:
                                             institution = 'assemblee'
                                         else:
@@ -275,9 +298,8 @@ def parse(html, url_senat=None):
             steps_to_add = []
             if good_urls:
                 for url in good_urls:
-                    clean_url = url['url']
                     sub_step = dict(**step) # dubstep
-                    sub_step['source_url'] = clean_url
+                    sub_step['source_url'] = url['url']
                     sub_step['institution'] = url['institution']
                     if url['date']:
                         sub_step['date'] = url['date']
@@ -311,8 +333,7 @@ def parse(html, url_senat=None):
             for step in steps_to_add:
                 url = step.get('source_url')
                 if url:
-                    if 'legifrance.gouv.fr' in url:
-                        step['source_url'] = clean_legifrance_url(url)
+                    step['source_url'] = clean_url(url)
 
             data['steps'] += steps_to_add # TODO: re-order based on "texte définitif"
 

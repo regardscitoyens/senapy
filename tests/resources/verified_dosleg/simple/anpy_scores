@@ -1,43 +1,51 @@
-OK url ( http://www.assemblee-nationale.fr/13/dossiers/allemagne_vehicules.asp )
-!! NOK !! senat_url  diff: http://www.senat.fr/dossierleg/pjl07-488.html VS http://www.senat.fr/dossier-legislatif/pjl07-488.html
-OK legislature ( 13 )
+OK url_dossier_assemblee ( http://www.assemblee-nationale.fr/13/dossiers/allemagne_vehicules.asp )
+!! NOK !! url_dossier_senat  diff: http://www.senat.fr/dossierleg/pjl07-488.html VS http://www.senat.fr/dossier-legislatif/pjl07-488.html
+!! NOK !! url_jo  diff: http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MAEJ0815766L VS http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000023355697
+!! NOK !! urgence  diff: None VS False
 
 STEPS:
 
  - step 1
-OK date ( 2008-07-23 )
-OK url ( http://www.senat.fr/leg/pjl07-488.html )
-OK type ( depot )
-OK type ( 1ère lecture )
-OK type ( senat )
+OK institution ( senat )
+OK stage ( 1ère lecture )
+OK step ( depot )
+OK source_url ( http://www.senat.fr/leg/pjl07-488.html )
 
  - step 2
-OK date ( 2010-07-07 )
-OK url ( http://www.senat.fr/leg/pjl09-638.html )
-OK type ( commission )
-OK type ( 1ère lecture )
-OK type ( senat )
+OK institution ( senat )
+OK stage ( 1ère lecture )
+OK step ( commission )
+OK source_url ( http://www.senat.fr/leg/pjl09-638.html )
 
  - step 3
-OK date ( 2010-07-12 )
-OK url ( http://www.senat.fr/leg/tas09-141.html )
-OK type ( hemicycle )
-OK type ( 1ère lecture )
-OK type ( senat )
+OK institution ( senat )
+OK stage ( 1ère lecture )
+OK step ( hemicycle )
+OK source_url ( http://www.senat.fr/leg/tas09-141.html )
 
  - step 4
-OK date ( 2010-07-12 )
-OK url ( http://www.assemblee-nationale.fr/13/projets/pl2726.asp )
-OK type ( depot )
-OK type ( 1ère lecture )
-OK type ( assemblee )
+OK institution ( assemblee )
+OK stage ( 1ère lecture )
+OK step ( depot )
+OK source_url ( http://www.assemblee-nationale.fr/13/projets/pl2726.asp )
 
  - step 5
-!! NOK !! date  diff: 2010-12-21 VS 2010-12-08
-!! NOK !! url  diff: http://www.assemblee-nationale.fr/13/ta/ta0583.asp VS http://www.assemblee-nationale.fr/13/rapports/r3023.asp
-!! NOK !! type  diff: hemicycle VS commission
-OK type ( 1ère lecture )
-OK type ( assemblee )
+OK institution ( assemblee )
+OK stage ( 1ère lecture )
+OK step ( commission )
+OK source_url ( http://www.assemblee-nationale.fr/13/rapports/r3023.asp )
+
+ - step 6
+OK institution ( assemblee )
+OK stage ( 1ère lecture )
+OK step ( hemicycle )
+OK source_url ( http://www.assemblee-nationale.fr/13/ta/ta0583.asp )
+
+ - step 7
+OK institution ( gouvernement )
+OK stage ( promulgation )
+OK step ( None )
+!! NOK !! source_url  diff: http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MAEJ0815766L VS http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000023355697
 
 NOK: 4
-OK: 24
+OK: 28

@@ -1,119 +1,68 @@
 {
-    "legislature": "13",
-    "procedure": "PJL",
-    "senat_url": "http://www.senat.fr/dossierleg/pjl08-582.html",
+    "long_title": "Affaires étrangères : action extérieure de l'État",
     "steps": [
-        [
-            {
-                "date": "2012-02-15T00:00:00",
-                "type": "DEPOT_RAPPORT",
-                "url": "http://www.assemblee-nationale.fr/13/rap-info/i4356.asp"
-            }
-        ],
         {
-            "acts": [
-                {
-                    "date": "2009-07-22T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.senat.fr/leg/pjl08-582.html"
-                },
-                {
-                    "type": "ETUDE_IMPACT",
-                    "url": "http://www.senat.fr/leg/etudes-impact/pjl08-582-ei/pjl08-582-ei.html"
-                },
-                {
-                    "date": "2009-07-22T00:00:00",
-                    "type": "PROCEDURE_ACCELEREE"
-                },
-                {
-                    "date": "2010-02-03T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.senat.fr/rap/l09-262/l09-262.html"
-                },
-                {
-                    "date": "2010-02-03T00:00:00",
-                    "type": "TEXTE_COMMISSION",
-                    "url": "http://www.senat.fr/leg/pjl09-263.html"
-                },
-                {
-                    "date": "2010-02-22T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s201002/s20100222/st20100222000.html"
-                },
-                {
-                    "date": "2010-02-22T00:00:00",
-                    "status": "ADOPTE",
-                    "type": "DECISION",
-                    "url": "http://www.senat.fr/leg/tas09-073.html"
-                }
-            ],
-            "type": "SENAT_PREMIERE_LECTURE"
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/pjl08-582.html",
+            "stage": "1ère lecture",
+            "step": "depot"
         },
         {
-            "acts": [
-                {
-                    "date": "2010-02-23T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.assemblee-nationale.fr/13/projets/pl2339.asp"
-                },
-                {
-                    "date": "2010-05-12T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.assemblee-nationale.fr/13/rapports/r2513.asp"
-                },
-                {
-                    "date": "2010-07-05T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/13/cri/2009-2010-extra/20101007.asp"
-                },
-                {
-                    "date": "2010-07-05T00:00:00",
-                    "status": "MODIFIE",
-                    "type": "DECISION",
-                    "url": "http://www.assemblee-nationale.fr/13/ta/ta0507.asp"
-                }
-            ],
-            "type": "AN_PREMIERE_LECTURE"
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/pjl09-263.html",
+            "stage": "1ère lecture",
+            "step": "commission"
         },
         {
-            "acts": [
-                {
-                    "date": "2010-07-06T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.senat.fr/leg/pjl09-609.html"
-                },
-                {
-                    "date": "2010-07-08T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.assemblee-nationale.fr/14/tribun/fiches_id/1445.asp"
-                },
-                {
-                    "date": "2010-07-12T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s201007/s20100712/st20100712000.html"
-                },
-                {
-                    "date": "2010-07-12T00:00:00",
-                    "status": "ADOPTE",
-                    "type": "DECISION",
-                    "url": "http://www.senat.fr/leg/tas09-142.html"
-                },
-                {
-                    "date": "2010-07-12T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/13/cri/2009-2010-extra/20101014.asp"
-                },
-                {
-                    "date": "2010-07-12T00:00:00",
-                    "status": "ADOPTE",
-                    "type": "DECISION",
-                    "url": "http://www.assemblee-nationale.fr/13/ta/ta0521.asp"
-                }
-            ],
-            "status": "ACCORD",
-            "type": "CMP"
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/tas09-073.html",
+            "stage": "1ère lecture",
+            "step": "hemicycle"
+        },
+        {
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/13/projets/pl2339.asp",
+            "stage": "1ère lecture",
+            "step": "depot"
+        },
+        {
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/13/ta-commission/r2513-a0.asp",
+            "stage": "1ère lecture",
+            "step": "commission"
+        },
+        {
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0507.asp",
+            "stage": "1ère lecture",
+            "step": "hemicycle"
+        },
+        {
+            "institution": "CMP",
+            "source_url": "http://www.assemblee-nationale.fr/13/rapports/r2722.asp",
+            "stage": "CMP",
+            "step": "commission"
+        },
+        {
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/tas09-142.html",
+            "stage": "CMP",
+            "step": "hemicycle"
+        },
+        {
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0521.asp",
+            "stage": "CMP",
+            "step": "hemicycle"
+        },
+        {
+            "institution": "gouvernement",
+            "source_url": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MAEX0912977L",
+            "stage": "promulgation"
         }
     ],
-    "title": "Affaires étrangères : action extérieure de l'État",
-    "url": "http://www.assemblee-nationale.fr/13/dossiers/action_exterieure.asp"
+    "urgence": true,
+    "url_dossier_assemblee": "http://www.assemblee-nationale.fr/13/dossiers/action_exterieure.asp",
+    "url_dossier_senat": "http://www.senat.fr/dossierleg/pjl08-582.html",
+    "url_jo": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MAEX0912977L"
 }

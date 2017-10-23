@@ -1,444 +1,122 @@
 {
-    "legislature": "14",
-    "procedure": "PJL",
-    "senat_url": "http://www.senat.fr/dossier-legislatif/pjl12-688.html",
+    "long_title": "- projet de loi organique",
     "steps": [
         {
-            "acts": [
-                {
-                    "date": "2013-04-24T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.assemblee-nationale.fr/14/projets/pl1004.asp"
-                },
-                {
-                    "type": "ETUDE_IMPACT",
-                    "url": "http://www.assemblee-nationale.fr/14/projets/pl1004-ei.asp"
-                },
-                {
-                    "date": "2013-04-24T00:00:00",
-                    "type": "PROCEDURE_ACCELEREE"
-                },
-                {
-                    "date": "2013-06-05T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.assemblee-nationale.fr/14/rapports/r1108.asp"
-                },
-                {
-                    "date": "2013-06-06T00:00:00",
-                    "type": "TEXTE_COMMISSION",
-                    "url": "http://www.assemblee-nationale.fr/14/ta-commission/r1108-a0.asp"
-                },
-                {
-                    "date": "2013-06-17T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013/20130271.asp"
-                },
-                {
-                    "date": "2013-06-17T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013/20130272.asp"
-                },
-                {
-                    "date": "2013-06-18T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013/20130273.asp"
-                },
-                {
-                    "date": "2013-06-18T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013/20130274.asp"
-                },
-                {
-                    "date": "2013-06-19T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013/20130275.asp"
-                },
-                {
-                    "date": "2013-06-25T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013/20130284.asp"
-                },
-                {
-                    "date": "2013-06-25T00:00:00",
-                    "status": "ADOPTE",
-                    "type": "DECISION",
-                    "url": "http://www.assemblee-nationale.fr/14/ta/ta0161.asp"
-                }
-            ],
-            "type": "AN_PREMIERE_LECTURE"
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/14/projets/pl1004.asp",
+            "stage": "1ère lecture",
+            "step": "depot"
         },
         {
-            "acts": [
-                {
-                    "date": "2013-06-26T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.senat.fr/leg/pjl12-688.html"
-                },
-                {
-                    "date": "2013-07-03T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.senat.fr/rap/l12-722/l12-722.html"
-                },
-                {
-                    "date": "2013-07-03T00:00:00",
-                    "type": "TEXTE_COMMISSION",
-                    "url": "http://www.senat.fr/leg/pjl12-723.html"
-                },
-                {
-                    "date": "2013-07-09T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.senat.fr/rap/l12-731/l12-731.html"
-                },
-                {
-                    "date": "2013-07-09T00:00:00",
-                    "type": "TEXTE_COMMISSION",
-                    "url": "http://www.senat.fr/leg/pjl12-732.html"
-                },
-                {
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s201307/s20130709/st20130709000.html"
-                },
-                {
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s201307/s20130712/st20130712000.html"
-                },
-                {
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s201307/s20130715/st20130715000.html"
-                },
-                {
-                    "date": "2013-07-15T00:00:00",
-                    "status": "MODIFIE",
-                    "type": "DECISION",
-                    "url": "http://www.senat.fr/leg/tas12-192.html"
-                }
-            ],
-            "type": "SENAT_PREMIERE_LECTURE"
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/14/ta-commission/r1108-a0.asp",
+            "stage": "1ère lecture",
+            "step": "commission"
         },
         {
-            "acts": [
-                {
-                    "date": "2013-07-17T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.assemblee-nationale.fr/14/tribun/fiches_id/331594.asp"
-                }
-            ],
-            "status": "DESACCORD",
-            "type": "CMP"
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0161.asp",
+            "stage": "1ère lecture",
+            "step": "hemicycle"
         },
         {
-            "acts": [
-                {
-                    "date": "2013-07-16T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.assemblee-nationale.fr/14/projets/pl1249.asp"
-                },
-                {
-                    "date": "2013-07-17T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.assemblee-nationale.fr/14/rapports/r1279.asp"
-                },
-                {
-                    "date": "2013-07-17T00:00:00",
-                    "type": "TEXTE_COMMISSION",
-                    "url": "http://www.assemblee-nationale.fr/14/ta-commission/r1279-a0.asp"
-                },
-                {
-                    "date": "2013-07-22T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013-extra/20131024.asp"
-                },
-                {
-                    "date": "2013-07-22T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013-extra/20131025.asp"
-                },
-                {
-                    "date": "2013-07-23T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013-extra/20131026.asp"
-                },
-                {
-                    "date": "2013-07-23T00:00:00",
-                    "status": "ADOPTE",
-                    "type": "DECISION",
-                    "url": "http://www.assemblee-nationale.fr/14/ta/ta0191.asp"
-                }
-            ],
-            "type": "AN_NOUVELLE_LECTURE"
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/pjl12-688.html",
+            "stage": "1ère lecture",
+            "step": "depot"
         },
         {
-            "acts": [
-                {
-                    "date": "2013-07-23T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.senat.fr/leg/pjl12-797.html"
-                },
-                {
-                    "date": "2013-07-24T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.senat.fr/rap/l12-801/l12-801.html"
-                },
-                {
-                    "date": "2013-07-24T00:00:00",
-                    "type": "TEXTE_COMMISSION",
-                    "url": "http://www.senat.fr/leg/pjl12-802.html"
-                },
-                {
-                    "date": "2013-07-25T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s201307/s20130725/st20130725000.html"
-                },
-                {
-                    "date": "2013-07-25T00:00:00",
-                    "status": "MODIFIE",
-                    "type": "DECISION",
-                    "url": "http://www.senat.fr/leg/tas12-210.html"
-                }
-            ],
-            "type": "SENAT_NOUVELLE_LECTURE"
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/pjl12-723.html",
+            "stage": "1ère lecture",
+            "step": "commission"
         },
         {
-            "acts": [
-                {
-                    "date": "2013-09-10T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.assemblee-nationale.fr/14/rapports/r1346.asp"
-                },
-                {
-                    "date": "2013-09-11T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013-extra3/20133003.asp"
-                },
-                {
-                    "date": "2013-09-17T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013-extra3/20133011.asp"
-                },
-                {
-                    "date": "2013-09-17T00:00:00",
-                    "status": "ADOPTE",
-                    "type": "DECISION",
-                    "url": "http://www.assemblee-nationale.fr/14/ta/ta0209.asp"
-                }
-            ],
-            "type": "AN_LECTURE_DEFINITIVE"
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/pjl12-732.html",
+            "stage": "1ère lecture",
+            "step": "commission"
         },
         {
-            "acts": [],
-            "type": "CONSEIL_CONSTITUT"
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/tas12-192.html",
+            "stage": "1ère lecture",
+            "step": "hemicycle"
         },
         {
-            "acts": [
-                {
-                    "date": "2013-04-24T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.assemblee-nationale.fr/14/projets/pl1005.asp"
-                },
-                {
-                    "type": "ETUDE_IMPACT",
-                    "url": "http://www.assemblee-nationale.fr/14/projets/pl1005-ei.asp"
-                },
-                {
-                    "date": "2013-04-24T00:00:00",
-                    "type": "PROCEDURE_ACCELEREE"
-                },
-                {
-                    "date": "2013-06-05T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.assemblee-nationale.fr/14/rapports/r1109.asp"
-                },
-                {
-                    "date": "2013-06-07T00:00:00",
-                    "type": "TEXTE_COMMISSION",
-                    "url": "http://www.assemblee-nationale.fr/14/ta-commission/r1109-a0.asp"
-                },
-                {
-                    "date": "2013-06-17T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013/20130271.asp"
-                },
-                {
-                    "date": "2013-06-17T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013/20130272.asp"
-                },
-                {
-                    "date": "2013-06-19T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013/20130275.asp"
-                },
-                {
-                    "date": "2013-06-19T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013/20130276.asp"
-                },
-                {
-                    "date": "2013-06-25T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013/20130284.asp"
-                },
-                {
-                    "date": "2013-06-25T00:00:00",
-                    "status": "ADOPTE",
-                    "type": "DECISION",
-                    "url": "http://www.assemblee-nationale.fr/14/ta/ta0162.asp"
-                }
-            ],
-            "type": "AN_PREMIERE_LECTURE"
+            "institution": "CMP",
+            "source_url": "http://www.assemblee-nationale.fr/14/rapports/r1271.asp",
+            "stage": "CMP",
+            "step": "commission"
         },
         {
-            "acts": [
-                {
-                    "date": "2013-06-26T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.senat.fr/leg/pjl12-689.html"
-                },
-                {
-                    "date": "2013-07-03T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.senat.fr/rap/l12-722/l12-722.html"
-                },
-                {
-                    "date": "2013-07-03T00:00:00",
-                    "type": "TEXTE_COMMISSION",
-                    "url": "http://www.senat.fr/leg/pjl12-724.html"
-                },
-                {
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s201307/s20130709/st20130709000.html"
-                },
-                {
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s201307/s20130712/st20130712000.html"
-                },
-                {
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s201307/s20130715/st20130715000.html"
-                },
-                {
-                    "date": "2013-07-15T00:00:00",
-                    "status": "MODIFIE",
-                    "type": "DECISION",
-                    "url": "http://www.senat.fr/leg/tas12-193.html"
-                }
-            ],
-            "type": "SENAT_PREMIERE_LECTURE"
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/14/projets/pl1249.asp",
+            "stage": "nouv. lect.",
+            "step": "depot"
         },
         {
-            "acts": [
-                {
-                    "date": "2013-07-17T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.assemblee-nationale.fr/14/tribun/fiches_id/331594.asp"
-                }
-            ],
-            "status": "DESACCORD",
-            "type": "CMP"
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/14/ta-commission/r1279-a0.asp",
+            "stage": "nouv. lect.",
+            "step": "commission"
         },
         {
-            "acts": [
-                {
-                    "date": "2013-07-16T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.assemblee-nationale.fr/14/projets/pl1250.asp"
-                },
-                {
-                    "date": "2013-07-17T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.assemblee-nationale.fr/14/rapports/r1280.asp"
-                },
-                {
-                    "date": "2013-07-17T00:00:00",
-                    "type": "TEXTE_COMMISSION",
-                    "url": "http://www.assemblee-nationale.fr/14/ta-commission/r1280-a0.asp"
-                },
-                {
-                    "date": "2013-07-22T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013-extra/20131024.asp"
-                },
-                {
-                    "date": "2013-07-22T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013-extra/20131025.asp"
-                },
-                {
-                    "date": "2013-07-23T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013-extra/20131026.asp"
-                },
-                {
-                    "date": "2013-07-23T00:00:00",
-                    "status": "ADOPTE",
-                    "type": "DECISION",
-                    "url": "http://www.assemblee-nationale.fr/14/ta/ta0192.asp"
-                }
-            ],
-            "type": "AN_NOUVELLE_LECTURE"
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0191.asp",
+            "stage": "nouv. lect.",
+            "step": "hemicycle"
         },
         {
-            "acts": [
-                {
-                    "date": "2013-07-23T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.senat.fr/leg/pjl12-798.html"
-                },
-                {
-                    "date": "2013-07-24T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.senat.fr/rap/l12-801/l12-801.html"
-                },
-                {
-                    "date": "2013-07-24T00:00:00",
-                    "type": "TEXTE_COMMISSION",
-                    "url": "http://www.senat.fr/leg/pjl12-803.html"
-                },
-                {
-                    "date": "2013-07-25T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s201307/s20130725/st20130725000.html"
-                },
-                {
-                    "date": "2013-07-25T00:00:00",
-                    "status": "MODIFIE",
-                    "type": "DECISION",
-                    "url": "http://www.senat.fr/leg/tas12-211.html"
-                }
-            ],
-            "type": "SENAT_NOUVELLE_LECTURE"
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/pjl12-797.html",
+            "stage": "nouv. lect.",
+            "step": "depot"
         },
         {
-            "acts": [
-                {
-                    "date": "2013-09-10T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.assemblee-nationale.fr/14/rapports/r1345.asp"
-                },
-                {
-                    "date": "2013-09-11T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013-extra3/20133003.asp"
-                },
-                {
-                    "date": "2013-09-17T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/14/cri/2012-2013-extra3/20133011.asp"
-                },
-                {
-                    "date": "2013-09-17T00:00:00",
-                    "status": "ADOPTE",
-                    "type": "DECISION",
-                    "url": "http://www.assemblee-nationale.fr/14/ta/ta0208.asp"
-                }
-            ],
-            "type": "AN_LECTURE_DEFINITIVE"
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/pjl12-802.html",
+            "stage": "nouv. lect.",
+            "step": "commission"
         },
         {
-            "acts": [],
-            "type": "CONSEIL_CONSTITUT"
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/tas12-210.html",
+            "stage": "nouv. lect.",
+            "step": "hemicycle"
+        },
+        {
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0191.asp",
+            "stage": "l. définitive",
+            "step": "depot"
+        },
+        {
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/14/rapports/r1346.asp",
+            "stage": "l. définitive",
+            "step": "commission"
+        },
+        {
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0209.asp",
+            "stage": "l. définitive",
+            "step": "hemicycle"
+        },
+        {
+            "institution": "conseil constitutionnel",
+            "source_url": "http://www.conseil-constitutionnel.fr/decision/2013/2013675dc.htm",
+            "stage": "constitutionnalité",
+            "step": null
+        },
+        {
+            "institution": "gouvernement",
+            "source_url": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=PRMX1309699L",
+            "stage": "promulgation"
         }
     ],
-    "title": "Pouvoirs publics : transparence de la vie publique",
-    "url": "http://www.assemblee-nationale.fr/14/dossiers/transparence_vie_publique_pjl.asp"
+    "urgence": true,
+    "url_dossier_assemblee": "http://www.assemblee-nationale.fr/14/dossiers/transparence_vie_publique_pjl.asp",
+    "url_dossier_senat": "http://www.senat.fr/dossier-legislatif/pjl12-688.html",
+    "url_jo": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=PRMX1309699L"
 }

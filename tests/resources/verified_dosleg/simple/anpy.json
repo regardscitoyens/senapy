@@ -1,66 +1,49 @@
 {
-    "legislature": "13",
-    "procedure": "PJL",
-    "senat_url": "http://www.senat.fr/dossierleg/pjl07-488.html",
+    "long_title": "Allemagne : échange de renseignements sur les titulaires du certificat d'immatriculation de véhicules",
     "steps": [
         {
-            "acts": [
-                {
-                    "date": "2008-07-23T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.senat.fr/leg/pjl07-488.html"
-                },
-                {
-                    "date": "2010-07-07T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.senat.fr/rap/l09-637/l09-637.html"
-                },
-                {
-                    "date": "2010-07-07T00:00:00",
-                    "type": "TEXTE_COMMISSION",
-                    "url": "http://www.senat.fr/leg/pjl09-638.html"
-                },
-                {
-                    "date": "2010-07-12T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.senat.fr/seances/s201007/s20100712/st20100712000.html"
-                },
-                {
-                    "date": "2010-07-12T00:00:00",
-                    "status": "ADOPTE",
-                    "type": "DECISION",
-                    "url": "http://www.senat.fr/leg/tas09-141.html"
-                }
-            ],
-            "type": "SENAT_PREMIERE_LECTURE"
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/pjl07-488.html",
+            "stage": "1ère lecture",
+            "step": "depot"
         },
         {
-            "acts": [
-                {
-                    "date": "2010-07-12T00:00:00",
-                    "type": "DEPOT_INITIATIVE",
-                    "url": "http://www.assemblee-nationale.fr/13/projets/pl2726.asp"
-                },
-                {
-                    "date": "2010-12-08T00:00:00",
-                    "type": "DEPOT_RAPPORT",
-                    "url": "http://www.assemblee-nationale.fr/13/rapports/r3023.asp"
-                },
-                {
-                    "date": "2010-12-21T00:00:00",
-                    "type": "DISCUSSION_SEANCE_PUBLIQUE",
-                    "url": "http://www.assemblee-nationale.fr/13/cri/2010-2011/20110089.asp"
-                },
-                {
-                    "date": "2010-12-21T00:00:00",
-                    "status": "ADOPTE",
-                    "type": "DECISION",
-                    "url": "http://www.assemblee-nationale.fr/13/ta/ta0583.asp"
-                }
-            ],
-            "type": "AN_PREMIERE_LECTURE"
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/pjl09-638.html",
+            "stage": "1ère lecture",
+            "step": "commission"
+        },
+        {
+            "institution": "senat",
+            "source_url": "http://www.senat.fr/leg/tas09-141.html",
+            "stage": "1ère lecture",
+            "step": "hemicycle"
+        },
+        {
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/13/projets/pl2726.asp",
+            "stage": "1ère lecture",
+            "step": "depot"
+        },
+        {
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/13/rapports/r3023.asp",
+            "stage": "1ère lecture",
+            "step": "commission"
+        },
+        {
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0583.asp",
+            "stage": "1ère lecture",
+            "step": "hemicycle"
+        },
+        {
+            "institution": "gouvernement",
+            "source_url": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MAEJ0815766L",
+            "stage": "promulgation"
         }
     ],
-    "title": "Allemagne : échange de renseignements sur les titulaires du certificat d'immatriculation de véhicules",
-    "url": "http://www.assemblee-nationale.fr/13/dossiers/allemagne_vehicules.asp"
+    "url_dossier_assemblee": "http://www.assemblee-nationale.fr/13/dossiers/allemagne_vehicules.asp",
+    "url_dossier_senat": "http://www.senat.fr/dossierleg/pjl07-488.html",
+    "url_jo": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MAEJ0815766L"
 }

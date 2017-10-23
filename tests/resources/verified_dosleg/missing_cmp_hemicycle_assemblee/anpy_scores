@@ -1,65 +1,69 @@
-OK url ( http://www.assemblee-nationale.fr/13/dossiers/action_exterieure.asp )
-!! NOK !! senat_url  diff: http://www.senat.fr/dossierleg/pjl08-582.html VS http://www.senat.fr/dossier-legislatif/pjl08-582.html
-OK legislature ( 13 )
+OK url_dossier_assemblee ( http://www.assemblee-nationale.fr/13/dossiers/action_exterieure.asp )
+!! NOK !! url_dossier_senat  diff: http://www.senat.fr/dossierleg/pjl08-582.html VS http://www.senat.fr/dossier-legislatif/pjl08-582.html
+!! NOK !! url_jo  diff: http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MAEX0912977L VS http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000022521532
+OK urgence ( True )
 
 STEPS:
 
-INVALID STEP DETECTED (LIST)
  - step 1
-OK date ( 2009-07-22 )
-OK url ( http://www.senat.fr/leg/pjl08-582.html )
-OK type ( depot )
-OK type ( 1ère lecture )
-OK type ( senat )
+OK institution ( senat )
+OK stage ( 1ère lecture )
+OK step ( depot )
+OK source_url ( http://www.senat.fr/leg/pjl08-582.html )
 
  - step 2
-OK date ( 2010-02-03 )
-OK url ( http://www.senat.fr/leg/pjl09-263.html )
-OK type ( commission )
-OK type ( 1ère lecture )
-OK type ( senat )
+OK institution ( senat )
+OK stage ( 1ère lecture )
+OK step ( commission )
+OK source_url ( http://www.senat.fr/leg/pjl09-263.html )
 
  - step 3
-OK date ( 2010-02-22 )
-OK url ( http://www.senat.fr/leg/tas09-073.html )
-OK type ( hemicycle )
-OK type ( 1ère lecture )
-OK type ( senat )
+OK institution ( senat )
+OK stage ( 1ère lecture )
+OK step ( hemicycle )
+OK source_url ( http://www.senat.fr/leg/tas09-073.html )
 
  - step 4
-OK date ( 2010-02-23 )
-OK url ( http://www.assemblee-nationale.fr/13/projets/pl2339.asp )
-OK type ( depot )
-OK type ( 1ère lecture )
-OK type ( assemblee )
+OK institution ( assemblee )
+OK stage ( 1ère lecture )
+OK step ( depot )
+OK source_url ( http://www.assemblee-nationale.fr/13/projets/pl2339.asp )
 
  - step 5
-!! NOK !! date  diff: 2010-07-05 VS 2010-05-12
-!! NOK !! url  diff: http://www.assemblee-nationale.fr/13/ta/ta0507.asp VS http://www.assemblee-nationale.fr/13/rapports/r2513.asp
-!! NOK !! type  diff: hemicycle VS commission
-OK type ( 1ère lecture )
-OK type ( assemblee )
+OK institution ( assemblee )
+OK stage ( 1ère lecture )
+OK step ( commission )
+!! NOK !! source_url  diff: http://www.assemblee-nationale.fr/13/ta-commission/r2513-a0.asp VS http://www.assemblee-nationale.fr/13/rapports/r2513.asp
 
  - step 6
-!! NOK !! date  diff: 2010-07-06 VS 2010-07-05
-!! NOK !! url  diff: http://www.senat.fr/leg/pjl09-609.html VS http://www.assemblee-nationale.fr/13/ta/ta0507.asp
-!! NOK !! type  diff: depot VS hemicycle
-!! NOK !! type  diff: CMP VS 1ère lecture
-!! NOK !! type  diff: CMP VS assemblee
+OK institution ( assemblee )
+OK stage ( 1ère lecture )
+OK step ( hemicycle )
+OK source_url ( http://www.assemblee-nationale.fr/13/ta/ta0507.asp )
 
  - step 7
-!! NOK !! date  diff: 2010-07-12 VS 2010-07-08
-!! NOK !! url  diff: http://www.senat.fr/leg/tas09-142.html VS http://www.senat.fr/rap/l09-655/l09-655.html
-!! NOK !! type  diff: hemicycle VS commission
-OK type ( CMP )
-OK type ( CMP )
+OK institution ( CMP )
+OK stage ( CMP )
+OK step ( commission )
+!! NOK !! source_url  diff: http://www.assemblee-nationale.fr/13/rapports/r2722.asp VS http://www.senat.fr/rap/l09-655/l09-655.html
 
  - step 8
-OK date ( 2010-07-12 )
-!! NOK !! url  diff: http://www.assemblee-nationale.fr/13/ta/ta0521.asp VS http://www.senat.fr/leg/tas09-142.html
-OK type ( hemicycle )
-OK type ( CMP )
-!! NOK !! type  diff: CMP VS senat
+OK institution ( senat )
+OK stage ( CMP )
+OK step ( hemicycle )
+OK source_url ( http://www.senat.fr/leg/tas09-142.html )
 
-NOK: 14
-OK: 29
+ - step 9
+OK institution ( assemblee )
+OK stage ( CMP )
+OK step ( hemicycle )
+!! NOK !! source_url  diff: http://www.assemblee-nationale.fr/13/ta/ta0521.asp VS None
+
+ - step 10
+OK institution ( gouvernement )
+OK stage ( promulgation )
+OK step ( None )
+!! NOK !! source_url  diff: http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MAEX0912977L VS http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000022521532
+
+NOK: 6
+OK: 38
