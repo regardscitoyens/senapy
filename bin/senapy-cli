@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import csv, pprint, json, time, sys, os, glob, random
+import csv, json, time, sys, os, glob, random
 from urllib.parse import urljoin
-
-import requests, slugify
 
 import requests
 from bs4 import BeautifulSoup
@@ -12,10 +10,10 @@ from slugify import slugify
 
 if len(sys.argv) < 2:
     print("""USAGE:
-    - senapy-cli parse <URL|HTML_FILE>
-    - senapy-cli download_recent <dir>
-    - senapy-cli download_from_csv <dir>
-    - senapy-cli parse_directory <glob_pattern> <parsed_dir>
+    - senapy-cli parse <ID_DOSSIER_SENAT|URL_DOSSIER_SENAT|HTML_FILE>
+    - senapy-cli download_recent <DIR>
+    - senapy-cli download_from_csv <DIR>
+    - senapy-cli parse_directory <glob_pattern> <PARSED_DIR>
     """)
     sys.exit()
 
@@ -28,15 +26,16 @@ if sys.argv[1] == 'parse':
         sys.exit()
 
     url = sys.argv[2]
-    if url.startswith('http'):
-        html = requests.get(url).text
-        data = parse(html, url)
-    else:
+    if os.path.exists(url):
         html = open(url).read()
         data = parse(html)
+    else:
+        if not url.startswith('http'):
+            url = "http://www.senat.fr/dossier-legislatif/%s.html" % url
+        html = requests.get(url).text
+        data = parse(html, url)
 
     print(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True))
-
 
 elif sys.argv[1] == 'download_recent':
     dest = sys.argv[2]
@@ -94,7 +93,6 @@ elif sys.argv[1] == 'download_from_csv':
             resp = requests.get(line['url_du_dossier'])
             open(dest_file, 'w').write(resp.text
                 + ('\n<!-- URL_SENAT=%s -->' % line['url_du_dossier']))
-            #pprint.pprint(line)
             time.sleep(0.2)
     print(link_count, 'doslegs found')
 
