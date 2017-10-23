@@ -121,6 +121,9 @@ elif sys.argv[1] == 'parse_directory':
     if not os.path.exists(dest):
         os.makedirs(dest)
 
+    logfilename = 'senapy.log'
+    logfile = open(logfilename, 'w')
+
     print(len(files), 'files to parse')
     for file in tqdm.tqdm(files):
         html = open(file).read()
@@ -130,8 +133,10 @@ elif sys.argv[1] == 'parse_directory':
         if os.path.exists(filepath):
             continue
 
-        data = parse(html, verbose=False)
+        print('parsing', filepath, file=logfile)
+        data = parse(html, logfile=logfile)
         json.dump(data, open(filepath, 'w'), ensure_ascii=False, indent=2, sort_keys=True)
 
+    print('parsing finished, log is in', logfilename)
 else:
     print('INVALID COMMAND')

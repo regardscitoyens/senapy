@@ -6,11 +6,6 @@ import requests
 import dateparser
 from bs4 import BeautifulSoup, Comment
 
-
-def _log_error(error):
-    print('## ERROR ###', error, file=sys.stderr)
-
-
 def format_date(date):
     parsed = dateparser.parse(date, languages=['fr'])
     return parsed.strftime("%Y-%m-%d")
@@ -31,12 +26,12 @@ def clean_url(url):
         url = 'http://www.conseil-' + url.split('www.conseil-')[1]
     return url
 
-def parse(html, url_senat=None, verbose=True):
+
+def parse(html, url_senat=None, logfile=sys.stderr):
     data = {}
 
-    log_error = _log_error
-    if not verbose:
-        log_error = lambda x: None
+    def log_error(error):
+        print('## ERROR ###', error, file=logfile)
 
     # base_data = json.load(open(filename))
     soup = BeautifulSoup(html, 'lxml')
