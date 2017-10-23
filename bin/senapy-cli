@@ -12,10 +12,10 @@ from slugify import slugify
 
 if len(sys.argv) < 2:
     print("""USAGE:
-    - senapy-cli parse (URL|HTML_FILE)
-    - senapy-cli download_recents <dir/>
-    - senapy-cli download_from_csv <dir/>
-    - senapt-clu parse_directory <glob_pattern> <parsed_dir>
+    - senapy-cli parse <URL|HTML_FILE>
+    - senapy-cli download_recent <dir>
+    - senapy-cli download_from_csv <dir>
+    - senapy-cli parse_directory <glob_pattern> <parsed_dir>
     """)
     sys.exit()
 
@@ -39,7 +39,7 @@ if sys.argv[1] == 'parse':
 
 
 elif sys.argv[1] == 'download_recent':
-    dest = sys.argv[2] if len(sys.argv) > 2 else 'senat_dossiers/'
+    dest = sys.argv[2]
     print('saving to', dest)
 
     if not os.path.exists(dest):
@@ -57,7 +57,7 @@ elif sys.argv[1] == 'download_recent':
             print(link.text.strip())
             print()
 
-            dest_file = dest + slugify(link.attrs['href'])
+            dest_file = os.path.join(dest, slugify(link.attrs['href']))
             if os.path.exists(dest_file):
                 continue
 
@@ -73,7 +73,7 @@ elif sys.argv[1] == 'download_from_csv':
     lines = [{k.lower().replace(' ' ,'_'): v for k,v in line.items()}
                 for line in list(csv.DictReader(csv_resp.text.split('\n'), delimiter=';'))]
 
-    dest = sys.argv[2] if len(sys.argv) > 2 else 'senat_dossiers/'
+    dest = sys.argv[2]
 
     if not os.path.exists(dest):
         os.makedirs(dest)
@@ -85,10 +85,9 @@ elif sys.argv[1] == 'download_from_csv':
         year = int(line['date_initiale'].split('/')[-1])
         if year >= 2008:
             link_count += 1
-            print(year)
-            print(line['titre'])
+            print(year, line['titre'])
 
-            dest_file = dest + slugify(line['url_du_dossier'])
+            dest_file = os.path.join(dest, slugify(line['url_du_dossier']))
             if os.path.exists(dest_file):
                 continue
 
@@ -108,7 +107,7 @@ elif sys.argv[1] == 'parse_directory':
     print(len(files), 'files to parse')
     for file in files:
         html = open(file).read()
-        filepath = sys.argv[3] + file.split('/')[-1]
+        filepath = os.path.join(sys.argv[3], file.split('/')[-1])
         filepath = filepath.replace('http-www-senat-fr-', '')
 
         if os.path.exists(filepath):
