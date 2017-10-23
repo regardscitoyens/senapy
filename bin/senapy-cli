@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import csv, json, time, sys, os, glob, random
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup
@@ -26,6 +26,13 @@ def download(url, retry=5):
             time.sleep(1)
             return download(url, retry-1)
         raise e
+
+
+def normalized_filename(url):
+    scheme, netloc, path, params, query, fragment = urlparse(url)
+    return slugify(path.replace('dossier-legislatif/', '') \
+        .replace('.html', ''))
+
 
 if sys.argv[1] == 'parse':
     from senapy.dosleg.parser import parse
@@ -64,7 +71,7 @@ elif sys.argv[1] == 'download_recent':
             print(link.attrs['href'])
             print("->", link.text.strip())
 
-            dest_file = os.path.join(dest, slugify(href))
+            dest_file = os.path.join(dest, normalized_filename(href))
             if os.path.exists(dest_file):
                 continue
 
@@ -94,7 +101,7 @@ elif sys.argv[1] == 'download_from_csv':
             print(line['url_du_dossier'])
             print("->", year, line['titre'])
 
-            dest_file = os.path.join(dest, slugify(line['url_du_dossier']))
+            dest_file = os.path.join(dest, normalized_filename(line['url_du_dossier']))
             if os.path.exists(dest_file):
                 continue
 
@@ -116,8 +123,8 @@ elif sys.argv[1] == 'parse_directory':
     print(len(files), 'files to parse')
     for file in files:
         html = open(file).read()
-        filepath = os.path.join(dest, file.split('/')[-1])
-        filepath = filepath.replace('http-www-senat-fr-', '')
+        filename = file.split('/')[-1]
+        filepath = os.path.join(dest, filename)
 
         if os.path.exists(filepath):
             continue
