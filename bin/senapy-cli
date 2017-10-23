@@ -62,8 +62,7 @@ elif sys.argv[1] == 'download_recent':
         if '/dossier-legislatif/' in href:
             link_count += 1
             print(link.attrs['href'])
-            print(link.text.strip())
-            print()
+            print("->", link.text.strip())
 
             dest_file = os.path.join(dest, slugify(href))
             if os.path.exists(dest_file):
@@ -92,7 +91,8 @@ elif sys.argv[1] == 'download_from_csv':
         year = int(line['date_initiale'].split('/')[-1])
         if year >= 2008:
             link_count += 1
-            print(year, line['titre'])
+            print(line['url_du_dossier'])
+            print("->", year, line['titre'])
 
             dest_file = os.path.join(dest, slugify(line['url_du_dossier']))
             if os.path.exists(dest_file):
