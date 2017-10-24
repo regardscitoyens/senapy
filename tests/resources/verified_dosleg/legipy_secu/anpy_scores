@@ -1,7 +1,7 @@
 OK url_dossier_assemblee ( http://www.assemblee-nationale.fr/13/dossiers/plfss2008.asp )
-OK url_dossier_senat ( http://www.senat.fr/dossierleg/plfss2008.html )
-!! NOK !! url_jo  diff: None VS http://legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000017726554
-!! NOK !! urgence  diff: None VS False
+OK url_dossier_senat ( http://www.senat.fr/dossier-legislatif/plfss2008.html )
+!! NOK !! url_jo  diff: http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=BCFX0766311L VS http://legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000017726554
+OK urgence ( False )
 
 STEPS:
 
@@ -71,5 +71,5 @@ OK stage ( promulgation )
 OK step ( None )
 !! NOK !! source_url  diff: http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=BCFX0766311L VS http://legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000017726554
 
-NOK: 6
-OK: 42
+NOK: 5
+OK: 43

@@ -1,5 +1,5 @@
 OK url_dossier_assemblee ( http://www.assemblee-nationale.fr/13/dossiers/action_exterieure.asp )
-!! NOK !! url_dossier_senat  diff: http://www.senat.fr/dossierleg/pjl08-582.html VS http://www.senat.fr/dossier-legislatif/pjl08-582.html
+OK url_dossier_senat ( http://www.senat.fr/dossier-legislatif/pjl08-582.html )
 !! NOK !! url_jo  diff: http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MAEX0912977L VS http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000022521532
 OK urgence ( True )
 
@@ -65,5 +65,5 @@ OK stage ( promulgation )
 OK step ( None )
 !! NOK !! source_url  diff: http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MAEX0912977L VS http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000022521532
 
-NOK: 6
-OK: 38
+NOK: 5
+OK: 39

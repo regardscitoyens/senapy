@@ -67,6 +67,8 @@
             "stage": "promulgation"
         }
     ],
+    "urgence": false,
     "url_dossier_assemblee": "http://www.assemblee-nationale.fr/13/dossiers/plfss2008.asp",
-    "url_dossier_senat": "http://www.senat.fr/dossierleg/plfss2008.html"
+    "url_dossier_senat": "http://www.senat.fr/dossier-legislatif/plfss2008.html",
+    "url_jo": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=BCFX0766311L"
 }

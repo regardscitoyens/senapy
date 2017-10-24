@@ -8,7 +8,7 @@ from compare_thelawfactory_and_me import compare
 from compare_with_anpy import compare as compare_anpy
 from compare_with_legipy import compare as compare_legipy
 
-from anpy.dossier2 import parse as parse_an
+from anpy.dossier_like_senapy import parse as parse_an
 from anpy.utils import json_dumps
 
 DIR = 'tests/resources/verified_dosleg/'

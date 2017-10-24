@@ -80,7 +80,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
         if comment:
             url_senat = comment.split('=')[1].strip()
     if url_senat:
-        data['url_dossier_senat'] = url_senat
+        data['url_dossier_senat'] = url_senat.replace('/dossierleg/', '/dossier-legislatif/')
         data['senat_id'] = data['url_dossier_senat'].split('/')[-1].replace('.html', '')
     else:
         url_senat = 'http://www.senat.fr/'

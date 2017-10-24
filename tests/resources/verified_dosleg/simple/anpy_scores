@@ -1,7 +1,7 @@
 OK url_dossier_assemblee ( http://www.assemblee-nationale.fr/13/dossiers/allemagne_vehicules.asp )
-!! NOK !! url_dossier_senat  diff: http://www.senat.fr/dossierleg/pjl07-488.html VS http://www.senat.fr/dossier-legislatif/pjl07-488.html
+OK url_dossier_senat ( http://www.senat.fr/dossier-legislatif/pjl07-488.html )
 !! NOK !! url_jo  diff: http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MAEJ0815766L VS http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000023355697
-!! NOK !! urgence  diff: None VS False
+OK urgence ( False )
 
 STEPS:
 
@@ -47,5 +47,5 @@ OK stage ( promulgation )
 OK step ( None )
 !! NOK !! source_url  diff: http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MAEJ0815766L VS http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000023355697
 
-NOK: 4
-OK: 28
+NOK: 2
+OK: 30
