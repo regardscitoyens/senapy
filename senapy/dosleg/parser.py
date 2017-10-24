@@ -46,7 +46,8 @@ def parse(html, url_senat=None, logfile=sys.stderr):
         log_error('NO TITLE - MAYBE A REDIRECT ?')
         return
 
-    data['long_title'] = soup.select_one('.title .subtitle-01').text.strip()[:-2]
+    title_lines = soup.select_one('.title .subtitle-01').text.strip()
+    data['long_title'] = title_lines.split('\n')[0][:-2] # remove " :" at the end of the line
     data['long_title_descr'] = soup.find("meta", {"name":"Description"})['content']
 
     promulgee_line = None
@@ -73,7 +74,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
             log_error('NO JO LINK')
     # TOPARSE: ordonnance_line
 
-    data['urgence'] = acceleree_line is not None
+    data['urgence'] = acceleree_line is not None or 'procédure accélérée engagée par le' in title_lines
     if not url_senat:
         # the url is in a comment like "<!-- URL_SENAT=XXXX !-->" for downloaded pages
         comment = soup.find(text=lambda text:isinstance(text, Comment) and 'URL_SENAT' in text)
