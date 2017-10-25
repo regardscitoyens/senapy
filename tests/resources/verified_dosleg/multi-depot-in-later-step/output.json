@@ -1,0 +1,94 @@
+{
+  "assemblee_id": "repression_violences_femmes",
+  "assemblee_legislature": 13,
+  "beginning": "2009-11-27",
+  "end": "2010-07-09",
+  "end_jo": "2010-07-28",
+  "legifrance_cidTexte": "JORFTEXT000022454032",
+  "long_title": "Loi relative aux violences faites spécifiquement aux femmes, aux violences au sein des couples et aux incidences de ces dernières sur les enfants",
+  "long_title_descr": "proposition de loi renforçant la protection des victimes et la prévention et la répression des violences faites aux femmes",
+  "senat_id": "ppl09-338",
+  "short_title": "Femmes",
+  "steps": [
+    {
+      "date": "2009-12-25",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/dossier-legislatif/ppl09-118.html",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2009-11-27",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/propositions/pion2121.asp",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2010-02-10",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/rapports/r2293-a0.asp",
+      "stage": "1ère lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2010-02-25",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0428.asp",
+      "stage": "1ère lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2010-02-26",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/ppl09-340.html",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2010-06-17",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/ppl09-565.html",
+      "stage": "1ère lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2010-06-24",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/tas09-134.html",
+      "stage": "1ère lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2010-06-28",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/propositions/pion2683.asp",
+      "stage": "2ème lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2010-06-28",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/ta-commission/r2684-a0.asp",
+      "stage": "2ème lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2010-06-29",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0502.asp",
+      "stage": "2ème lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2010-07-09",
+      "institution": "gouvernement",
+      "source_url": "http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000022454032",
+      "stage": "promulgation"
+    }
+  ],
+  "urgence": false,
+  "url_dossier_assemblee": "http://www.assemblee-nationale.fr/13/dossiers/repression_violences_femmes.asp",
+  "url_dossier_senat": "http://www.senat.fr/dossier-legislatif/ppl09-338.html",
+  "url_jo": "http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000022454032"
+}

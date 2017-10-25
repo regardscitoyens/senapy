@@ -1,0 +1,142 @@
+{
+  "assemblee_id": "repartition_contentieux",
+  "assemblee_legislature": 13,
+  "beginning": "2010-03-03",
+  "end": "2011-12-13",
+  "end_jo": "2011-12-14",
+  "legifrance_cidTexte": "JORFTEXT000024960344",
+  "long_title": "Loi relative à la répartition des contentieux et à l'allègement de certaines procédures juridictionnelles",
+  "long_title_descr": "projet de loi relatif à la répartition des contentieux et à l'allègement de certaines procédures juridictionnelles",
+  "senat_id": "pjl09-344",
+  "short_title": "Contentieux",
+  "steps": [
+    {
+      "date": "2011-02-11",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/ppl10-303.html",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2010-03-03",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/pjl09-344.html",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2011-03-30",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/pjl10-395.html",
+      "stage": "1ère lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2011-04-14",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/tas10-099.html",
+      "stage": "1ère lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2011-04-15",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/projets/pl3373.asp",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2011-06-29",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/rapports/r3604.asp",
+      "stage": "1ère lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2011-07-04",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0701.asp",
+      "stage": "1ère lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2011-07-06",
+      "institution": "CMP",
+      "source_url": "http://www.senat.fr/rap/l10-729/l10-729.html",
+      "stage": "CMP",
+      "step": "commission"
+    },
+    {
+      "date": "2011-07-07",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/projets/pl3635.asp",
+      "stage": "nouv. lect.",
+      "step": "depot"
+    },
+    {
+      "date": "2011-07-12",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/ta-commission/r3642-a0.asp",
+      "stage": "nouv. lect.",
+      "step": "commission"
+    },
+    {
+      "date": "2011-07-12",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0721.asp",
+      "stage": "nouv. lect.",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2011-07-13",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/pjl10-767.html",
+      "stage": "nouv. lect.",
+      "step": "depot"
+    },
+    {
+      "date": "2011-10-12",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/pjl11-025.html",
+      "stage": "nouv. lect.",
+      "step": "commission"
+    },
+    {
+      "date": "2011-10-18",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/tas11-002.html",
+      "stage": "nouv. lect.",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2011-10-19",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/projets/pl3862.asp",
+      "stage": "l. définitive",
+      "step": "depot"
+    },
+    {
+      "date": "2011-11-16",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0755.asp",
+      "stage": "l. définitive",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2011-12-08",
+      "institution": "conseil constitutionnel",
+      "source_url": "http://www.conseil-constitutionnel.fr/conseil-constitutionnel/francais/les-decisions/acces-par-date/decisions-depuis-1959/2011/2011-641-dc/decision-n-2011-641-dc-du-08-decembre-2011.104058.html",
+      "stage": "constitutionnalité"
+    },
+    {
+      "date": "2011-12-13",
+      "institution": "gouvernement",
+      "source_url": "http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000024960344",
+      "stage": "promulgation"
+    }
+  ],
+  "urgence": true,
+  "url_dossier_assemblee": "http://www.assemblee-nationale.fr/13/dossiers/repartition_contentieux.asp",
+  "url_dossier_senat": "http://www.senat.fr/dossier-legislatif/pjl09-344.html",
+  "url_jo": "http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000024960344"
+}

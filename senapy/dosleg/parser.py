@@ -1,7 +1,6 @@
 import json
 import sys
 import re
-from pprint import pprint as pp
 from urllib.parse import urljoin, parse_qs, urlparse, urlunparse
 
 import requests
@@ -334,10 +333,19 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                 if url:
                     step['source_url'] = clean_url(url)
 
-            # there can be multiple texts inside an hemicycle step, ok for CMP and multi-depots but not ok for other steps
-            if len(steps_to_add) > 1 and step.get('stage') != 'CMP' and step.get('step') != 'depot':
-                log_error('MULTIPLE TEXTS BUT NOT CMP.hemicycle - %s.%s.%s' % (step['institution'], step.get('stage'), step.get('step')))
-                steps_to_add = [steps_to_add[-1]]
+            if len(steps_to_add) > 1:
+                # multi-depot
+                if step.get('step') == 'depot':
+                    # put real text as last depot
+                    steps_to_add = sorted(steps_to_add, key=lambda step: 1 if data.get('senat_id', '') in step.get('source_url', '') else 0)
+                    # if we are in a later step, the others depot steps must go at the top
+                    if len(data['steps']) > 0:
+                        data['steps'] = steps_to_add[:-1] + data['steps']
+                        steps_to_add = steps_to_add[-1:]
+                # there can be multiple texts inside an hemicycle step, ok for CMP and multi-depots but not ok for other steps
+                elif step.get('stage') != 'CMP':
+                    log_error('MULTIPLE TEXTS BUT NOT CMP.hemicycle - %s.%s.%s' % (step['institution'], step.get('stage'), step.get('step')))
+                    steps_to_add = [steps_to_add[-1]]
 
             data['steps'] += steps_to_add  # TODO: re-order based on "texte définitif"
 
