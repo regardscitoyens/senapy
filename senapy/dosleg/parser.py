@@ -1,10 +1,13 @@
-import json, sys, re
+import json
+import sys
+import re
 from pprint import pprint as pp
 from urllib.parse import urljoin, parse_qs, urlparse, urlunparse
 
 import requests
 import dateparser
 from bs4 import BeautifulSoup, Comment
+
 
 def format_date(date):
     parsed = dateparser.parse(date, languages=['fr'])
@@ -47,8 +50,8 @@ def parse(html, url_senat=None, logfile=sys.stderr):
         return
 
     title_lines = soup.select_one('.title .subtitle-01').text.strip()
-    data['long_title'] = title_lines.split('\n')[0][:-2] # remove " :" at the end of the line
-    data['long_title_descr'] = soup.find("meta", {"name":"Description"})['content']
+    data['long_title'] = title_lines.split('\n')[0][:-2]  # remove " :" at the end of the line
+    data['long_title_descr'] = soup.find("meta", {"name": "Description"})['content']
 
     promulgee_line = None
     ordonnance_line = None
@@ -63,8 +66,8 @@ def parse(html, url_senat=None, logfile=sys.stderr):
         else:
             log_error('UNKNOWN SUBTITLE: %s' % line.text)
     if promulgee_line:
-        data['end'] = format_date(promulgee_line.find('strong').text.split(' du ')[1].strip()) # promulgation
-        data['end_jo'] = format_date(promulgee_line.text.split('JO ')[-1].split('du ')[-1].split('(')[0].strip()) # inscription aux JO
+        data['end'] = format_date(promulgee_line.find('strong').text.split(' du ')[1].strip())  # promulgation
+        data['end_jo'] = format_date(promulgee_line.text.split('JO ')[-1].split('du ')[-1].split('(')[0].strip())  # inscription aux JO
         if promulgee_line.find('a'):
             data['url_jo'] = clean_url(promulgee_line.find('a').attrs['href'])
             url_jo_params = parse_qs(urlparse(data['url_jo']).query)
@@ -77,7 +80,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
     data['urgence'] = acceleree_line is not None or 'procédure accélérée engagée par le' in title_lines
     if not url_senat:
         # the url is in a comment like "<!-- URL_SENAT=XXXX !-->" for downloaded pages
-        comment = soup.find(text=lambda text:isinstance(text, Comment) and 'URL_SENAT' in text)
+        comment = soup.find(text=lambda text: isinstance(text, Comment) and 'URL_SENAT' in text)
         if comment:
             url_senat = comment.split('=')[1].strip()
     if url_senat:
@@ -89,8 +92,8 @@ def parse(html, url_senat=None, logfile=sys.stderr):
     # objet du texte (very basic)
     for div in soup.select('#main div.scroll'):
         if div.find('h3') and 'Objet du texte' in div.find('h3').text:
-            data['objet_du_texte'] = div.text.replace('Objet du texte\n','') \
-                .replace("Lire le billet de l'Espace presse",'').strip()
+            data['objet_du_texte'] = div.text.replace('Objet du texte\n', '') \
+                .replace("Lire le billet de l'Espace presse", '').strip()
             continue
 
     # TODO: selecteur foireux ?
@@ -101,11 +104,11 @@ def parse(html, url_senat=None, logfile=sys.stderr):
             legislature = data['url_dossier_assemblee'].split('.fr/')[1].split('/')[0]
             try:
                 data['assemblee_legislature'] = int(legislature)
-            except ValueError: # strange link (old dosleg)
+            except ValueError:  # strange link (old dosleg)
                 log_error('NO LEGISLATURE IN AN LINK: ' + data['url_dossier_assemblee'])
 
     data['steps'] = []
-    steps_shortcuts = soup.select('.list-timeline li') # icons on top
+    steps_shortcuts = soup.select('.list-timeline li')  # icons on top
     if not steps_shortcuts:
         log_error('VERY SPECIAL CASE - PAS DE NAVETTES NORMALES')
         return
@@ -226,7 +229,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                 if 'Texte renvoyé en commission' in item.text:
                     step['echec'] = True
 
-                ## TROUVONS LES TEXTES
+                # TROUVONS LES TEXTES
                 for link in item.select('a'):
                     line = link.parent
                     if 'href' in link.attrs:
@@ -235,13 +238,13 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                         # TODO: assemblée "ppl, ppr, -a0" (a verif)
                         if (
                             ('/leg/' in href and '/' not in href.replace('/leg/', '') and 'avis-ce' not in href)
-                            or nice_text in ('texte', 'texte de la commission', 'décision du conseil constitutionnel') \
+                            or nice_text in ('texte', 'texte de la commission', 'décision du conseil constitutionnel')
                             or 'jo n°' in nice_text
 
                             # TODO: parse the whole block for date + url
                             # ex: http://www.senat.fr/dossier-legislatif/pjl08-641.html
                             or 'conseil-constitutionnel.fr/decision.' in href
-                            ):
+                        ):
 
                             # motion for a referendum for example
                             # ex: http://www.senat.fr/dossier-legislatif/pjl12-349.html
@@ -251,14 +254,14 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                             url = urljoin(url_senat, href)
                             line_text = line.text.lower()
                             institution = curr_institution
-                            if curr_stage != 'promulgation': # TODO: be more specific, have a way to force the curr_instituion
+                            if curr_stage != 'promulgation':  # TODO: be more specific, have a way to force the curr_instituion
                                 if 'par l\'assemblée' in line_text:
                                     institution = 'assemblee'
                                 elif 'par le sénat' in line_text:
                                     institution = 'senat'
                                 else:
                                     if curr_stage == 'CMP' and step_step == 'hemicycle' \
-                                        and 'texte' in nice_text and not step.get('echec'):
+                                            and 'texte' in nice_text and not step.get('echec'):
                                         if 'assemblee-nationale.fr' in href:
                                             institution = 'assemblee'
                                         else:
@@ -294,7 +297,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
             steps_to_add = []
             if good_urls:
                 for url in good_urls:
-                    sub_step = dict(**step) # dubstep
+                    sub_step = dict(**step)  # dubstep
                     sub_step['source_url'] = url['url']
                     sub_step['institution'] = url['institution']
                     if url['date']:
@@ -320,7 +323,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                     # todo: add empty missing step
                     institutions_found = [url['institution'] for url in good_urls]
                     if 'assemblee' not in institutions_found:
-                        sub_step = dict(**step) # dubstep
+                        sub_step = dict(**step)  # dubstep
                         sub_step['source_url'] = None
                         sub_step['institution'] = 'assemblee'
                         steps_to_add.append(sub_step)
@@ -336,7 +339,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                 log_error('MULTIPLE TEXTS BUT NOT CMP.hemicycle - %s.%s.%s' % (step['institution'], step.get('stage'), step.get('step')))
                 steps_to_add = [steps_to_add[-1]]
 
-            data['steps'] += steps_to_add # TODO: re-order based on "texte définitif"
+            data['steps'] += steps_to_add  # TODO: re-order based on "texte définitif"
 
     return data
 
