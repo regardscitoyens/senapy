@@ -331,6 +331,11 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                 if url:
                     step['source_url'] = clean_url(url)
 
+            # there can be multiple texts inside an hemicycle step, ok for CMP but not ok for other steps
+            if len(steps_to_add) > 1 and step.get('stage') != 'CMP':
+                log_error('MULTIPLE TEXTS BUT NOT CMP.hemicycle - %s.%s.%s' % (step['institution'], step.get('stage'), step.get('step')))
+                steps_to_add = [steps_to_add[-1]]
+
             data['steps'] += steps_to_add # TODO: re-order based on "texte définitif"
 
     return data

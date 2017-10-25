@@ -1,0 +1,86 @@
+{
+  "assemblee_id": "saisie_et_confiscation",
+  "assemblee_legislature": 13,
+  "beginning": "2008-11-12",
+  "end": "2010-07-09",
+  "end_jo": "2010-07-10",
+  "legifrance_cidTexte": "JORFTEXT000022453925",
+  "long_title": "Loi visant à faciliter la saisie et la confiscation en matière pénale",
+  "long_title_descr": "proposition de loi visant à faciliter la saisie et la confiscation en matière pénale",
+  "senat_id": "ppl08-454",
+  "short_title": "Saisie et confiscation en matière pénale",
+  "steps": [
+    {
+      "date": "2008-11-12",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/propositions/pion1255.asp",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2009-05-20",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/rapports/r1689-a0.asp",
+      "stage": "1ère lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2009-06-04",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0297.asp",
+      "stage": "1ère lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2009-06-04",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/ppl08-454.html",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2010-02-24",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/ppl09-329.html",
+      "stage": "1ère lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2010-04-28",
+      "institution": "senat",
+      "source_url": "http://www.senat.fr/leg/tas09-091.html",
+      "stage": "1ère lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2010-06-16",
+      "institution": "assemblee",
+      "stage": "2ème lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2010-06-16",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/ta-commission/r2626-a0.asp",
+      "stage": "2ème lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2010-06-28",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0500.asp",
+      "stage": "2ème lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2010-07-09",
+      "institution": "gouvernement",
+      "source_url": "http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000022453925",
+      "stage": "promulgation"
+    }
+  ],
+  "urgence": false,
+  "url_dossier_assemblee": "http://www.assemblee-nationale.fr/13/dossiers/saisie_et_confiscation.asp",
+  "url_dossier_senat": "http://www.senat.fr/dossier-legislatif/ppl08-454.html",
+  "url_jo": "http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000022453925"
+}
