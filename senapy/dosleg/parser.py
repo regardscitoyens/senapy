@@ -13,13 +13,17 @@ def format_date(date):
     return parsed.strftime("%Y-%m-%d")
 
 
+re_clean_ending_digits = re.compile(r"(\d+\.asp)[\dl]+$")
 def clean_url(url):
     if 'legifrance.gouv.fr' in url:
         scheme, netloc, path, params, query, fragment = urlparse(url)
         url_jo_params = parse_qs(query)
         if 'cidTexte' in url_jo_params:
             query = 'cidTexte=' + url_jo_params['cidTexte'][0]
-        return urlunparse((scheme, netloc, path, '', query, fragment))
+        res = urlunparse((scheme, netloc, path, '', query, fragment))
+        res = res.replace('http://legifrance.gouv.fr', 'https://www.legifrance.gouv.fr')
+        res = res.replace('/jo_pdf.do?id=', '/affichTexte.do?cidTexte=')
+        return res.replace('/./affichTexte.do', '/affichTexte.do')
     # url like 'pjl09-518.htmlhttp://www.assemblee-nationale.fr/13/ta/ta0518.asp'
     if url.find('http://') > 0:
         url = 'http://' + url.split('http://')[1]
@@ -28,6 +32,10 @@ def clean_url(url):
         url = 'http://www.conseil-' + url.split('www.conseil-')[1]
     if 'senat.fr' in url:
         url = url.replace('/dossierleg/', '/dossier-legislatif/')
+        url = url.replace('http://', 'https://')
+    # url like http://www.assemblee-nationale.fr/13/projets/pl2727.asp2727
+    if 'assemblee-nationale.fr' in url:
+        url = re_clean_ending_digits.sub(r"\1", url)
     return url
 
 
