@@ -24,8 +24,10 @@ def clean_url(url):
     if url.find('http://') > 0:
         url = 'http://' + url.split('http://')[1]
     # url like http://www.senat.fr/dossier-legislatif/www.conseil-constitutionnel.fr/decision/2012/2012646dc.htm
-    if 'www.conseil-'in url:
+    if 'www.conseil-' in url:
         url = 'http://www.conseil-' + url.split('www.conseil-')[1]
+    if 'senat.fr' in url:
+        url = url.replace('/dossierleg/', '/dossier-legislatif/')
     return url
 
 
@@ -83,7 +85,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
         if comment:
             url_senat = comment.split('=')[1].strip()
     if url_senat:
-        data['url_dossier_senat'] = url_senat.replace('/dossierleg/', '/dossier-legislatif/')
+        data['url_dossier_senat'] = clean_url(url_senat)
         data['senat_id'] = data['url_dossier_senat'].split('/')[-1].replace('.html', '')
     else:
         url_senat = 'http://www.senat.fr/'
