@@ -13,6 +13,13 @@ def format_date(date):
     return parsed.strftime("%Y-%m-%d")
 
 
+def pre_clean_url(url):
+    if url.startswith('www'):
+        url = "http://" + url
+    if url.startswith('/leg/http'):
+        url = url[5:]
+    return url
+
 re_clean_ending_digits = re.compile(r"(\d+\.asp)[\dl]+$")
 def clean_url(url):
     if 'legifrance.gouv.fr' in url:
@@ -30,6 +37,7 @@ def clean_url(url):
     # url like http://www.senat.fr/dossier-legislatif/www.conseil-constitutionnel.fr/decision/2012/2012646dc.htm
     if 'www.conseil-' in url:
         url = 'http://www.conseil-' + url.split('www.conseil-')[1]
+        url = url.replace('//', '/')
     if 'senat.fr' in url:
         url = url.replace('/dossierleg/', '/dossier-legislatif/')
         url = url.replace('http://', 'https://')
@@ -259,6 +267,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                             # ex: http://www.senat.fr/dossier-legislatif/pjl12-349.html
                             if '/leg/motion' in href:
                                 continue
+                            href = pre_clean_url(href)
 
                             url = urljoin(url_senat, href)
                             line_text = line.text.lower()
@@ -295,6 +304,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                         for link in item.select('.list-disc-02 a'):
                             if 'href' in link.attrs:
                                 href = link.attrs['href']
+                                href = pre_clean_url(href)
                                 nice_text = link.text.lower().strip()
                                 if nice_text == 'rapport':
                                     step['source_url'] = urljoin(url_senat, href)
