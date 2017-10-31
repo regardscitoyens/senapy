@@ -44,7 +44,7 @@ def clean_url(url):
     # url like http://www.assemblee-nationale.fr/13/projets/pl2727.asp2727
     if 'assemblee-nationale.fr' in url:
         url = re_clean_ending_digits.sub(r"\1", url)
-    return url
+    return url.strip()
 
 
 def parse(html, url_senat=None, logfile=sys.stderr):
