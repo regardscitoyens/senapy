@@ -7,3 +7,4 @@ html5lib
 dateparser
 python-slugify
 tqdm
+git+https://github.com/RegardsCitoyens/lawfactory_utils.git

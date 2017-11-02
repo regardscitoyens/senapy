@@ -16,9 +16,12 @@ with open(path.join(here, 'README.md')) as readme:
     LONG_DESC = readme.read()
 
 with open(path.join(here, 'requirements.txt')) as f:
-    requirements = f.read().splitlines()
-
-os.system('pip install git+https://github.com/RegardsCitoyens/lawfactory_utils.git@master')
+    requirements = []
+    for req in f.read().splitlines():
+        if req.startswith("git+"):
+            os.system('pip install '+req)
+        else:
+            requirements.append(req)
 
 setup(
     name='senapy',
