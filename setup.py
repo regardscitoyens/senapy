@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import os
 from setuptools import setup
 from codecs import open
 from os import path
@@ -16,6 +17,8 @@ with open(path.join(here, 'README.md')) as readme:
 
 with open(path.join(here, 'requirements.txt')) as f:
     requirements = f.read().splitlines()
+
+os.system('pip install git+https://github.com/RegardsCitoyens/lawfactory_utils.git@master')
 
 setup(
     name='senapy',
