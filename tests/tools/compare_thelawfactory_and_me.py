@@ -1,6 +1,10 @@
 import json, sys
 
-from ._compare_outputs import gen_comparator
+# quick hack so we can import from tests/ and from local scripts
+try:
+    from _compare_outputs import gen_comparator
+except ImportError:
+    from ._compare_outputs import gen_comparator
 
 
 def compare(proc, me, verbose=True):
