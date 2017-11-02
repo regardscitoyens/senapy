@@ -1,6 +1,6 @@
-OK url_dossier_assemblee ( http://www.assemblee-nationale.fr/13/dossiers/action_exterieure.asp )
-OK url_dossier_senat ( http://www.senat.fr/dossier-legislatif/pjl08-582.html )
-!! NOK !! url_jo  diff: http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MAEX0912977L VS http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000022521532
+OK url_dossier_assemblee ( https://www.assemblee-nationale.fr/13/dossiers/action_exterieure.asp )
+OK url_dossier_senat ( https://www.senat.fr/dossier-legislatif/pjl08-582.html )
+!! NOK !! url_jo  diff: https://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MAEX0912977L VS https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000022521532
 OK urgence ( True )
 
 STEPS:
@@ -9,61 +9,61 @@ STEPS:
 OK institution ( senat )
 OK stage ( 1ère lecture )
 OK step ( depot )
-OK source_url ( http://www.senat.fr/leg/pjl08-582.html )
+OK source_url ( https://www.senat.fr/leg/pjl08-582.html )
 
  - step 2
 OK institution ( senat )
 OK stage ( 1ère lecture )
 OK step ( commission )
-OK source_url ( http://www.senat.fr/leg/pjl09-263.html )
+OK source_url ( https://www.senat.fr/leg/pjl09-263.html )
 
  - step 3
 OK institution ( senat )
 OK stage ( 1ère lecture )
 OK step ( hemicycle )
-OK source_url ( http://www.senat.fr/leg/tas09-073.html )
+OK source_url ( https://www.senat.fr/leg/tas09-073.html )
 
  - step 4
 OK institution ( assemblee )
 OK stage ( 1ère lecture )
 OK step ( depot )
-OK source_url ( http://www.assemblee-nationale.fr/13/projets/pl2339.asp )
+OK source_url ( https://www.assemblee-nationale.fr/13/projets/pl2339.asp )
 
  - step 5
 OK institution ( assemblee )
 OK stage ( 1ère lecture )
 OK step ( commission )
-!! NOK !! source_url  diff: http://www.assemblee-nationale.fr/13/ta-commission/r2513-a0.asp VS http://www.assemblee-nationale.fr/13/rapports/r2513.asp
+!! NOK !! source_url  diff: https://www.assemblee-nationale.fr/13/ta-commission/r2513-a0.asp VS https://www.assemblee-nationale.fr/13/rapports/r2513.asp
 
  - step 6
 OK institution ( assemblee )
 OK stage ( 1ère lecture )
 OK step ( hemicycle )
-OK source_url ( http://www.assemblee-nationale.fr/13/ta/ta0507.asp )
+OK source_url ( https://www.assemblee-nationale.fr/13/ta/ta0507.asp )
 
  - step 7
 OK institution ( CMP )
 OK stage ( CMP )
 OK step ( commission )
-!! NOK !! source_url  diff: http://www.assemblee-nationale.fr/13/rapports/r2722.asp VS http://www.senat.fr/rap/l09-655/l09-655.html
+!! NOK !! source_url  diff: https://www.assemblee-nationale.fr/13/rapports/r2722.asp VS https://www.senat.fr/rap/l09-655/l09-655.html
 
  - step 8
 OK institution ( senat )
 OK stage ( CMP )
 OK step ( hemicycle )
-OK source_url ( http://www.senat.fr/leg/tas09-142.html )
+OK source_url ( https://www.senat.fr/leg/tas09-142.html )
 
  - step 9
 OK institution ( assemblee )
 OK stage ( CMP )
 OK step ( hemicycle )
-!! NOK !! source_url  diff: http://www.assemblee-nationale.fr/13/ta/ta0521.asp VS None
+!! NOK !! source_url  diff: https://www.assemblee-nationale.fr/13/ta/ta0521.asp VS None
 
  - step 10
 OK institution ( gouvernement )
 OK stage ( promulgation )
 OK step ( None )
-!! NOK !! source_url  diff: http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MAEX0912977L VS http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000022521532
+!! NOK !! source_url  diff: https://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MAEX0912977L VS https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000022521532
 
 NOK: 5
 OK: 39

@@ -2,7 +2,9 @@
   "assemblee_id": "securite_interieure_lutte_terrorisme",
   "assemblee_legislature": 15,
   "beginning": "2017-06-22",
-  "long_title": "Projet de loi renforçant la sécurité intérieure et la lutte contre le terrorisme",
+  "end": "2017-10-30",
+  "end_jo": "2017-10-31",
+  "long_title": "Loi renforçant la sécurité intérieure et la lutte contre le terrorisme",
   "long_title_descr": "projet de loi renforçant la sécurité intérieure et la lutte contre le terrorisme",
   "objet_du_texte": "Depuis le 14 novembre 2015, la France vit sous le régime de l'état d'urgence. Les Gouvernements successifs ayant estimé que la persistance d'un péril imminent nécessitait de demander au Parlement de proroger l'état d'urgence par périodes successives.L'état d'urgence reste toutefois un régime à caractère temporaire justifié par des circonstances exceptionnelles. C'est pourquoi le Gouvernement estime nécessaire face au caractère durable des menaces liées aux nouvelles formes de terrorisme de doter l'État de nouveaux instruments permanents de prévention et de lutte contre le terrorisme, en réservant les outils de l'état d'urgence à une situation exceptionnelle.Le texte déposé au Sénat le 22 juin 2017  par Gérard COLLOMB, ministre d'État, ministre de l'intérieur est divisé en quatre chapitres : - Le chapitre Ier regroupe un ensemble de dispositions renforçant la prévention d'actes de terrorisme en créant dans le droit commun des outils adaptés à la lutte anti-terroriste contemporaine ;- Le chapitre II porte sur les mesures relatives aux techniques de renseignement ;- Le chapitre III comprend les dispositions relatives aux contrôles dans les zones frontalières ;- Le chapitre IV, enfin, contient les dispositions adaptant les mesures de ce projet de loi aux outre-mer.",
   "senat_id": "pjl16-587",
@@ -11,21 +13,21 @@
     {
       "date": "2017-06-22",
       "institution": "senat",
-      "source_url": "http://www.senat.fr/leg/pjl16-587.html",
+      "source_url": "https://www.senat.fr/leg/pjl16-587.html",
       "stage": "1ère lecture",
       "step": "depot"
     },
     {
       "date": "2017-07-12",
       "institution": "senat",
-      "source_url": "http://www.senat.fr/leg/pjl16-630.html",
+      "source_url": "https://www.senat.fr/leg/pjl16-630.html",
       "stage": "1ère lecture",
       "step": "commission"
     },
     {
       "date": "2017-07-18",
       "institution": "senat",
-      "source_url": "http://www.senat.fr/leg/tas16-115.html",
+      "source_url": "https://www.senat.fr/leg/tas16-115.html",
       "stage": "1ère lecture",
       "step": "hemicycle"
     },
@@ -53,12 +55,33 @@
     {
       "date": "2017-10-09",
       "institution": "CMP",
-      "source_url": "http://www.senat.fr/leg/pjl17-017.html",
+      "source_url": "https://www.senat.fr/leg/pjl17-017.html",
       "stage": "CMP",
       "step": "commission"
+    },
+    {
+      "date": "2017-10-11",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/15/ta/ta0025.asp",
+      "stage": "CMP",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2017-10-18",
+      "institution": "senat",
+      "source_url": "https://www.senat.fr/leg/tas17-006.html",
+      "stage": "CMP",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2017-10-30",
+      "institution": "gouvernement",
+      "source_url": "https://www.legifrance.gouv.fr/eli/loi/2017/10/30/2017-1510/jo/texte",
+      "stage": "promulgation"
     }
   ],
   "urgence": true,
   "url_dossier_assemblee": "http://www.assemblee-nationale.fr/15/dossiers/securite_interieure_lutte_terrorisme.asp",
-  "url_dossier_senat": "http://www.senat.fr/dossier-legislatif/pjl16-587.html"
+  "url_dossier_senat": "https://www.senat.fr/dossier-legislatif/pjl16-587.html",
+  "url_jo": "https://www.legifrance.gouv.fr/eli/loi/2017/10/30/2017-1510/jo/texte"
 }

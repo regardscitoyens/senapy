@@ -1,30 +1,17 @@
 import json, sys
 
+from ._compare_outputs import gen_comparator
+
+
 def compare(proc, me, verbose=True):
-    score_ok, score_nok = 0, 0
+    scores = {'ok': 0, 'nok': 0}
     log = ''
 
     def myprint(*args):
         nonlocal log
         log += ' '.join(str(x) for x in args) + '\n'
 
-    # i like to write cryptic function sometimes also
-    def test_test(proc, me):
-        def test(a, b=None, a_key=lambda a: a):
-            nonlocal myprint, score_nok, score_ok
-            if b is None:
-                b = a
-            a_val = a_key(proc.get(a))
-            b_val = me.get(b)
-            if a_val != b_val:
-                myprint('!! NOK !!', a,' diff:', a_val, 'VS', b_val)
-                score_nok += 1
-            else:
-                myprint('OK', a, '(', a_val, ')')
-                score_ok += 1
-        return test
-
-    test = test_test(proc, me)
+    test = gen_comparator(proc, me, scores, print=myprint)
     # test('beginning')
     # test('short_title')
     # test('long_title')
@@ -49,7 +36,7 @@ def compare(proc, me, verbose=True):
         else:
             myprint('  - step not in mine')
 
-        test = test_test(step_proc, step_me)
+        test = gen_comparator(step_proc, step_me, scores, print=myprint)
 
         # test('date')
         test('institution')
@@ -58,8 +45,8 @@ def compare(proc, me, verbose=True):
         test('source_url')
         myprint()
 
-    myprint('NOK:', score_nok)
-    myprint('OK:', score_ok)
+    myprint('NOK:', scores['nok'])
+    myprint('OK:', scores['ok'])
 
     if verbose:
         print(log)
