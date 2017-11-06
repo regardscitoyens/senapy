@@ -4,6 +4,7 @@ import csv, json, time, sys, os, glob, random
 from urllib.parse import urljoin, urlparse
 
 import requests
+import click
 from bs4 import BeautifulSoup
 from slugify import slugify
 
@@ -34,14 +35,30 @@ def normalized_filename(url):
         .replace('.html', ''))
 
 
-if sys.argv[1] == 'parse':
-    from senapy.dosleg.parser import parse
+@click.group()
+def cli():
+    """
+    \b
+    USAGE:
+        - senapy-cli parse <ID_DOSSIER_SENAT|URL_DOSSIER_SENAT|HTML_FILE>
+        - senapy-cli download_recent <DIR>
+        - senapy-cli download_from_csv <DIR>
+        - senapy-cli parse_directory <glob_pattern> <PARSED_DIR>
+    """
+    pass
 
-    if len(sys.argv) < 3:
-        print('USAGE: senapy-cli parse c')
-        sys.exit()
 
-    url = sys.argv[2]
+@cli.command()
+@click.argument('url')
+def parse(url):
+    """
+    \b
+    Parse a senat dosleg given either a:
+        - senat ID, ex: pjl07-488
+        - URL
+        - HTML file
+    """
+
     if os.path.exists(url):
         html = open(url).read()
         data = parse(html)
@@ -53,8 +70,11 @@ if sys.argv[1] == 'parse':
 
     print(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True))
 
-elif sys.argv[1] == 'download_recent':
-    dest = sys.argv[2]
+@cli.command()
+@click.argument('directory')
+@click.option('--disable-cache', is_flag=True)
+def download_recent(directory, disable_cache):
+    dest = directory
     print('saving to', dest)
 
     if not os.path.exists(dest):
@@ -72,7 +92,7 @@ elif sys.argv[1] == 'download_recent':
             print("->", link.text.strip())
 
             dest_file = os.path.join(dest, normalized_filename(href))
-            if os.path.exists(dest_file):
+            if not disable_cache and os.path.exists(dest_file):
                 continue
 
             url = urljoin('http://www.senat.fr/', href)
@@ -80,13 +100,16 @@ elif sys.argv[1] == 'download_recent':
             open(dest_file, 'w').write(resp + ('\n<!-- URL_SENAT=%s -->' % url))
     print(link_count, 'doslegs found')
 
-elif sys.argv[1] == 'download_from_csv':
+@cli.command()
+@click.argument('directory')
+@click.option('--disable-cache', is_flag=True)
+def download_from_csv(directory, disable_cache):
     csv_resp = download("http://data.senat.fr/data/dosleg/dossiers-legislatifs.csv")
 
     lines = [{k.lower().replace(' ' ,'_'): v for k,v in line.items()}
                 for line in list(csv.DictReader(csv_resp.split('\n'), delimiter=';'))]
 
-    dest = sys.argv[2]
+    dest = directory
 
     if not os.path.exists(dest):
         os.makedirs(dest)
@@ -102,7 +125,7 @@ elif sys.argv[1] == 'download_from_csv':
             print("->", year, line['titre'])
 
             dest_file = os.path.join(dest, normalized_filename(line['url_du_dossier']))
-            if os.path.exists(dest_file):
+            if not disable_cache and os.path.exists(dest_file):
                 continue
 
             resp = download(line['url_du_dossier'])
@@ -110,14 +133,18 @@ elif sys.argv[1] == 'download_from_csv':
             time.sleep(0.2)
     print(link_count, 'doslegs found')
 
-elif sys.argv[1] == 'parse_directory':
+@cli.command()
+@click.argument('input_glob')
+@click.argument('output')
+@click.option('--disable-cache', is_flag=True)
+def parse_directory(directory, disable_cache):
     from senapy.dosleg.parser import parse
     import tqdm
 
-    files = glob.glob(sys.argv[2])
+    files = glob.glob(input_glob)
     random.shuffle(files)
 
-    dest = sys.argv[3]
+    dest = output
     if not os.path.exists(dest):
         os.makedirs(dest)
 
@@ -130,7 +157,7 @@ elif sys.argv[1] == 'parse_directory':
         filename = file.split('/')[-1]
         filepath = os.path.join(dest, filename)
 
-        if os.path.exists(filepath):
+        if not disable_cache and os.path.exists(filepath):
             continue
 
         print('parsing', filepath, file=logfile)
@@ -138,5 +165,7 @@ elif sys.argv[1] == 'parse_directory':
         json.dump(data, open(filepath, 'w'), ensure_ascii=False, indent=2, sort_keys=True)
 
     print('parsing finished, log is in', logfilename)
-else:
-    print('INVALID COMMAND')
+
+
+if __name__ == '__main__':
+    cli()
