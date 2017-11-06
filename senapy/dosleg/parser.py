@@ -158,6 +158,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                     step_step = 'depot'
                 elif 'picto_timeline_05_' in img:
                     curr_institution = 'CMP'
+                    curr_stage = 'CMP'
                     # there is no "depot" step for a CMP
                     continue
                 elif 'picto_timeline_03_' in img:
