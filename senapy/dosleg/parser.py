@@ -334,7 +334,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                     log_error('MULTIPLE TEXTS BUT NOT CMP.hemicycle - %s.%s.%s' % (step['institution'], step.get('stage'), step.get('step')))
                     steps_to_add = [steps_to_add[-1]]
 
-            data['steps'] += steps_to_add  # TODO: re-order based on "texte définitif"
+            data['steps'] += steps_to_add
 
     return data
 

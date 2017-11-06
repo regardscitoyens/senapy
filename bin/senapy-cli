@@ -9,16 +9,6 @@ from bs4 import BeautifulSoup
 from slugify import slugify
 
 
-if len(sys.argv) < 2:
-    print("""USAGE:
-    - senapy-cli parse <ID_DOSSIER_SENAT|URL_DOSSIER_SENAT|HTML_FILE>
-    - senapy-cli download_recent <DIR>
-    - senapy-cli download_from_csv <DIR>
-    - senapy-cli parse_directory <glob_pattern> <PARSED_DIR>
-    """)
-    sys.exit()
-
-
 def download(url, retry=5):
     try:
         return requests.get(url).text
@@ -48,9 +38,9 @@ def cli():
     pass
 
 
-@cli.command()
+@cli.command('parse')
 @click.argument('url')
-def parse(url):
+def cli_parse(url):
     """
     \b
     Parse a senat dosleg given either a:
@@ -58,6 +48,7 @@ def parse(url):
         - URL
         - HTML file
     """
+    from senapy.dosleg.parser import parse
 
     if os.path.exists(url):
         html = open(url).read()
