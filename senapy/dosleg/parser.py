@@ -323,7 +323,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
 
             if len(steps_to_add) > 1:
                 # multi-depot
-                if step.get('step') == 'depot':
+                if step.get('step') == 'depot' and step.get('institution') == 'senat':
                     # put real text as last depot
                     steps_to_add = sorted(steps_to_add, key=lambda step: 1 if data.get('senat_id', '') in step.get('source_url', '') else 0)
                     # if we are in a later step, the others depot steps must go at the top
