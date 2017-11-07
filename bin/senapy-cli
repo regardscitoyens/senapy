@@ -128,7 +128,7 @@ def download_from_csv(directory, disable_cache):
 @click.argument('input_glob')
 @click.argument('output')
 @click.option('--disable-cache', is_flag=True)
-def parse_directory(directory, disable_cache):
+def parse_directory(input_glob, output, disable_cache):
     from senapy.dosleg.parser import parse
     import tqdm
 
