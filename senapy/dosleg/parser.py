@@ -40,6 +40,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
     promulgee_line = None
     ordonnance_line = None
     acceleree_line = None
+    cc_line = None
     for line in soup.select('.title .list-disc-03 li'):
         if ' parue ' in line.text:
             promulgee_line = line
@@ -47,6 +48,8 @@ def parse(html, url_senat=None, logfile=sys.stderr):
             ordonnance_line = line
         elif 'accélérée' in line.text or 'Urgence déclarée' in line.text:
             acceleree_line = line
+        elif 'Décision du Conseil constitutionnel' in line.text:
+            cc_line = line
         else:
             log_error('UNKNOWN SUBTITLE: %s' % line.text)
     if promulgee_line:
@@ -60,6 +63,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
         else:
             log_error('NO JO LINK')
     # TOPARSE: ordonnance_line
+    # TOPARSE: CC decision
 
     data['urgence'] = acceleree_line is not None or 'procédure accélérée engagée par le' in title_lines
     if not url_senat:
@@ -213,59 +217,59 @@ def parse(html, url_senat=None, logfile=sys.stderr):
 
                 if 'Texte renvoyé en commission' in item.text:
                     step['echec'] = True
+                else:
+                    # TROUVONS LES TEXTES
+                    for link in item.select('a'):
+                        line = link.parent
+                        if 'href' in link.attrs:
+                            href = link.attrs['href']
+                            nice_text = link.text.lower().strip()
+                            # TODO: assemblée "ppl, ppr, -a0" (a verif)
+                            if (
+                                ('/leg/' in href and '/' not in href.replace('/leg/', '') and 'avis-ce' not in href)
+                                or nice_text in ('texte', 'texte de la commission', 'décision du conseil constitutionnel')
+                                or 'jo n°' in nice_text
 
-                # TROUVONS LES TEXTES
-                for link in item.select('a'):
-                    line = link.parent
-                    if 'href' in link.attrs:
-                        href = link.attrs['href']
-                        nice_text = link.text.lower().strip()
-                        # TODO: assemblée "ppl, ppr, -a0" (a verif)
-                        if (
-                            ('/leg/' in href and '/' not in href.replace('/leg/', '') and 'avis-ce' not in href)
-                            or nice_text in ('texte', 'texte de la commission', 'décision du conseil constitutionnel')
-                            or 'jo n°' in nice_text
+                                # TODO: parse the whole block for date + url
+                                # ex: http://www.senat.fr/dossier-legislatif/pjl08-641.html
+                                or 'conseil-constitutionnel.fr/decision.' in href
+                            ):
 
-                            # TODO: parse the whole block for date + url
-                            # ex: http://www.senat.fr/dossier-legislatif/pjl08-641.html
-                            or 'conseil-constitutionnel.fr/decision.' in href
-                        ):
+                                # motion for a referendum for example
+                                # ex: http://www.senat.fr/dossier-legislatif/pjl12-349.html
+                                if '/leg/motion' in href:
+                                    continue
+                                href = pre_clean_url(href)
 
-                            # motion for a referendum for example
-                            # ex: http://www.senat.fr/dossier-legislatif/pjl12-349.html
-                            if '/leg/motion' in href:
-                                continue
-                            href = pre_clean_url(href)
+                                url = urljoin(url_senat, href)
+                                line_text = line.text.lower()
+                                institution = curr_institution
+                                if curr_stage != 'promulgation':  # TODO: be more specific, have a way to force the curr_instituion
+                                    if 'par l\'assemblée' in line_text:
+                                        institution = 'assemblee'
+                                    elif 'par le sénat' in line_text:
+                                        institution = 'senat'
+                                    else:
+                                        if curr_stage == 'CMP' and step_step == 'hemicycle' \
+                                                and 'texte' in nice_text and not step.get('echec'):
+                                            if 'assemblee-nationale.fr' in href:
+                                                institution = 'assemblee'
+                                            else:
+                                                institution = 'senat'
 
-                            url = urljoin(url_senat, href)
-                            line_text = line.text.lower()
-                            institution = curr_institution
-                            if curr_stage != 'promulgation':  # TODO: be more specific, have a way to force the curr_instituion
-                                if 'par l\'assemblée' in line_text:
-                                    institution = 'assemblee'
-                                elif 'par le sénat' in line_text:
-                                    institution = 'senat'
-                                else:
-                                    if curr_stage == 'CMP' and step_step == 'hemicycle' \
-                                            and 'texte' in nice_text and not step.get('echec'):
-                                        if 'assemblee-nationale.fr' in href:
-                                            institution = 'assemblee'
-                                        else:
-                                            institution = 'senat'
+                                date = re.match(r".*?(\d\d? \w\w\w\w+ \d\d\d\d)", line_text)
+                                if date and date.group(1):
+                                    date = format_date(date.group(1))
 
-                            date = re.match(r".*?(\d\d? \w\w\w\w+ \d\d\d\d)", line_text)
-                            if date and date.group(1):
-                                date = format_date(date.group(1))
+                                    if error_detection_last_date and dateparser.parse(error_detection_last_date) > dateparser.parse(date):
+                                        log_error('DATE ORDER IS INCORRECT - last=%s - found=%s' % (error_detection_last_date, date))
+                                    error_detection_last_date = date
 
-                                if error_detection_last_date and dateparser.parse(error_detection_last_date) > dateparser.parse(date):
-                                    log_error('DATE ORDER IS INCORRECT - last=%s - found=%s' % (error_detection_last_date, date))
-                                error_detection_last_date = date
-
-                            good_urls.append({
-                                'url': url,
-                                'institution': institution,
-                                'date': date,
-                            })
+                                good_urls.append({
+                                    'url': url,
+                                    'institution': institution,
+                                    'date': date,
+                                })
                 if not good_urls:
                     # sinon prendre une url d'un peu moins bonne qualité
                     if 'source_url' not in step:
@@ -277,7 +281,11 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                                 if nice_text == 'rapport':
                                     step['source_url'] = urljoin(url_senat, href)
                                     break
-                    if 'source_url' not in step:
+
+                    if 'Texte retiré par' in item.text:
+                        step['echec'] = True
+
+                    if 'source_url' not in step and not step.get('echec'):
                         # TODO: NO TEXT LINK ! TAKE NUMERO AND DATE
                         log_error('ITEM WITHOUT URL TO TEXT - %s.%s.%s' % (step['institution'], step.get('stage'), step.get('step')))
 
