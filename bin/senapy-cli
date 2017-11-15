@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
+
 import csv, json, time, sys, os, glob, random
 from urllib.parse import urljoin, urlparse
 
@@ -58,7 +58,7 @@ def doslegs_urls():
     min_year = 2008
     _log('finding urls in Open Data CSV...(keeping only doslegs in and after', min_year, ')')
     csv_resp = download("http://data.senat.fr/data/dosleg/dossiers-legislatifs.csv").text
-    # rewrite columns titles to make it easier to work with 
+    # rewrite columns titles to make it easier to work with
     lines = [{k.lower().replace(' ' ,'_'): v for k,v in line.items()}
                 for line in list(csv.DictReader(csv_resp.split('\n'), delimiter=';'))]
     link_count = 0
