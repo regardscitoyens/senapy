@@ -4,6 +4,7 @@ OK url_dossier_senat ( https://www.senat.fr/dossier-legislatif/pjl12-688.html )
 OK urgence ( True )
 
 STEPS:
+!! NOK !! DIFFERENT NUMBER OF STEPS: 18 VS 19
 
  - step 1
 OK institution ( assemblee )
@@ -38,7 +39,7 @@ OK source_url ( https://www.senat.fr/leg/pjl12-723.html )
  - step 6
 OK institution ( senat )
 OK stage ( 1ère lecture )
-!! NOK !! step  diff: commission VS hemicycle
+!! NOK !! step  diff: depot VS hemicycle
 !! NOK !! source_url  diff: https://www.senat.fr/leg/pjl12-732.html VS None
 
  - step 7
@@ -98,26 +99,20 @@ OK stage ( nouv. lect. )
  - step 16
 OK institution ( assemblee )
 OK stage ( l. définitive )
-!! NOK !! step  diff: commission VS depot
-!! NOK !! source_url  diff: https://www.assemblee-nationale.fr/14/rapports/r1346.asp VS https://www.assemblee-nationale.fr/14/ta/ta0191.asp
+!! NOK !! step  diff: hemicycle VS depot
+!! NOK !! source_url  diff: https://www.assemblee-nationale.fr/14/ta/ta0209.asp VS https://www.assemblee-nationale.fr/14/ta/ta0191.asp
 
  - step 17
-OK institution ( assemblee )
-OK stage ( l. définitive )
-OK step ( hemicycle )
-OK source_url ( https://www.assemblee-nationale.fr/14/ta/ta0209.asp )
+!! NOK !! institution  diff: conseil constitutionnel VS assemblee
+!! NOK !! stage  diff: constitutionnalité VS l. définitive
+!! NOK !! step  diff: None VS hemicycle
+!! NOK !! source_url  diff: https://www.conseil-constitutionnel.fr/conseil-constitutionnel/francais/les-decisions/acces-par-date/decisions-depuis-1959/2013/2013-675-dc/decision-n-2013-675-dc-du-9-octobre-2013.138242.html VS https://www.assemblee-nationale.fr/14/ta/ta0209.asp
 
  - step 18
-OK institution ( conseil constitutionnel )
-OK stage ( constitutionnalité )
+!! NOK !! institution  diff: gouvernement VS conseil constitutionnel
+!! NOK !! stage  diff: promulgation VS constitutionnalité
 OK step ( None )
-!! NOK !! source_url  diff: https://www.conseil-constitutionnel.fr/decision/2013/2013675dc.htm VS https://www.conseil-constitutionnel.fr/conseil-constitutionnel/francais/les-decisions/acces-par-date/decisions-depuis-1959/2013/2013-675-dc/decision-n-2013-675-dc-du-09-octobre-2013.138242.html
+!! NOK !! source_url  diff: https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000028056315&categorieLien=id VS https://www.conseil-constitutionnel.fr/conseil-constitutionnel/francais/les-decisions/acces-par-date/decisions-depuis-1959/2013/2013-675-dc/decision-n-2013-675-dc-du-9-octobre-2013.138242.html
 
- - step 19
-OK institution ( gouvernement )
-OK stage ( promulgation )
-OK step ( None )
-!! NOK !! source_url  diff: https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000028056315&categorieLien=id VS https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000028056223&categorieLien=id
-
-NOK: 32
-OK: 48
+NOK: 37
+OK: 39
