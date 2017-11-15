@@ -11,6 +11,10 @@ from compare_with_legipy import compare as compare_legipy
 from anpy.dossier_like_senapy import parse as parse_an
 from anpy.utils import json_dumps
 
+from lawfactory_utils.urls import download, enable_requests_cache
+
+enable_requests_cache()
+
 DIR = 'tests/resources/verified_dosleg/'
 
 for file in os.listdir(DIR):
@@ -21,7 +25,7 @@ for file in os.listdir(DIR):
 
     if True: # enable this if you want to regen anpy.json
         if os.path.exists(join(path, 'anpy.json')):
-            html = requests.get(output['url_dossier_assemblee']).text # oulala, can change !
+            html = download(output['url_dossier_assemblee']).text # oulala, can change !
             result = parse_an(html, output['url_dossier_assemblee'])[0]
             open(DIR+file+'/anpy.json', 'w').write(json_dumps(result, ensure_ascii=False, indent=4, sort_keys=True))
 

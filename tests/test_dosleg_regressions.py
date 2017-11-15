@@ -9,7 +9,12 @@ from .tools.compare_thelawfactory_and_me import compare
 from .tools.compare_with_anpy import compare as compare_anpy
 from .tools.compare_with_legipy import compare as compare_legipy
 
+from lawfactory_utils.urls import enable_requests_cache
+
+
 def test_dosleg_regressions():
+    enable_requests_cache()
+
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     DIR = join(BASE_DIR, 'resources/verified_dosleg/')
 
