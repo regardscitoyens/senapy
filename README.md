@@ -1,13 +1,17 @@
 # senapy
 [![Build Status](https://travis-ci.org/regardscitoyens/senapy.svg?branch=master)](https://travis-ci.org/regardscitoyens/senapy)
-A python client for http://senat.fr website
+
+A python client for [senat.fr](https://senat.fr) website.
 
 ## Main goal
-Retrieve painlessly json data from senat.fr
+Retrieve painlessly JSON data from [senat.fr](https://senat.fr).
+
+## Requirements
+Python 3
 
 ## Install :
 ```bash
-pip install senapy (or "pip install -e ."" locally)
+pip3 install senapy (or "pip3 install -e ." locally)
 ```
 
 ## Search services
