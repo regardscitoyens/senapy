@@ -16,7 +16,7 @@ pip install senapy (or "pip install -e ."" locally)
 
 ## Dossiers Legislatifs
 
- - Parse one: `senapy-cli URL_or_filepath`
+ - Parse one: `senapy-cli parse URL_or_filepath`
     - warning: for now the file must be in UTF-8
- - Download all: `python tests/dosleg/download_from_csv.py dest_directory/`
- - Dowload recents: `python tests/dosleg/download_from_csv.py dest_directory/`
+ - Get all the urls: `senapy-cli doslegs_urls`
+ - Parse many: `cat urls | senapy-cli parse_many output_dir`

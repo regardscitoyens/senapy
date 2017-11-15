@@ -8,21 +8,11 @@ import click
 from bs4 import BeautifulSoup
 from slugify import slugify
 
-
-def download(url, retry=5):
-    try:
-        return requests.get(url).text
-    except requests.exceptions.ConnectionError as e:
-        if retry:
-            time.sleep(1)
-            return download(url, retry-1)
-        raise e
+from lawfactory_utils.urls import download, enable_requests_cache, clean_url
 
 
-def normalized_filename(url):
-    scheme, netloc, path, params, query, fragment = urlparse(url)
-    return slugify(path.replace('dossier-legislatif/', '') \
-        .replace('.html', ''))
+def _log(*args):
+    print(*args, file=sys.stderr)
 
 
 @click.group()
@@ -31,9 +21,8 @@ def cli():
     \b
     USAGE:
         - senapy-cli parse <ID_DOSSIER_SENAT|URL_DOSSIER_SENAT|HTML_FILE>
-        - senapy-cli download_recent <DIR>
-        - senapy-cli download_from_csv <DIR>
-        - senapy-cli parse_directory <glob_pattern> <PARSED_DIR>
+        - senapy-cli doslegs_urls
+        - cat urls | senapy-cli parse_many <output_dir>
     """
     pass
 
@@ -56,106 +45,76 @@ def cli_parse(url):
     else:
         if not url.startswith('http'):
             url = "http://www.senat.fr/dossier-legislatif/%s.html" % url
-        html = download(url)
+        html = download(url).text
         data = parse(html, url)
 
     print(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True))
 
+
 @cli.command()
-@click.argument('directory')
-@click.option('--disable-cache', is_flag=True)
-def download_recent(directory, disable_cache):
-    dest = directory
-    print('saving to', dest)
+def doslegs_urls():
+    urls = set()
 
-    if not os.path.exists(dest):
-        os.makedirs(dest)
+    min_year = 2008
+    _log('finding urls in Open Data CSV...(keeping only doslegs in and after', min_year, ')')
+    csv_resp = download("http://data.senat.fr/data/dosleg/dossiers-legislatifs.csv").text
+    # rewrite columns titles to make it easier to work with 
+    lines = [{k.lower().replace(' ' ,'_'): v for k,v in line.items()}
+                for line in list(csv.DictReader(csv_resp.split('\n'), delimiter=';'))]
+    link_count = 0
+    for line in lines:
+        year = int(line['date_initiale'].split('/')[-1])
+        if year >= min_year:
+            link_count += 1
+            urls.add(clean_url(line['url_du_dossier']))
+    _log('  =>', link_count, 'urls found in CSV')
 
-    html = download('http://www.senat.fr/dossiers-legislatifs/textes-recents.html')
-    soup = BeautifulSoup(html, 'html5lib')
+
+    _log('finding urls on senat.fr')
+    html = download('http://www.senat.fr/dossiers-legislatifs/textes-recents.html').text
+    soup = BeautifulSoup(html, 'lxml')
 
     link_count = 0
     for link in soup.select('a'):
         href = link.attrs.get('href', '')
         if '/dossier-legislatif/' in href:
             link_count += 1
-            print(link.attrs['href'])
-            print("->", link.text.strip())
-
-            dest_file = os.path.join(dest, normalized_filename(href))
-            if not disable_cache and os.path.exists(dest_file):
-                continue
-
             url = urljoin('http://www.senat.fr/', href)
-            resp = download(url)
-            open(dest_file, 'w').write(resp + ('\n<!-- URL_SENAT=%s -->' % url))
-    print(link_count, 'doslegs found')
+            urls.add(clean_url(url))
+    _log('  =>', link_count, 'doslegs found on website')
+
+    for url in sorted(urls):
+        print(url)
+
+
 
 @cli.command()
-@click.argument('directory')
+@click.argument('output_dir')
+@click.option('--overwrite', is_flag=True)
 @click.option('--disable-cache', is_flag=True)
-def download_from_csv(directory, disable_cache):
-    csv_resp = download("http://data.senat.fr/data/dosleg/dossiers-legislatifs.csv")
-
-    lines = [{k.lower().replace(' ' ,'_'): v for k,v in line.items()}
-                for line in list(csv.DictReader(csv_resp.split('\n'), delimiter=';'))]
-
-    dest = directory
-
-    if not os.path.exists(dest):
-        os.makedirs(dest)
-
-    lines.sort(key=lambda line:int(line['date_initiale'].split('/')[-1])) # sort by year
-
-    link_count = 0
-    for line in lines:
-        year = int(line['date_initiale'].split('/')[-1])
-        if year >= 2008:
-            link_count += 1
-            print(line['url_du_dossier'])
-            print("->", year, line['titre'])
-
-            dest_file = os.path.join(dest, normalized_filename(line['url_du_dossier']))
-            if not disable_cache and os.path.exists(dest_file):
-                continue
-
-            resp = download(line['url_du_dossier'])
-            open(dest_file, 'w').write(resp + ('\n<!-- URL_SENAT=%s -->' % line['url_du_dossier']))
-            time.sleep(0.2)
-    print(link_count, 'doslegs found')
-
-@cli.command()
-@click.argument('input_glob')
-@click.argument('output')
-@click.option('--disable-cache', is_flag=True)
-def parse_directory(input_glob, output, disable_cache):
+def parse_many(output_dir, overwrite, disable_cache):
     from senapy.dosleg.parser import parse
-    import tqdm
 
-    files = glob.glob(input_glob)
-    random.shuffle(files)
+    if not disable_cache:
+        enable_requests_cache()
 
-    dest = output
-    if not os.path.exists(dest):
-        os.makedirs(dest)
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
-    logfilename = 'senapy.log'
-    logfile = open(logfilename, 'w')
+    for url in sys.stdin:
+        url = url.strip()
 
-    print(len(files), 'files to parse')
-    for file in tqdm.tqdm(files):
-        html = open(file).read()
-        filename = file.split('/')[-1]
-        filepath = os.path.join(dest, filename)
+        senat_id = url.split('/')[-1].replace('.html', '')
 
-        if not disable_cache and os.path.exists(filepath):
+        filepath = os.path.join(output_dir, senat_id)
+        if not overwrite and os.path.exists(filepath):
             continue
 
-        print('parsing', filepath, file=logfile)
-        data = parse(html, logfile=logfile)
-        json.dump(data, open(filepath, 'w'), ensure_ascii=False, indent=2, sort_keys=True)
-
-    print('parsing finished, log is in', logfilename)
+        _log(' -- ', url)
+        html = download(url).text
+        parsed = parse(html)
+        json.dump(parsed, open(filepath, 'w'), ensure_ascii=False, indent=2, sort_keys=True)
+    _log('parsing finished')
 
 
 if __name__ == '__main__':
