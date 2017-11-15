@@ -257,13 +257,21 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                                             else:
                                                 institution = 'senat'
 
-                                date = re.match(r".*?(\d\d? \w\w\w\w+ \d\d\d\d)", line_text)
-                                if date and date.group(1):
-                                    date = format_date(date.group(1))
+                                # find all dates and take the last one
+                                date = None
+                                dates = [format_date(match.group(1)) for match in
+                                    re.finditer(r".*?(\d\d? \w\w\w\w+ \d\d\d\d)", line_text)]
+                                if dates:
+                                    date = sorted(dates)[-1]
+                                    if curr_stage == 'constitutionnalité' and len(dates) > 1:
+                                        date = sorted(dates)[-2]
 
                                     if error_detection_last_date and dateparser.parse(error_detection_last_date) > dateparser.parse(date):
+                                        # TODO: can be incorrect because of multi-depot
                                         log_error('DATE ORDER IS INCORRECT - last=%s - found=%s' % (error_detection_last_date, date))
                                     error_detection_last_date = date
+                                if curr_stage == 'promulgation' and 'end' in data:
+                                    date = data['end']
 
                                 good_urls.append({
                                     'url': url,
