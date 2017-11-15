@@ -4,5 +4,5 @@ python:
     - "3.4"
     - "3.5"
     - "3.6"
-install: pip3 install -r requirements.txt; and pip3 install pytest
+install: pip3 install -r requirements.txt && pip3 install pytest
 script: pytest
