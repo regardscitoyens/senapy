@@ -1,14 +1,8 @@
-# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-
-# pycharm
 .idea/
-
-# pytest
 .cache
-
-# pip
 /build/
 /dist/
 /*.egg-info/
+/tmp/
