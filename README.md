@@ -14,7 +14,7 @@ Python 3
 ## Install:
 
 - From pip: `pip3 install senapy`
-- Locally: `pip3 install -r requirements.txt`
+- Locally: `pip3 install -e .`
 
 ## Test:
 
