@@ -4,19 +4,26 @@
 A python client for [senat.fr](https://senat.fr) website.
 
 ## Main goal
+
 Retrieve painlessly JSON data from [senat.fr](https://senat.fr).
 
 ## Requirements
+
 Python 3
 
-## Install :
-```bash
-pip3 install senapy (or "pip3 install -e ." locally)
-```
+## Install:
+
+- From pip: `pip3 install senapy`
+- Locally: `pip3 install -e .`
+
+## Test:
+
+- `pip3 install pytest`
+- `pytest`
 
 ## Search services
- * **QuestionSearchService** to search for questions
 
+ * **QuestionSearchService** to search for questions
 
 ## Dossiers Legislatifs
 

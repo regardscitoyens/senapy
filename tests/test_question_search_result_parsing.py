@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import codecs
 
 from senapy.parsing.question_search_result_parser import parse_question_search_result
