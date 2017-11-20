@@ -19,7 +19,7 @@ with open(path.join(here, 'requirements.txt')) as f:
     requirements = []
     for req in f.read().splitlines():
         if req.startswith("git+"):
-            os.system('pip install '+req)
+            os.system('pip3 install ' + req)
         else:
             requirements.append(req)
 
