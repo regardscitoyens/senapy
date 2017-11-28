@@ -40,7 +40,7 @@ def cli_parse(url, use_cache):
     """
     from senapy.dosleg.parser import parse
 
-    if not use_cache:
+    if use_cache:
         enable_requests_cache()
 
     if os.path.exists(url):
