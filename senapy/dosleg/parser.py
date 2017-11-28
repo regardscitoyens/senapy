@@ -216,7 +216,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
             if curr_institution != 'nouv. délib.':
 
                 if 'Texte renvoyé en commission' in item.text:
-                    step['echec'] = True
+                    step['echec'] = 'renvoi en commission'
                 else:
                     # TROUVONS LES TEXTES
                     for link in item.select('a'):
@@ -291,7 +291,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                                     break
 
                     if 'Texte retiré par' in item.text:
-                        step['echec'] = True
+                        step['echec'] = "texte retiré"
 
                     if 'source_url' not in step and not step.get('echec'):
                         # TODO: NO TEXT LINK ! TAKE NUMERO AND DATE
@@ -317,7 +317,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                     last_step = data['steps'][-1]
                     if data['steps'][-1].get('stage') == 'CMP' and step.get('step') == 'hemicycle':
                         if 'désaccord' in section_title:
-                            last_step['echec'] = True
+                            last_step['echec'] = 'echec'
                         else:
                             log_error('CMP.hemicycle with no links and no fail indicated')
                         continue

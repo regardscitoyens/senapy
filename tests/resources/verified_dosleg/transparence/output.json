@@ -48,7 +48,7 @@
     },
     {
       "date": "2013-07-09",
-      "echec": true,
+      "echec": "renvoi en commission",
       "institution": "senat",
       "stage": "1ère lecture",
       "step": "hemicycle"
