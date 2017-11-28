@@ -29,7 +29,8 @@ def cli():
 
 @cli.command('parse')
 @click.argument('url')
-def cli_parse(url):
+@click.option('--use-cache', is_flag=True)
+def cli_parse(url, use_cache):
     """
     \b
     Parse a senat dosleg given either a:
@@ -38,6 +39,9 @@ def cli_parse(url):
         - HTML file
     """
     from senapy.dosleg.parser import parse
+
+    if not use_cache:
+        enable_requests_cache()
 
     if os.path.exists(url):
         html = open(url).read()
