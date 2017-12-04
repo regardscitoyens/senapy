@@ -116,7 +116,7 @@ def parse_many(output_dir, overwrite, disable_cache):
 
         _log(' -- ', url)
         html = download(url).text
-        parsed = parse(html)
+        parsed = parse(html, url)
         json.dump(parsed, open(filepath, 'w'), ensure_ascii=False, indent=2, sort_keys=True)
     _log('parsing finished')
 
