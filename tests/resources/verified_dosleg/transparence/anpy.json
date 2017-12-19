@@ -4,96 +4,112 @@
     "long_title": "- projet de loi organique",
     "steps": [
         {
+            "date": "2013-04-24",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/14/projets/pl1004.asp",
             "stage": "1ère lecture",
             "step": "depot"
         },
         {
+            "date": "2013-06-05",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/14/ta-commission/r1108-a0.asp",
             "stage": "1ère lecture",
             "step": "commission"
         },
         {
+            "date": "2013-06-25",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0161.asp",
             "stage": "1ère lecture",
             "step": "hemicycle"
         },
         {
+            "date": "2013-06-26",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/pjl12-688.html",
             "stage": "1ère lecture",
             "step": "depot"
         },
         {
+            "date": "2013-07-03",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/pjl12-723.html",
             "stage": "1ère lecture",
             "step": "commission"
         },
         {
+            "date": "2013-07-09",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/pjl12-732.html",
             "stage": "1ère lecture",
             "step": "depot"
         },
         {
+            "date": "2013-07-15",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/tas12-192.html",
             "stage": "1ère lecture",
             "step": "hemicycle"
         },
         {
+            "date": "2013-07-17",
             "institution": "CMP",
             "source_url": "http://www.assemblee-nationale.fr/14/rapports/r1271.asp",
             "stage": "CMP",
             "step": "commission"
         },
         {
+            "date": "2013-07-16",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/14/projets/pl1249.asp",
             "stage": "nouv. lect.",
             "step": "depot"
         },
         {
+            "date": "2013-07-17",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/14/ta-commission/r1279-a0.asp",
             "stage": "nouv. lect.",
             "step": "commission"
         },
         {
+            "date": "2013-07-23",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0191.asp",
             "stage": "nouv. lect.",
             "step": "hemicycle"
         },
         {
+            "date": "2013-07-23",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/pjl12-797.html",
             "stage": "nouv. lect.",
             "step": "depot"
         },
         {
+            "date": "2013-07-24",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/pjl12-802.html",
             "stage": "nouv. lect.",
             "step": "commission"
         },
         {
+            "date": "2013-07-25",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/tas12-210.html",
             "stage": "nouv. lect.",
             "step": "hemicycle"
         },
         {
+            "date": "2013-07-23",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0191.asp",
             "stage": "l. définitive",
             "step": "depot"
         },
         {
+            "date": "2013-09-17",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0209.asp",
             "stage": "l. définitive",

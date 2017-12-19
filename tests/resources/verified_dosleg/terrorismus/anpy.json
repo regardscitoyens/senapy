@@ -4,42 +4,49 @@
     "long_title": "Police et sécurité : sécurité intérieure et lutte contre le terrorisme",
     "steps": [
         {
+            "date": "2017-06-22",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/pjl16-587.html",
             "stage": "1ère lecture",
             "step": "depot"
         },
         {
+            "date": "2017-07-12",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/pjl16-630.html",
             "stage": "1ère lecture",
             "step": "commission"
         },
         {
+            "date": "2017-07-18",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/tas16-115.html",
             "stage": "1ère lecture",
             "step": "hemicycle"
         },
         {
+            "date": "2017-07-19",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/15/projets/pl0104.asp",
             "stage": "1ère lecture",
             "step": "depot"
         },
         {
+            "date": "2017-09-14",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/15/ta-commission/r0164-a0.asp",
             "stage": "1ère lecture",
             "step": "commission"
         },
         {
+            "date": "2017-10-03",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/15/ta/ta0019.asp",
             "stage": "1ère lecture",
             "step": "hemicycle"
         },
         {
+            "date": "2017-10-10",
             "institution": "CMP",
             "source_url": "http://www.assemblee-nationale.fr/15/ta-commission/r0265-a0.asp",
             "stage": "CMP",

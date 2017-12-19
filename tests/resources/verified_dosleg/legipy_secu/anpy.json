@@ -4,42 +4,49 @@
     "long_title": "Sécurité sociale : loi de financement 2008",
     "steps": [
         {
+            "date": "2007-10-11",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/13/projets/pl0284.asp",
             "stage": "1ère lecture",
             "step": "depot"
         },
         {
+            "date": "2007-10-17",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/13/rapports/r0295.asp",
             "stage": "1ère lecture",
             "step": "commission"
         },
         {
+            "date": "2007-10-30",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0048.asp",
             "stage": "1ère lecture",
             "step": "hemicycle"
         },
         {
+            "date": "2007-11-06",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/pjl07-067.html",
             "stage": "1ère lecture",
             "step": "depot"
         },
         {
+            "date": "2007-11-07",
             "institution": "senat",
             "source_url": "https://www.senat.fr/rap/l07-072-1/l07-072-1.html",
             "stage": "1ère lecture",
             "step": "commission"
         },
         {
+            "date": "2007-11-16",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/tas07-023.html",
             "stage": "1ère lecture",
             "step": "hemicycle"
         },
         {
+            "date": "2007-11-20",
             "institution": "CMP",
             "source_url": "http://www.assemblee-nationale.fr/13/rapports/r0416.asp",
             "stage": "CMP",

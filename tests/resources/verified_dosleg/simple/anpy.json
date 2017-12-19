@@ -4,36 +4,42 @@
     "long_title": "Allemagne : échange de renseignements sur les titulaires du certificat d'immatriculation de véhicules",
     "steps": [
         {
+            "date": "2008-07-23",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/pjl07-488.html",
             "stage": "1ère lecture",
             "step": "depot"
         },
         {
+            "date": "2010-07-07",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/pjl09-638.html",
             "stage": "1ère lecture",
             "step": "commission"
         },
         {
+            "date": "2010-07-12",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/tas09-141.html",
             "stage": "1ère lecture",
             "step": "hemicycle"
         },
         {
+            "date": "2010-07-12",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/13/projets/pl2726.asp",
             "stage": "1ère lecture",
             "step": "depot"
         },
         {
+            "date": "2010-12-08",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/13/rapports/r3023.asp",
             "stage": "1ère lecture",
             "step": "commission"
         },
         {
+            "date": "2010-12-21",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0583.asp",
             "stage": "1ère lecture",

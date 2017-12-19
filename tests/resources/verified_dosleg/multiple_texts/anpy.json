@@ -4,42 +4,49 @@
     "long_title": "Police et sécurité : renseignement",
     "steps": [
         {
+            "date": "2015-03-19",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/14/projets/pl2669.asp",
             "stage": "1ère lecture",
             "step": "depot"
         },
         {
+            "date": "2015-04-02",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/14/ta-commission/r2697-a0.asp",
             "stage": "1ère lecture",
             "step": "commission"
         },
         {
+            "date": "2015-05-05",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0511.asp",
             "stage": "1ère lecture",
             "step": "hemicycle"
         },
         {
+            "date": "2015-05-05",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/pjl14-424.html",
             "stage": "1ère lecture",
             "step": "depot"
         },
         {
+            "date": "2015-05-20",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/pjl14-461.html",
             "stage": "1ère lecture",
             "step": "commission"
         },
         {
+            "date": "2015-06-09",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/tas14-111.html",
             "stage": "1ère lecture",
             "step": "hemicycle"
         },
         {
+            "date": "2015-06-17",
             "institution": "CMP",
             "source_url": "http://www.assemblee-nationale.fr/14/ta-commission/r2868-a0.asp",
             "stage": "CMP",

@@ -4,42 +4,49 @@
     "long_title": "Affaires étrangères : action extérieure de l'État",
     "steps": [
         {
+            "date": "2009-07-22",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/pjl08-582.html",
             "stage": "1ère lecture",
             "step": "depot"
         },
         {
+            "date": "2010-02-03",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/pjl09-263.html",
             "stage": "1ère lecture",
             "step": "commission"
         },
         {
+            "date": "2010-02-22",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/tas09-073.html",
             "stage": "1ère lecture",
             "step": "hemicycle"
         },
         {
+            "date": "2010-02-23",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/13/projets/pl2339.asp",
             "stage": "1ère lecture",
             "step": "depot"
         },
         {
+            "date": "2010-05-12",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/13/ta-commission/r2513-a0.asp",
             "stage": "1ère lecture",
             "step": "commission"
         },
         {
+            "date": "2010-07-05",
             "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/13/ta/ta0507.asp",
             "stage": "1ère lecture",
             "step": "hemicycle"
         },
         {
+            "date": "2010-07-08",
             "institution": "CMP",
             "source_url": "http://www.assemblee-nationale.fr/13/rapports/r2722.asp",
             "stage": "CMP",

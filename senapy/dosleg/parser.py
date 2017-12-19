@@ -274,7 +274,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                                 # find all dates and take the last one
                                 date = None
                                 dates = [format_date(match.group(1)) for match in
-                                    re.finditer(r"(\d\d? \w\w\w\w+ \d\d\d\d)", line_text)]
+                                    re.finditer(r"(\d\d? \w\w\w+ \d\d\d\d)", line_text)]
                                 if dates:
                                     date = sorted(dates)[-1]
                                     if curr_stage == 'constitutionnalité' and len(dates) > 1:
