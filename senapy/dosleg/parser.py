@@ -108,6 +108,13 @@ def parse(html, url_senat=None, logfile=sys.stderr):
         if 'Budget' in data['themes']:
             data['use_old_procedure'] = True
 
+    if 'pjl' in data.get('senat_id', ''):
+        data['proposal_type'] = 'PJL'
+    elif 'ppl' in data.get('senat_id', ''):
+        data['proposal_type'] = 'PPL'
+    else:
+        log_error('UNKNOWN PROPOSAL TYPE (PPL/PJL)')
+
     curr_institution = None
     curr_stage = None
     error_detection_last_date = None
@@ -300,9 +307,29 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                     if 'Texte retiré par' in item.text:
                         step['echec'] = "texte retiré"
 
+
                     if 'source_url' not in step and not step.get('echec'):
-                        # TODO: NO TEXT LINK ! TAKE NUMERO AND DATE
-                        log_error('ITEM WITHOUT URL TO TEXT - %s.%s.%s' % (step['institution'], step.get('stage'), step.get('step')))
+                        if step.get('institution') == 'assemblee' and 'assemblee_legislature' in data:
+                            legislature = data.get('assemblee_legislature')
+                            text_no_match = re.search(r'(Texte|Rapport)\s*n°\s*(\d+)', item.text, re.I)
+                            if text_no_match:
+                                text_no = text_no_match.group(2)
+                                url = None
+                                if step.get('step') == 'commission':
+                                    url = 'http://www.assemblee-nationale.fr/{}/ta-commission/r{:04d}-a0.asp'
+                                elif step.get('step') == 'depot':
+                                    if step.get('proposal_type') == 'PJL':
+                                        url = 'http://www.assemblee-nationale.fr/{}/projets/pl{:04d}.asp'
+                                    else:
+                                        url = 'http://www.assemblee-nationale.fr/{}/propositions/pion{:04d}.asp'
+                                elif step.get('step') == 'hemicycle':
+                                    url = 'http://www.assemblee-nationale.fr/{}/ta/ta{:04d}.asp'
+
+                                if url:
+                                    step['source_url'] = url.format(legislature, int(text_no))
+
+                        if 'source_url' not in step:
+                            log_error('ITEM WITHOUT URL TO TEXT - %s.%s.%s' % (step['institution'], step.get('stage'), step.get('step')))
 
             steps_to_add = []
             if good_urls:
