@@ -59,6 +59,11 @@
       "stage": "promulgation"
     }
   ],
+  "themes": [
+    "Affaires étrangères et coopération",
+    "Traités et conventions",
+    "Transports"
+  ],
   "urgence": false,
   "url_dossier_assemblee": "http://www.assemblee-nationale.fr/13/dossiers/allemagne_vehicules.asp",
   "url_dossier_senat": "https://www.senat.fr/dossier-legislatif/pjl07-488.html",

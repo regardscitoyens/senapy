@@ -101,6 +101,13 @@ def parse(html, url_senat=None, logfile=sys.stderr):
         log_error('VERY SPECIAL CASE - PAS DE NAVETTES NORMALES')
         return
 
+    themes_box = soup.select_one('#box-themes')
+    if themes_box:
+        data['themes'] = [x.text.strip() for x in themes_box.select('.theme')]
+
+        if 'Budget' in data['themes']:
+            data['use_old_procedure'] = True
+
     curr_institution = None
     curr_stage = None
     error_detection_last_date = None

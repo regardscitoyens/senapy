@@ -143,6 +143,9 @@
       "stage": "promulgation"
     }
   ],
+  "themes": [
+    "Pouvoirs publics et Constitution"
+  ],
   "urgence": true,
   "url_dossier_assemblee": "http://www.assemblee-nationale.fr/14/dossiers/transparence_vie_publique_pjl.asp",
   "url_dossier_senat": "https://www.senat.fr/dossier-legislatif/pjl12-688.html",

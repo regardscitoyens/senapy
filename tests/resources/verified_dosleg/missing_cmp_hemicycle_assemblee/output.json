@@ -81,6 +81,9 @@
       "stage": "promulgation"
     }
   ],
+  "themes": [
+    "Affaires étrangères et coopération"
+  ],
   "urgence": true,
   "url_dossier_assemblee": "http://www.assemblee-nationale.fr/13/dossiers/action_exterieure.asp",
   "url_dossier_senat": "https://www.senat.fr/dossier-legislatif/pjl08-582.html",

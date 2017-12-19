@@ -79,6 +79,9 @@
       "stage": "promulgation"
     }
   ],
+  "themes": [
+    "Justice"
+  ],
   "urgence": false,
   "url_dossier_assemblee": "http://www.assemblee-nationale.fr/13/dossiers/saisie_et_confiscation.asp",
   "url_dossier_senat": "https://www.senat.fr/dossier-legislatif/ppl08-454.html",

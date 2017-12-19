@@ -130,6 +130,11 @@
       "stage": "promulgation"
     }
   ],
+  "themes": [
+    "Société",
+    "Questions sociales et santé",
+    "Entreprises"
+  ],
   "urgence": true,
   "url_dossier_assemblee": "http://www.assemblee-nationale.fr/14/dossiers/harcelement_sexuel.asp",
   "url_dossier_senat": "https://www.senat.fr/dossier-legislatif/pjl11-592.html",

@@ -87,6 +87,11 @@
       "stage": "promulgation"
     }
   ],
+  "themes": [
+    "Société",
+    "Famille",
+    "Justice"
+  ],
   "urgence": false,
   "url_dossier_assemblee": "http://www.assemblee-nationale.fr/13/dossiers/repression_violences_femmes.asp",
   "url_dossier_senat": "https://www.senat.fr/dossier-legislatif/ppl09-338.html",

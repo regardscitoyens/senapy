@@ -86,6 +86,10 @@
       "stage": "promulgation"
     }
   ],
+  "themes": [
+    "Police et sécurité",
+    "Défense"
+  ],
   "urgence": true,
   "url_dossier_assemblee": "http://www.assemblee-nationale.fr/14/dossiers/renseignement.asp",
   "url_dossier_senat": "https://www.senat.fr/dossier-legislatif/pjl14-424.html",
