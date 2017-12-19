@@ -108,7 +108,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
         if 'Budget' in data['themes']:
             data['use_old_procedure'] = True
 
-    if 'pjl' in data.get('senat_id', ''):
+    if 'pjl' in data.get('senat_id', '') or 'plfss' in data.get('senat_id', ''):
         data['proposal_type'] = 'PJL'
     elif 'ppl' in data.get('senat_id', ''):
         data['proposal_type'] = 'PPL'
