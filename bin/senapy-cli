@@ -56,10 +56,10 @@ def cli_parse(url, use_cache):
 
 
 @cli.command()
-def doslegs_urls():
+@click.option('--min-year', default=2009)
+def doslegs_urls(min_year):
     urls = set()
 
-    min_year = 2008
     _log('finding urls in Open Data CSV...(keeping only doslegs in and after', min_year, ')')
     csv_resp = download("http://data.senat.fr/data/dosleg/dossiers-legislatifs.csv").text
     # rewrite columns titles to make it easier to work with 
