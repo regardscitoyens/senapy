@@ -7,11 +7,31 @@ import requests
 import dateparser
 from bs4 import BeautifulSoup, Comment
 
-from lawfactory_utils.urls import pre_clean_url, clean_url
+from lawfactory_utils.urls import pre_clean_url, clean_url, download
 
 def format_date(date):
     parsed = dateparser.parse(date, languages=['fr'])
     return parsed.strftime("%Y-%m-%d")
+
+
+def parse_table_concordance(url):
+    html = download(url).text
+    soup = BeautifulSoup(html, 'lxml')
+
+    old_to_adopted = {}
+
+    rows = soup.select('div[align="center"] > table tr')
+    if not rows:
+        # old style
+        rows = soup.select('div[align="left"] > table tr')
+
+    for line in rows:
+        old, adopted, *_ = [x.text.strip().lower() for x in line.select('td')]
+        if 'numérotation' in old or not old:
+            continue
+        old_to_adopted[old] = adopted
+
+    return old_to_adopted
 
 
 def parse(html, url_senat=None, logfile=sys.stderr):
@@ -20,12 +40,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
     def log_error(error):
         print('## ERROR ###', error, file=logfile)
 
-    # base_data = json.load(open(filename))
     soup = BeautifulSoup(html, 'lxml')
-
-    # open('test.html', 'w').write(base_data['html'])
-    # del base_data['html']
-    # pp(base_data)
 
     data['short_title'] = soup.select_one('.title-dosleg').text.strip()
 
@@ -228,7 +243,6 @@ def parse(html, url_senat=None, logfile=sys.stderr):
             # nouv delib contains all the other steps, making it confusing
             # because there's no text for a nouv delib
             if curr_institution != 'nouv. délib.':
-
                 if 'Texte renvoyé en commission' in item.text:
                     step['echec'] = 'renvoi en commission'
                 else:
@@ -331,6 +345,15 @@ def parse(html, url_senat=None, logfile=sys.stderr):
 
                         if 'source_url' not in step:
                             log_error('ITEM WITHOUT URL TO TEXT - %s.%s.%s' % (step['institution'], step.get('stage'), step.get('step')))
+
+
+            # look for Table de concordance
+            if curr_stage == 'promulgation':
+                for a in item.select('a'):
+                    if 'table de concordance' in a.text.lower():
+                        data['table_concordance'] = parse_table_concordance(
+                            clean_url(urljoin(url_senat, a.attrs['href'])))
+
 
             steps_to_add = []
             if good_urls:

@@ -82,6 +82,32 @@
       "stage": "promulgation"
     }
   ],
+  "table_concordance": {
+    "10": "19",
+    "11": "20",
+    "12": "21",
+    "13": "22",
+    "14": "23",
+    "1er": "1er",
+    "2": "2",
+    "3": "3",
+    "4": "4",
+    "4 bis": "5",
+    "5": "6",
+    "5 bis": "7",
+    "5 quater": "supprimé",
+    "5 ter": "8",
+    "6": "9",
+    "6 bis": "10",
+    "6 quater": "12",
+    "6 quinquies": "13",
+    "6 ter": "11",
+    "7": "14",
+    "8": "15",
+    "9": "16",
+    "9 bis": "18",
+    "9 bis a": "17"
+  },
   "themes": [
     "Affaires étrangères et coopération"
   ],

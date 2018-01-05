@@ -144,6 +144,24 @@
       "stage": "promulgation"
     }
   ],
+  "table_concordance": {
+    "1er": "1er",
+    "2": "2",
+    "2 bis": "4",
+    "2 bis a": "3",
+    "2 quater": "6",
+    "2 ter": "5",
+    "3": "7",
+    "4": "8",
+    "4 bis": "10",
+    "4 bis a": "9",
+    "4 ter": "11",
+    "5": "12",
+    "6": "13",
+    "7": "14",
+    "7 bis": "15",
+    "8": "16"
+  },
   "themes": [
     "Pouvoirs publics et Constitution"
   ],

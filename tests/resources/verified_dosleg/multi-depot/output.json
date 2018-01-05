@@ -131,6 +131,20 @@
       "stage": "promulgation"
     }
   ],
+  "table_concordance": {
+    "1er": "1er",
+    "1er bis": "2",
+    "2": "3",
+    "2 bis": "4",
+    "2 quater": "6",
+    "2 ter": "5",
+    "3": "7",
+    "3 bis": "8",
+    "4": "9",
+    "5": "10",
+    "6": "11",
+    "7": "12"
+  },
   "themes": [
     "Société",
     "Questions sociales et santé",
