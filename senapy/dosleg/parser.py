@@ -306,7 +306,8 @@ def parse(html, url_senat=None, logfile=sys.stderr):
 
                     if 'Texte retiré par' in item.text:
                         step['echec'] = "texte retiré"
-
+                    elif 'Texte rejeté par' in item.text:
+                        step['echec'] = "rejet"
 
                     if 'source_url' not in step and not step.get('echec'):
                         if step.get('institution') == 'assemblee' and 'assemblee_legislature' in data:
