@@ -26,10 +26,17 @@ def parse_table_concordance(url):
         rows = soup.select('div[align="left"] > table tr')
 
     for line in rows:
-        old, adopted, *_ = [x.text.strip().lower() for x in line.select('td')]
+        cells = [x.text.strip().lower() for x in line.select('td')]
+        old, adopted, *_ = cells
         if 'numérotation' in old or not old:
             continue
         old_to_adopted[old] = adopted
+
+        # there can be two concordances per line
+        # ex: https://www.senat.fr/dossier-legislatif/tc/tc_pjl08-155.html
+        if len(cells) == 5:
+            *_, old, adopted = cells
+            old_to_adopted[old] = adopted
 
     return old_to_adopted
 
