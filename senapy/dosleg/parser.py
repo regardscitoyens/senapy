@@ -19,6 +19,7 @@ def parse_table_concordance(url):
     soup = BeautifulSoup(html, 'lxml')
 
     old_to_adopted = {}
+    confusing_entries = []
 
     rows = soup.select('div[align="center"] > table tr')
     if not rows:
@@ -30,15 +31,26 @@ def parse_table_concordance(url):
         old, adopted, *_ = cells
         if 'numérotation' in old or not old:
             continue
+        if old in old_to_adopted:
+            print('## ERROR ###', 'DOUBLE ENTRY IN CONCORDANCE TABLE FOR', old, file=sys.stderr)
+            confusing_entries.append(old)
+            continue
         old_to_adopted[old] = adopted
 
         # there can be two concordances per line
         # ex: https://www.senat.fr/dossier-legislatif/tc/tc_pjl08-155.html
         if len(cells) == 5:
             *_, old, adopted = cells
+            if old in old_to_adopted:
+                print('## ERROR ###', 'DOUBLE ENTRY FOR IN CONCORDANCE TABLE FOR', old, file=sys.stderr)
+                confusing_entries.append(old)
+                continue
             old_to_adopted[old] = adopted
 
-    return old_to_adopted
+    for entry in confusing_entries:
+        del old_to_adopted[entry]
+
+    return old_to_adopted, confusing_entries
 
 
 def parse(html, url_senat=None, logfile=sys.stderr):
@@ -358,8 +370,10 @@ def parse(html, url_senat=None, logfile=sys.stderr):
             if curr_stage == 'promulgation':
                 for a in item.select('a'):
                     if 'table de concordance' in a.text.lower():
-                        data['table_concordance'] = parse_table_concordance(
-                            clean_url(urljoin(url_senat, a.attrs['href'])))
+                        table, errors = parse_table_concordance(clean_url(urljoin(url_senat, a.attrs['href'])))
+                        data['table_concordance'] = table
+                        if errors:
+                            data['table_concordance_confusing_entries'] = errors
 
 
             steps_to_add = []

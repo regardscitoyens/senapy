@@ -145,7 +145,6 @@
     }
   ],
   "table_concordance": {
-    "1er": "1er",
     "2": "2",
     "2 bis": "4",
     "2 bis a": "3",
@@ -162,6 +161,9 @@
     "7 bis": "15",
     "8": "16"
   },
+  "table_concordance_confusing_entries": [
+    "1er"
+  ],
   "themes": [
     "Pouvoirs publics et Constitution"
   ],
