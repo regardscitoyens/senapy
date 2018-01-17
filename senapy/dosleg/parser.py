@@ -22,10 +22,7 @@ def parse_table_concordance(url):
     old_to_adopted = {}
     confusing_entries = set()
 
-    rows = soup.select('div[align="center"] > table tr')
-    if not rows:
-        # old style
-        rows = soup.select('div[align="left"] > table tr')
+    rows = soup.select('div[align="center"] > table tr') + soup.select('div[align="left"] > table tr')
 
     def add(old, adopted):
         nonlocal old_to_adopted, confusing_entries
