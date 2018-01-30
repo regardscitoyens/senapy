@@ -371,6 +371,23 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                         if 'source_url' not in step:
                             log_error('ITEM WITHOUT URL TO TEXT - %s.%s.%s' % (step['institution'], step.get('stage'), step.get('step')))
 
+            # Decision Conseil Constitutionnel
+            if curr_stage == 'constitutionnalité':
+                # we try to find the decision in the paragraph or at the top of the dosleg
+                decision_text = item.text
+                if cc_line:
+                    decision_text += cc_line.text
+
+                if 'partiellement conforme' in item.text:
+                    step['decision'] = 'partiellement conforme'
+                elif 'se déclare incompétent' in item.text:
+                    step['decision'] = 'se déclare incompétent'
+                elif 'non conforme' in item.text:
+                    step['decision'] = 'non conforme'
+                elif 'conforme' in item.text:
+                    step['decision'] = 'conforme'
+                else:
+                    log_error('WARNING: NO DECISION FOR CC')
 
             # look for Table de concordance
             if curr_stage == 'promulgation':
@@ -452,17 +469,7 @@ if __name__ == '__main__':
     print(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True))
 
 
-# TOPARSE
-# Lire le billet de l'Espace presse
-# Objet du texte
-# RSS
-# Dossier d'information
-# Themes
-# Cette page a été générée le 14 juillet 2017
-
-
-# D�cision du CC
-# Décision du Conseil constitutionnel n° 2016-741 DC du 8 décembre 2016 (non conforme)
+# Examples
 
 # http://www.senat.fr/dossier-legislatif/pjl09-344.html => multiple text, do as multiple "depot" steps
 # => or "extra_text" and sort to have the main text as the last "depot" step
