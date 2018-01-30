@@ -19,38 +19,40 @@ def parse_table_concordance(url):
     soup = BeautifulSoup(html, 'lxml')
 
     old_to_adopted = {}
-    confusing_entries = []
+    confusing_entries = set()
 
     rows = soup.select('div[align="center"] > table tr')
     if not rows:
         # old style
         rows = soup.select('div[align="left"] > table tr')
 
+    def add(old, adopted):
+        nonlocal old_to_adopted, confusing_entries
+        if adopted == 'id': # id: Abbreviation of the Latin idem (“same”)
+            adopted = old
+        if old in old_to_adopted:
+            print('## ERROR ###', 'DOUBLE ENTRY IN CONCORDANCE TABLE FOR', old, file=sys.stderr)
+            confusing_entries.add(old)
+        else:
+            old_to_adopted[old] = adopted
+
     for line in rows:
         cells = [x.text.strip().lower() for x in line.select('td')]
         old, adopted, *_ = cells
         if 'numérotation' in old or not old:
             continue
-        if old in old_to_adopted:
-            print('## ERROR ###', 'DOUBLE ENTRY IN CONCORDANCE TABLE FOR', old, file=sys.stderr)
-            confusing_entries.append(old)
-            continue
-        old_to_adopted[old] = adopted
+        add(old, adopted)
 
         # there can be two concordances per line
         # ex: https://www.senat.fr/dossier-legislatif/tc/tc_pjl08-155.html
         if len(cells) == 5:
             *_, old, adopted = cells
-            if old in old_to_adopted:
-                print('## ERROR ###', 'DOUBLE ENTRY FOR IN CONCORDANCE TABLE FOR', old, file=sys.stderr)
-                confusing_entries.append(old)
-                continue
-            old_to_adopted[old] = adopted
+            add(old, adopted)
 
     for entry in confusing_entries:
         del old_to_adopted[entry]
 
-    return old_to_adopted, confusing_entries
+    return old_to_adopted, list(confusing_entries)
 
 
 def parse(html, url_senat=None, logfile=sys.stderr):
