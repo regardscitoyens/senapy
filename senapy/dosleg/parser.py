@@ -70,8 +70,8 @@ def parse(html, url_senat=None, logfile=sys.stderr):
         return
 
     title_lines = soup.select_one('.title .subtitle-01').text.strip()
-    data['long_title'] = title_lines.split('\n')[0][:-2]  # remove " :" at the end of the line
-    data['long_title_descr'] = soup.find("meta", {"name": "Description"})['content']
+    data['long_title_descr'] = title_lines.split('\n')[0][:-2]  # remove " :" at the end of the line
+    data['long_title'] = soup.find("meta", {"name": "Description"})['content']
 
     promulgee_line = None
     ordonnance_line = None
