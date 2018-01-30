@@ -4,7 +4,6 @@ OK url_dossier_senat ( https://www.senat.fr/dossier-legislatif/pjl16-587.html )
 OK urgence ( True )
 
 STEPS:
-!! NOK !! DIFFERENT NUMBER OF STEPS: 9 VS 10
 
  - step 1
 OK institution ( senat )
@@ -55,10 +54,16 @@ OK step ( hemicycle )
 OK source_url ( https://www.assemblee-nationale.fr/15/ta/ta0025.asp )
 
  - step 9
-!! NOK !! institution  diff: gouvernement VS senat
-!! NOK !! stage  diff: promulgation VS CMP
-!! NOK !! step  diff: None VS hemicycle
-!! NOK !! source_url  diff: https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000035932811&categorieLien=id VS https://www.senat.fr/leg/tas17-006.html
+OK institution ( senat )
+OK stage ( CMP )
+OK step ( hemicycle )
+OK source_url ( https://www.senat.fr/leg/tas17-006.html )
 
-NOK: 6
-OK: 34
+ - step 10
+OK institution ( gouvernement )
+OK stage ( promulgation )
+OK step ( None )
+!! NOK !! source_url  diff: https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000035932811&categorieLien=id VS https://www.legifrance.gouv.fr/eli/loi/2017/10/30/2017-1510/jo/texte
+
+NOK: 3
+OK: 41

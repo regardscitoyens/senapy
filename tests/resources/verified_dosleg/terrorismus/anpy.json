@@ -59,6 +59,12 @@
             "step": "hemicycle"
         },
         {
+            "institution": "senat",
+            "source_url": "https://www.senat.fr/leg/tas17-006.html",
+            "stage": "CMP",
+            "step": "hemicycle"
+        },
+        {
             "institution": "gouvernement",
             "source_url": "https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000035932811&categorieLien=id",
             "stage": "promulgation"
