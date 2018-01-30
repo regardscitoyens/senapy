@@ -111,6 +111,10 @@ def parse(html, url_senat=None, logfile=sys.stderr):
     else:
         url_senat = 'http://www.senat.fr/'
 
+    tableau_comparatif = soup.select_one('.button-tableau-comparatifs')
+    if tableau_comparatif:
+        data['tableau_comparatif_url'] = clean_url(urljoin(url_senat, tableau_comparatif.attrs['href']))
+
     # objet du texte (very basic)
     for div in soup.select('#main div.scroll'):
         if div.find('h3') and 'Objet du texte' in div.find('h3').text:
