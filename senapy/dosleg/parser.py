@@ -339,7 +339,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                                 href = link.attrs['href']
                                 href = pre_clean_url(href)
                                 nice_text = link.text.lower().strip()
-                                if nice_text == 'rapport':
+                                if nice_text == 'rapport' or nice_text == 'rapport général':
                                     step['source_url'] = urljoin(url_senat, href)
                                     break
 
