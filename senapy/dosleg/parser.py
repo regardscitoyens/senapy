@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup, Comment
 
 from lawfactory_utils.urls import pre_clean_url, clean_url, download
 
+
 def format_date(date):
     parsed = dateparser.parse(date, languages=['fr'])
     return parsed.strftime("%Y-%m-%d")
@@ -53,6 +54,18 @@ def parse_table_concordance(url):
         del old_to_adopted[entry]
 
     return old_to_adopted, list(confusing_entries)
+
+
+def find_an_url(data):
+    an_text_url = [step['source_url'] for step in data['steps'] if step['institution'] == 'assemblee' and step.get('source_url')]
+    for url in an_text_url:
+        html = download(url).text
+        soup = BeautifulSoup(html, 'lxml')
+        btn = soup.select_one('#btn_dossier')
+        if btn:
+            a = btn.parent
+            if a.attrs.get('href'):
+                return clean_url(urljoin(url, a.attrs['href']))
 
 
 def parse(html, url_senat=None, logfile=sys.stderr):
@@ -398,7 +411,6 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                         if errors:
                             data['table_concordance_confusing_entries'] = errors
 
-
             steps_to_add = []
             if good_urls:
                 for url in good_urls:
@@ -454,6 +466,12 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                     steps_to_add = [steps_to_add[-1]]
 
             data['steps'] += steps_to_add
+
+    # if there's not url for the AN dosleg, try to find it via the texts links
+    if 'url_dossier_assemblee' not in data:
+        an_url = find_an_url(data)
+        if an_url:
+            data['url_dossier_assemblee'] = an_url
 
     return data
 
