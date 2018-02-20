@@ -287,6 +287,14 @@ def parse(html, url_senat=None, logfile=sys.stderr):
             if curr_institution == 'congrès' and not step_step:
                 step['step'] = 'congrès'
 
+            # add a legislature guess if missing
+            if curr_institution == 'assemblee' and not data.get('assemblee_legislature') and step['date']:
+                if '2007-06-20' <= step['date'] <= '2012-06-19':
+                    data['assemblee_legislature'] = 13
+                elif '2012-06-20' <= step['date'] <= '2017-06-20':
+                    data['assemblee_legislature'] = 14
+
+
             good_urls = []
 
             # nouv delib contains all the other steps, making it confusing
@@ -366,19 +374,10 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                         step['echec'] = "rejet"
 
                     if 'source_url' not in step and not step.get('echec'):
-                        if step.get('institution') == 'assemblee':
-                            # add a legislature guess
-                            if not data.get('assemblee_legislature') and step['date']:
-                                date = find_date(item.text)
-                                if date:
-                                    if '2007-06-20' <= date <= '2012-06-19':
-                                        data['assemblee_legislature'] = 13
-                                    elif '2012-06-20' <= date <= '2017-06-20':
-                                        data['assemblee_legislature'] = 14
-
-                            legislature = data.get('assemblee_legislature')
+                        if step.get('institution') == 'assemblee' and 'assemblee_legislature' in data:
+                            legislature = data['assemblee_legislature']
                             text_no_match = re.search(r'(Texte|Rapport)\s*n°\s*(\d+)', item.text, re.I)
-                            if text_no_match and legislature:
+                            if text_no_match:
                                 text_no = text_no_match.group(2)
                                 url = None
                                 if step.get('step') == 'commission':
