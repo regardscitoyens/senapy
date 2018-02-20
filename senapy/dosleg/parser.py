@@ -68,6 +68,15 @@ def find_an_url(data):
                 return clean_url(urljoin(url, a.attrs['href']))
 
 
+def find_date(line, curr_stage=None):
+    # find all dates and take the last one
+    dates = [format_date(match.group(1)) for match in re.finditer(r"(\d\d? \w\w\w+ \d\d\d\d)", line)]
+    if curr_stage == 'constitutionnalité' and len(dates) > 1:
+        return sorted(dates)[-2]
+    if dates:
+        return sorted(dates)[-1]
+
+
 def parse(html, url_senat=None, logfile=sys.stderr):
     data = {}
 
@@ -159,6 +168,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
         data['themes'] = [x.text.strip() for x in themes_box.select('.theme')]
 
         if 'Budget' in data['themes']:
+            #  TODO: avant 2008 of course + exception de certains budgets rectificatifs
             data['use_old_procedure'] = True
 
     if 'pjl' in data.get('senat_id', '') or 'plfss' in data.get('senat_id', ''):
@@ -192,8 +202,9 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                 # TODO: date sometimes is not on the shortcut
                 log_error('SHORCUT WITHOUT DATE')
 
-            if timeline_index == 0:
+            if 'beginning' not in data and step['date']:
                 data['beginning'] = step['date']
+
 
             # TODO review this part
             step_step = step_shortcut.find('a').attrs['title'].split('|')[-1].split('-')[-1].lower().strip()
@@ -323,15 +334,8 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                                             else:
                                                 institution = 'senat'
 
-                                # find all dates and take the last one
-                                date = None
-                                dates = [format_date(match.group(1)) for match in
-                                    re.finditer(r"(\d\d? \w\w\w+ \d\d\d\d)", line_text)]
-                                if dates:
-                                    date = sorted(dates)[-1]
-                                    if curr_stage == 'constitutionnalité' and len(dates) > 1:
-                                        date = sorted(dates)[-2]
-
+                                date = find_date(line_text, curr_stage)
+                                if date:
                                     if error_detection_last_date and dateparser.parse(error_detection_last_date) > dateparser.parse(date):
                                         # TODO: can be incorrect because of multi-depot
                                         log_error('DATE ORDER IS INCORRECT - last=%s - found=%s' % (error_detection_last_date, date))
@@ -362,10 +366,19 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                         step['echec'] = "rejet"
 
                     if 'source_url' not in step and not step.get('echec'):
-                        if step.get('institution') == 'assemblee' and 'assemblee_legislature' in data:
+                        if step.get('institution') == 'assemblee':
+                            # add a legislature guess
+                            if not data.get('assemblee_legislature') and step['date']:
+                                date = find_date(item.text)
+                                if date:
+                                    if '2007-06-20' <= date <= '2012-06-19':
+                                        data['assemblee_legislature'] = 13
+                                    elif '2012-06-20' <= date <= '2017-06-20':
+                                        data['assemblee_legislature'] = 14
+
                             legislature = data.get('assemblee_legislature')
                             text_no_match = re.search(r'(Texte|Rapport)\s*n°\s*(\d+)', item.text, re.I)
-                            if text_no_match:
+                            if text_no_match and legislature:
                                 text_no = text_no_match.group(2)
                                 url = None
                                 if step.get('step') == 'commission':
