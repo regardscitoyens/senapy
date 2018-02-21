@@ -377,7 +377,9 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                                     break
 
                     if 'Texte retiré par' in item.text:
-                        step['echec'] = "texte retiré"
+                        # texte retiré means all the previous steps become useless except the depot
+                        data['steps'] = [step for step in data['steps'] if step.get('step') == 'depots']
+                        continue
                     elif 'Texte rejeté par' in item.text:
                         step['echec'] = "rejet"
 
