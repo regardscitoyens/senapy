@@ -31,6 +31,8 @@ def parse_table_concordance(url):
         nonlocal old_to_adopted, confusing_entries
         if adopted == 'id':  # id: Abbreviation of the Latin idem (“same”)
             adopted = old
+        if adopted == 'unique':
+            adopted = '1er'
         if old in old_to_adopted:
             print('## ERROR ###', 'DOUBLE ENTRY IN CONCORDANCE TABLE FOR', old, file=sys.stderr)
             confusing_entries.add(old)
