@@ -29,12 +29,15 @@ def parse_table_concordance(url):
 
     def add(old, adopted):
         nonlocal old_to_adopted, confusing_entries
-        if adopted == 'id': # id: Abbreviation of the Latin idem (“same”)
+        if adopted == 'id':  # id: Abbreviation of the Latin idem (“same”)
             adopted = old
         if old in old_to_adopted:
             print('## ERROR ###', 'DOUBLE ENTRY IN CONCORDANCE TABLE FOR', old, file=sys.stderr)
             confusing_entries.add(old)
         else:
+            if 'suppr' not in adopted and adopted in old_to_adopted.values():
+                print('## WARNING ###', 'MULTIPLE ARTICLES MERGED INTO ONE IN CONCORDANCE TABLE FOR', adopted, file=sys.stderr)
+                adopted += ' (supprimé)'
             old_to_adopted[old] = adopted
 
     for line in rows:
