@@ -32,6 +32,8 @@ def parse_table_concordance(url):
             return
         if adopted.lower() in ('id', 'idem'):  # id: Abbreviation of the Latin idem (“same”)
             adopted = old
+        if adopted == '':
+            adopted = 'supprimé'
         if adopted == 'unique':
             adopted = '1er'
         if 'suppr' in adopted.lower():
@@ -157,13 +159,17 @@ def parse(html, url_senat=None, logfile=sys.stderr):
     # TODO: selecteur foireux ?
     for link in soup.select('h4.title.title-06.link-type-02 a'):
         if 'Assemblée' in link.text:
-            data['url_dossier_assemblee'] = link.attrs['href'].split('#')[0]
-            data['assemblee_id'] = data['url_dossier_assemblee'].split('/')[-1].replace('.asp', '')
-            legislature = data['url_dossier_assemblee'].split('.fr/')[1].split('/')[0]
-            try:
-                data['assemblee_legislature'] = int(legislature)
-            except ValueError:  # strange link (old dosleg)
-                log_error('NO LEGISLATURE IN AN LINK: ' + data['url_dossier_assemblee'])
+            url_an = link.attrs['href'].split('#')[0]
+            if 'documents/index-' not in url_an:
+                data['url_dossier_assemblee'] = url_an
+                data['assemblee_id'] = url_an.split('/')[-1].replace('.asp', '')
+                legislature = url_an.split('.fr/')[1].split('/')[0]
+                try:
+                    data['assemblee_legislature'] = int(legislature)
+                except ValueError:  # strange link (old dosleg)
+                    log_error('NO LEGISLATURE IN AN LINK: ' + url_an)
+            else:
+                log_error('INVALID URL AN: ' + url_an)
 
     data['steps'] = []
     steps_shortcuts = soup.select('.list-timeline li')  # icons on top
