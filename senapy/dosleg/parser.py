@@ -317,6 +317,10 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                     # TROUVONS LES TEXTES
                     for link in item.select('a'):
                         line = link.parent
+
+                        if 'Lettre rectificative' in link.text:
+                            continue
+
                         if 'href' in link.attrs:
                             href = link.attrs['href']
                             nice_text = link.text.lower().strip()
