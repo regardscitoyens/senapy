@@ -335,7 +335,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                                 or 'conseil-constitutionnel.fr/decision.' in href
                             ):
                                 # if we detect a "texte de la commission" in an old procedure, it means it's probably not the old procedure
-                                if data.get('use_old_procedure') and nice_text == 'texte de la commission':
+                                if data.get('use_old_procedure') and nice_text == 'texte de la commission' and step.get('stage') != 'CMP':
                                     del data['use_old_procedure']
 
                                 # motion for a referendum for example
