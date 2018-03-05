@@ -29,10 +29,16 @@ def parse_table_concordance(url):
 
     def add(old, adopted):
         nonlocal old_to_adopted, confusing_entries
-        if adopted == 'id':  # id: Abbreviation of the Latin idem (“same”)
+        if ' et ' in old:
+            for el in old.split(' et '):
+                add(el, adopted)
+            return
+        if adopted.lower() in ('id', 'idem'):  # id: Abbreviation of the Latin idem (“same”)
             adopted = old
         if adopted == 'unique':
             adopted = '1er'
+        if 'suppr' in adopted.lower():
+            adopted = adopted.lower()
         if old in old_to_adopted:
             print('## ERROR ###', 'DOUBLE ENTRY IN CONCORDANCE TABLE FOR', old, file=sys.stderr)
             confusing_entries.add(old)
@@ -43,9 +49,9 @@ def parse_table_concordance(url):
             old_to_adopted[old] = adopted
 
     for line in rows:
-        cells = [x.text.strip().lower() for x in line.select('td')]
+        cells = [x.text.strip() for x in line.select('td')]
         old, adopted, *_ = cells
-        if 'numérotation' in old or not old:
+        if 'numérotation' in old.lower() or not old:
             continue
         add(old, adopted)
 

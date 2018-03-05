@@ -1,6 +1,7 @@
 {
     "assemblee_id": "renseignement",
     "assemblee_legislature": 14,
+    "beginning": "2015-03-19",
     "long_title": "Police et sécurité : renseignement",
     "steps": [
         {
@@ -46,6 +47,7 @@
             "step": "hemicycle"
         },
         {
+            "cmp_commission_other_url": "https://www.senat.fr/leg/pjl14-521.html",
             "date": "2015-06-17",
             "institution": "CMP",
             "source_url": "http://www.assemblee-nationale.fr/14/ta-commission/r2868-a0.asp",
