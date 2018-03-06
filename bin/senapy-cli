@@ -56,7 +56,8 @@ def cli_parse(url, enable_cache):
 
 @cli.command()
 @click.option('--min-year', default=2009)
-def doslegs_urls(min_year):
+@click.option('--max-year', default=None)
+def doslegs_urls(min_year, max_year):
     urls = set()
 
     _log('finding urls in Open Data CSV...(keeping only doslegs in and after', min_year, ')')
@@ -66,7 +67,7 @@ def doslegs_urls(min_year):
     link_count = 0
     for line in lines:
         year = int(line['date_initiale'].split('/')[-1])
-        if year >= min_year:
+        if year >= min_year and (max_year is None or year <= max_year):
             link_count += 1
             urls.add(clean_url(line['url_du_dossier']))
     _log('  =>', link_count, 'urls found in CSV')
