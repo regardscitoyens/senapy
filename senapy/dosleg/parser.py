@@ -67,7 +67,7 @@ def parse_table_concordance(url):
 
 
 def find_an_url(data):
-    an_text_url = [step['source_url'] for step in data['steps'] if 'assemblee-nationale' in step.get('source_url', '')]
+    an_text_url = [step['source_url'] for step in data['steps'] if 'assemblee-nationale' in step.get('source_url') or '']
     for url in an_text_url:
         html = download(url).text
         soup = BeautifulSoup(html, 'lxml')
