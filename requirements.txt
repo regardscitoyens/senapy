@@ -2,7 +2,6 @@ click==6.7
 requests==2.18.4
 beautifulsoup4==4.6.0
 lxml==4.1.1
-requests==2.18.4
 html5lib==1.0.1
 dateparser==0.7.0
 git+https://github.com/RegardsCitoyens/lawfactory_utils.git
