@@ -266,8 +266,8 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                 elif 'picto_timeline_07_' in img:
                     curr_institution = 'gouvernement'
                 elif 'picto_timeline_09_' in img:
-                    # ex: http://www.senat.fr/dossier-legislatif/pjl02-182.html
-                    curr_institution = 'nouv. délib.'
+                    # 'nouv. délib.' ex: http://www.senat.fr/dossier-legislatif/pjl02-182.html
+                    continue
                 elif 'picto_timeline_10_' in img:
                     curr_institution = 'congrès'
 
@@ -292,10 +292,9 @@ def parse(html, url_senat=None, logfile=sys.stderr):
             # standardize on 1ère lecture / 2ème lecture
             curr_stage = curr_stage.replace('eme', 'ème')
 
-            if curr_institution != 'nouv. délib.':
-                step['stage'] = curr_stage
-                if curr_stage not in ('constitutionnalité', 'promulgation'):
-                    step['step'] = step_step
+            step['stage'] = curr_stage
+            if curr_stage not in ('constitutionnalité', 'promulgation'):
+                step['step'] = step_step
 
             # fill in for special case like http://www.senat.fr/dossier-legislatif/csm.html
             if curr_institution == 'congrès' and not curr_stage:
@@ -313,113 +312,111 @@ def parse(html, url_senat=None, logfile=sys.stderr):
 
             good_urls = []
 
-            # nouv delib contains all the other steps, making it confusing
-            # because there's no text for a nouv delib
-            if curr_institution != 'nouv. délib.':
-                if 'Texte renvoyé en commission' in item.text:
-                    step['echec'] = 'renvoi en commission'
-                else:
-                    # TROUVONS LES TEXTES
-                    for link in item.select('a'):
-                        line = link.parent
+            if 'Texte renvoyé en commission' in item.text:
+                step['echec'] = 'renvoi en commission'
+            else:
+                # TROUVONS LES TEXTES
+                for link in item.select('a'):
+                    line = link.parent
 
-                        if 'Lettre rectificative' in link.text:
-                            continue
+                    if 'Lettre rectificative' in link.text:
+                        continue
 
+                    if 'href' in link.attrs:
+                        href = link.attrs['href']
+                        nice_text = link.text.lower().strip()
+                        # TODO: assemblée "ppl, ppr, -a0" (a verif)
+                        if (
+                            ('/leg/' in href and '/' not in href.replace('/leg/', '') and 'avis-ce' not in href)
+                            or nice_text in ('texte', 'texte de la commission', 'décision du conseil constitutionnel')
+                            or 'jo n°' in nice_text
+
+                            # TODO: parse the whole block for date + url
+                            # ex: http://www.senat.fr/dossier-legislatif/pjl08-641.html
+                            or 'conseil-constitutionnel.fr/decision.' in href
+                        ):
+                            # if we detect a "texte de la commission" in an old procedure, it means it's probably not the old procedure
+                            if data.get('use_old_procedure') and nice_text == 'texte de la commission' and step.get('stage') != 'CMP':
+                                del data['use_old_procedure']
+
+                            # motion for a referendum for example
+                            # ex: http://www.senat.fr/dossier-legislatif/pjl12-349.html
+                            if '/leg/motion' in href:
+                                continue
+                            href = pre_clean_url(href)
+
+                            url = urljoin(url_senat, href)
+                            line_text = line.text.lower()
+                            institution = curr_institution
+                            if curr_stage != 'promulgation':  # TODO: be more specific, have a way to force the curr_instituion
+                                if 'par l\'assemblée' in line_text:
+                                    institution = 'assemblee'
+                                elif 'par le sénat' in line_text:
+                                    institution = 'senat'
+                                else:
+                                    if curr_stage == 'CMP' and step_step == 'hemicycle' \
+                                            and 'texte' in nice_text and not step.get('echec'):
+                                        if 'assemblee-nationale.fr' in href:
+                                            institution = 'assemblee'
+                                        else:
+                                            institution = 'senat'
+
+                            date = find_date(line_text, curr_stage)
+                            if date:
+                                if error_detection_last_date and dateparser.parse(error_detection_last_date) > dateparser.parse(date):
+                                    # TODO: can be incorrect because of multi-depot
+                                    log_error('DATE ORDER IS INCORRECT - last=%s - found=%s' % (error_detection_last_date, date))
+                                error_detection_last_date = date
+                            if curr_stage == 'promulgation' and 'end' in data:
+                                date = data['end']
+
+                            good_urls.append({
+                                'url': url,
+                                'institution': institution,
+                                'date': date,
+                            })
+
+            if not good_urls:
+                # sinon prendre une url d'un peu moins bonne qualité
+                if 'source_url' not in step:
+                    for link in item.select('.list-disc-02 a'):
                         if 'href' in link.attrs:
                             href = link.attrs['href']
+                            href = pre_clean_url(href)
                             nice_text = link.text.lower().strip()
-                            # TODO: assemblée "ppl, ppr, -a0" (a verif)
-                            if (
-                                ('/leg/' in href and '/' not in href.replace('/leg/', '') and 'avis-ce' not in href)
-                                or nice_text in ('texte', 'texte de la commission', 'décision du conseil constitutionnel')
-                                or 'jo n°' in nice_text
+                            if nice_text == 'rapport' or nice_text == 'rapport général':
+                                step['source_url'] = urljoin(url_senat, href)
+                                break
 
-                                # TODO: parse the whole block for date + url
-                                # ex: http://www.senat.fr/dossier-legislatif/pjl08-641.html
-                                or 'conseil-constitutionnel.fr/decision.' in href
-                            ):
-                                # if we detect a "texte de la commission" in an old procedure, it means it's probably not the old procedure
-                                if data.get('use_old_procedure') and nice_text == 'texte de la commission' and step.get('stage') != 'CMP':
-                                    del data['use_old_procedure']
+                if 'Texte retiré par' in item.text:
+                    # texte retiré means all the previous steps become useless except the depot
+                    data['steps'] = [step for step in data['steps'] if step.get('step') == 'depots']
+                    continue
+                elif 'Texte rejeté par' in item.text:
+                    step['echec'] = "rejet"
 
-                                # motion for a referendum for example
-                                # ex: http://www.senat.fr/dossier-legislatif/pjl12-349.html
-                                if '/leg/motion' in href:
-                                    continue
-                                href = pre_clean_url(href)
+                if 'source_url' not in step and not step.get('echec'):
+                    if step.get('institution') == 'assemblee' and 'assemblee_legislature' in data:
+                        legislature = data['assemblee_legislature']
+                        text_no_match = re.search(r'(Texte|Rapport)\s*n°\s*(\d+)', item.text, re.I)
+                        if text_no_match:
+                            text_no = text_no_match.group(2)
+                            url = None
+                            if step.get('step') == 'commission':
+                                url = 'http://www.assemblee-nationale.fr/{}/ta-commission/r{:04d}-a0.asp'
+                            elif step.get('step') == 'depot':
+                                if step.get('proposal_type') == 'PJL':
+                                    url = 'http://www.assemblee-nationale.fr/{}/projets/pl{:04d}.asp'
+                                else:
+                                    url = 'http://www.assemblee-nationale.fr/{}/propositions/pion{:04d}.asp'
+                            elif step.get('step') == 'hemicycle':
+                                url = 'http://www.assemblee-nationale.fr/{}/ta/ta{:04d}.asp'
 
-                                url = urljoin(url_senat, href)
-                                line_text = line.text.lower()
-                                institution = curr_institution
-                                if curr_stage != 'promulgation':  # TODO: be more specific, have a way to force the curr_instituion
-                                    if 'par l\'assemblée' in line_text:
-                                        institution = 'assemblee'
-                                    elif 'par le sénat' in line_text:
-                                        institution = 'senat'
-                                    else:
-                                        if curr_stage == 'CMP' and step_step == 'hemicycle' \
-                                                and 'texte' in nice_text and not step.get('echec'):
-                                            if 'assemblee-nationale.fr' in href:
-                                                institution = 'assemblee'
-                                            else:
-                                                institution = 'senat'
+                            if url:
+                                step['source_url'] = url.format(legislature, int(text_no))
 
-                                date = find_date(line_text, curr_stage)
-                                if date:
-                                    if error_detection_last_date and dateparser.parse(error_detection_last_date) > dateparser.parse(date):
-                                        # TODO: can be incorrect because of multi-depot
-                                        log_error('DATE ORDER IS INCORRECT - last=%s - found=%s' % (error_detection_last_date, date))
-                                    error_detection_last_date = date
-                                if curr_stage == 'promulgation' and 'end' in data:
-                                    date = data['end']
-
-                                good_urls.append({
-                                    'url': url,
-                                    'institution': institution,
-                                    'date': date,
-                                })
-                if not good_urls:
-                    # sinon prendre une url d'un peu moins bonne qualité
                     if 'source_url' not in step:
-                        for link in item.select('.list-disc-02 a'):
-                            if 'href' in link.attrs:
-                                href = link.attrs['href']
-                                href = pre_clean_url(href)
-                                nice_text = link.text.lower().strip()
-                                if nice_text == 'rapport' or nice_text == 'rapport général':
-                                    step['source_url'] = urljoin(url_senat, href)
-                                    break
-
-                    if 'Texte retiré par' in item.text:
-                        # texte retiré means all the previous steps become useless except the depot
-                        data['steps'] = [step for step in data['steps'] if step.get('step') == 'depots']
-                        continue
-                    elif 'Texte rejeté par' in item.text:
-                        step['echec'] = "rejet"
-
-                    if 'source_url' not in step and not step.get('echec'):
-                        if step.get('institution') == 'assemblee' and 'assemblee_legislature' in data:
-                            legislature = data['assemblee_legislature']
-                            text_no_match = re.search(r'(Texte|Rapport)\s*n°\s*(\d+)', item.text, re.I)
-                            if text_no_match:
-                                text_no = text_no_match.group(2)
-                                url = None
-                                if step.get('step') == 'commission':
-                                    url = 'http://www.assemblee-nationale.fr/{}/ta-commission/r{:04d}-a0.asp'
-                                elif step.get('step') == 'depot':
-                                    if step.get('proposal_type') == 'PJL':
-                                        url = 'http://www.assemblee-nationale.fr/{}/projets/pl{:04d}.asp'
-                                    else:
-                                        url = 'http://www.assemblee-nationale.fr/{}/propositions/pion{:04d}.asp'
-                                elif step.get('step') == 'hemicycle':
-                                    url = 'http://www.assemblee-nationale.fr/{}/ta/ta{:04d}.asp'
-
-                                if url:
-                                    step['source_url'] = url.format(legislature, int(text_no))
-
-                        if 'source_url' not in step:
-                            log_error('ITEM WITHOUT URL TO TEXT - %s.%s.%s' % (step['institution'], step.get('stage'), step.get('step')))
+                        log_error('ITEM WITHOUT URL TO TEXT - %s.%s.%s' % (step['institution'], step.get('stage'), step.get('step')))
 
             # Decision Conseil Constitutionnel
             if curr_stage == 'constitutionnalité':
