@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import csv, json, time, sys, os, glob
-from urllib.parse import urljoin, urlparse
+import json, sys, os
+from urllib.parse import urljoin
 
 import click
 from bs4 import BeautifulSoup
@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 from lawfactory_utils.urls import download, enable_requests_cache, clean_url
 
 from senapy.dosleg import opendata
+
 
 def _log(*args):
     print(*args, file=sys.stderr)
@@ -57,38 +58,42 @@ def cli_parse(url, enable_cache):
 @cli.command()
 @click.option('--min-year', default=2009)
 @click.option('--max-year', default=None)
-def doslegs_urls(min_year, max_year):
+@click.option('--in-discussion', is_flag=True)
+def doslegs_urls(min_year, max_year, in_discussion):
     urls = set()
 
-    _log('finding urls in Open Data CSV...(keeping only doslegs in and after', min_year, ')')
-    # rewrite columns titles to make it easier to work with 
-    lines = [{k.lower().replace(' ' , '_'): v for k,v in line.items()}
-                for line in opendata.fetch_csv()]
-    link_count = 0
-    for line in lines:
-        year = int(line['date_initiale'].split('/')[-1])
-        if year >= min_year and (max_year is None or year <= max_year):
-            link_count += 1
-            urls.add(clean_url(line['url_du_dossier']))
-    _log('  =>', link_count, 'urls found in CSV')
+    if not in_discussion:
+        _log('finding urls in Open Data CSV...(keeping only doslegs in and after', min_year, ')')
+        # rewrite columns titles to make it easier to work with
+        lines = [{k.lower().replace(' ' , '_'): v for k, v in line.items()}
+                    for line in opendata.fetch_csv()]
+        link_count = 0
+        for line in lines:
+            year = int(line['date_initiale'].split('/')[-1])
+            if year >= min_year and (max_year is None or year <= max_year):
+                link_count += 1
+                urls.add(clean_url(line['url_du_dossier']))
+        _log('  =>', link_count, 'urls found in CSV')
 
+    if max_year is None:
+        base_url = 'http://www.senat.fr/dossiers-legislatifs/textes-recents.html'
+        if in_discussion:
+            base_url = 'https://www.senat.fr/ordre-du-jour/ordre-du-jour.html'
+        _log('finding urls on', base_url)
+        html = download(base_url).text
+        soup = BeautifulSoup(html, 'html5lib')
 
-    _log('finding urls on senat.fr')
-    html = download('http://www.senat.fr/dossiers-legislatifs/textes-recents.html').text
-    soup = BeautifulSoup(html, 'lxml')
-
-    link_count = 0
-    for link in soup.select('a'):
-        href = link.attrs.get('href', '')
-        if '/dossier-legislatif/' in href:
-            link_count += 1
-            url = urljoin('http://www.senat.fr/', href)
-            urls.add(clean_url(url))
-    _log('  =>', link_count, 'doslegs found on website')
+        link_count = 0
+        for link in soup.select('a'):
+            href = link.attrs.get('href', '')
+            if '/dossier-legislatif/' in href:
+                link_count += 1
+                url = urljoin(base_url, href)
+                urls.add(clean_url(url))
+        _log('  =>', link_count, 'doslegs found on website')
 
     for url in sorted(urls):
         print(url)
-
 
 
 @cli.command()
