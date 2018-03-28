@@ -34,7 +34,7 @@ def parse_table_concordance(url):
             adopted = old
         if adopted == '':
             adopted = 'supprimé'
-        if adopted.lower() == 'unique':
+        if adopted.lower() in ('unique', '1'):
             adopted = '1er'
         if 'suppr' in adopted.lower():
             adopted = adopted.lower()
