@@ -186,6 +186,8 @@ def parse(html, url_senat=None, logfile=sys.stderr):
         if 'Budget' in data['themes']:
             #  TODO: avant 2008 of course + exception de certains budgets rectificatifs
             data['use_old_procedure'] = True
+    if 'plfss' in data.get('senat_id', '') or 'pjlf' in data.get('senat_id', ''):
+        data['use_old_procedure'] = True
 
     if 'pjl' in data.get('senat_id', '') or 'plfss' in data.get('senat_id', ''):
         data['proposal_type'] = 'PJL'
