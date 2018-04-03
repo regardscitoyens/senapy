@@ -303,6 +303,8 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                 step['stage'] = 'congrès'
             if curr_institution == 'congrès' and not step_step:
                 step['step'] = 'congrès'
+            # pass congrés if not hemicycle
+            if step.get('step') == 'congrès': continue
 
             # add a legislature guess if missing
             if curr_institution == 'assemblee' and not data.get('assemblee_legislature') and step['date']:
