@@ -123,8 +123,8 @@ def parse(html, url_senat=None, logfile=sys.stderr):
         else:
             log_error('UNKNOWN SUBTITLE: %s' % line.text)
     if promulgee_line:
-        data['end'] = format_date(promulgee_line.find('strong').text.split(' du ')[1].strip())  # promulgation
-        data['end_jo'] = format_date(promulgee_line.text.split('JO ')[-1].split('du ')[-1].split('(')[0].strip())  # inscription aux JO
+        data['law_name'] = promulgee_line.find('strong').text.strip()  # promulgation
+        data['end'] = format_date(promulgee_line.text.split('JO ')[-1].split('du ')[-1].split('(')[0].strip())  # inscription aux JO
         if promulgee_line.find('a'):
             data['url_jo'] = clean_url(promulgee_line.find('a').attrs['href'])
             url_jo_params = parse_qs(urlparse(data['url_jo']).query)

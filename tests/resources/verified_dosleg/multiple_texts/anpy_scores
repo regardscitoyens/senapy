@@ -1,6 +1,6 @@
 OK url_dossier_assemblee ( https://www.assemblee-nationale.fr/14/dossiers/renseignement.asp )
 OK url_dossier_senat ( https://www.senat.fr/dossier-legislatif/pjl14-424.html )
-!! NOK !! url_jo  diff: https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000030931899&categorieLien=id VS https://www.legifrance.gouv.fr/eli/loi/2015/7/24/PRMX1504410L/jo/texte
+OK url_jo ( https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000030931899&categorieLien=id )
 OK urgence ( True )
 
 STEPS:
@@ -69,7 +69,7 @@ OK source_url ( https://www.conseil-constitutionnel.fr/conseil-constitutionnel/f
 OK institution ( gouvernement )
 OK stage ( promulgation )
 OK step ( None )
-!! NOK !! source_url  diff: https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000030931899&categorieLien=id VS https://www.legifrance.gouv.fr/eli/loi/2015/7/24/PRMX1504410L/jo/texte
+OK source_url ( https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000030931899&categorieLien=id )
 
-NOK: 3
-OK: 45
+NOK: 1
+OK: 47

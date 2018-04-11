@@ -2,8 +2,8 @@
   "assemblee_id": "repression_violences_femmes",
   "assemblee_legislature": 13,
   "beginning": "2009-11-27",
-  "end": "2010-07-09",
-  "end_jo": "2010-07-28",
+  "end": "2010-07-28",
+  "law_name": "Loi n° 2010-769  du 9 juillet 2010",
   "legifrance_cidTexte": "JORFTEXT000022454032",
   "long_title": "proposition de loi renforçant la protection des victimes et la prévention et la répression des violences faites aux femmes",
   "long_title_descr": "Loi relative aux violences faites spécifiquement aux femmes, aux violences au sein des couples et aux incidences de ces dernières sur les enfants",
@@ -82,7 +82,7 @@
       "step": "hemicycle"
     },
     {
-      "date": "2010-07-09",
+      "date": "2010-07-28",
       "institution": "gouvernement",
       "source_url": "https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000022454032&categorieLien=id",
       "stage": "promulgation"

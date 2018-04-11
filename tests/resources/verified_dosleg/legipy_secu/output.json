@@ -2,8 +2,8 @@
   "assemblee_id": "plfss2008",
   "assemblee_legislature": 13,
   "beginning": "2007-10-11",
-  "end": "2007-12-19",
-  "end_jo": "2007-12-21",
+  "end": "2007-12-21",
+  "law_name": "Loi n° 2007-1786 du 19 décembre 2007",
   "legifrance_cidTexte": "JORFTEXT000017726554",
   "long_title": "projet de loi de financement de la sécurité sociale de financement de la sécurité sociale pour 2008",
   "long_title_descr": "Loi de financement de la sécurité sociale pour 2008",
@@ -83,7 +83,7 @@
       "stage": "constitutionnalité"
     },
     {
-      "date": "2007-12-19",
+      "date": "2007-12-21",
       "institution": "gouvernement",
       "source_url": "https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000017726554&categorieLien=id",
       "stage": "promulgation"

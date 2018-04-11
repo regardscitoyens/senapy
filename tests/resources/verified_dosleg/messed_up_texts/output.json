@@ -2,8 +2,8 @@
   "assemblee_id": "saisie_et_confiscation",
   "assemblee_legislature": 13,
   "beginning": "2008-11-12",
-  "end": "2010-07-09",
-  "end_jo": "2010-07-10",
+  "end": "2010-07-10",
+  "law_name": "Loi n° 2010-768  du 9 juillet 2010",
   "legifrance_cidTexte": "JORFTEXT000022453925",
   "long_title": "proposition de loi visant à faciliter la saisie et la confiscation en matière pénale",
   "long_title_descr": "Loi visant à faciliter la saisie et la confiscation en matière pénale",
@@ -74,7 +74,7 @@
       "step": "hemicycle"
     },
     {
-      "date": "2010-07-09",
+      "date": "2010-07-10",
       "institution": "gouvernement",
       "source_url": "https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000022453925&categorieLien=id",
       "stage": "promulgation"

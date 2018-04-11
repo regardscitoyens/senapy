@@ -2,8 +2,8 @@
   "assemblee_id": "repartition_contentieux",
   "assemblee_legislature": 13,
   "beginning": "2010-03-03",
-  "end": "2011-12-13",
-  "end_jo": "2011-12-14",
+  "end": "2011-12-14",
+  "law_name": "Loi n° 2011-1862 du 13 décembre 2011",
   "legifrance_cidTexte": "JORFTEXT000024960344",
   "long_title": "projet de loi relatif à la répartition des contentieux et à l'allègement de certaines procédures juridictionnelles",
   "long_title_descr": "Loi relative à la répartition des contentieux et à l'allègement de certaines procédures juridictionnelles",
@@ -131,7 +131,7 @@
       "stage": "constitutionnalité"
     },
     {
-      "date": "2011-12-13",
+      "date": "2011-12-14",
       "institution": "gouvernement",
       "source_url": "https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000024960344&categorieLien=id",
       "stage": "promulgation"
