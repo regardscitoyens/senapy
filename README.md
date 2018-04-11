@@ -16,11 +16,6 @@ Python 3
 - from pip: `pip3 install senapy`
 - locally: `pip3 install -e .`
 
-## Test:
-
-- `pip3 install pytest`
-- `pytest`
-
 ## Dossiers Legislatifs
 
  - Parse one: `senapy-cli parse URL_or_filepath`
@@ -33,3 +28,8 @@ Python 3
 
  * **QuestionSearchService** to search for questions
 
+## Tests:
+
+- `pip3 install pytest`
+- `pytest`
+- If you modify the output, there's an utility to make the tests reflect that: `python tests/tools/regen_regressions_output.py`
