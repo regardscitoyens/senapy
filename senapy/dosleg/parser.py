@@ -9,6 +9,8 @@ from bs4 import BeautifulSoup, Comment
 
 from lawfactory_utils.urls import pre_clean_url, clean_url, download
 
+re_clean_spaces = re.compile(r'\s+')
+clean_spaces = lambda x: re_clean_spaces.sub(' ', x)
 
 def format_date(date):
     parsed = dateparser.parse(date, languages=['fr'])
@@ -123,7 +125,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
         else:
             log_error('UNKNOWN SUBTITLE: %s' % line.text)
     if promulgee_line:
-        data['law_name'] = promulgee_line.find('strong').text.strip()  # promulgation
+        data['law_name'] = clean_spaces(promulgee_line.find('strong').text.strip())  # promulgation
         data['end'] = format_date(promulgee_line.text.split('JO ')[-1].split('du ')[-1].split('(')[0].strip())  # inscription aux JO
         if promulgee_line.find('a'):
             data['url_jo'] = clean_url(promulgee_line.find('a').attrs['href'])
