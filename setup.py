@@ -18,10 +18,7 @@ with open(path.join(here, 'README.md')) as readme:
 with open(path.join(here, 'requirements.txt')) as f:
     requirements = []
     for req in f.read().splitlines():
-        if req.startswith("git+"):
-            os.system('pip3 install --upgrade ' + req)
-        else:
-            requirements.append(req)
+        requirements.append(req)
 
 setup(
     name='senapy',
