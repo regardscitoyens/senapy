@@ -1,5 +1,5 @@
 # senapy
-[![Build Status](https://travis-ci.org/regardscitoyens/senapy.svg?branch=master)](https://travis-ci.org/regardscitoyens/senapy)
+[![Build Status](https://travis-ci.org/regardscitoyens/senapy.svg?branch=master)](https://travis-ci.org/regardscitoyens/senapy) [![Coverage Status](https://coveralls.io/repos/github/regardscitoyens/senapy/badge.svg?branch=master)](https://coveralls.io/github/regardscitoyens/senapy?branch=master)
 
 A python client for [senat.fr](https://senat.fr) website.
 
