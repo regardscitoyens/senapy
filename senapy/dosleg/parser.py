@@ -99,15 +99,15 @@ def parse(html, url_senat=None, logfile=sys.stderr):
 
     soup = BeautifulSoup(html, 'lxml')
 
-    data['short_title'] = soup.select_one('.title-dosleg').text.strip()
+    data['short_title'] = clean_spaces(soup.select_one('.title-dosleg').text.strip())
 
     if not soup.select('.title .subtitle-01'):
         log_error('NO TITLE - MAYBE A REDIRECT ?')
         return
 
     title_lines = soup.select_one('.title .subtitle-01').text.strip()
-    data['long_title_descr'] = title_lines.split('\n')[0][:-2]  # remove " :" at the end of the line
-    data['long_title'] = soup.find("meta", {"name": "Description"})['content']
+    data['long_title_descr'] = clean_spaces(title_lines.split('\n')[0][:-2])  # remove " :" at the end of the line
+    data['long_title'] = clean_spaces(soup.find("meta", {"name": "Description"})['content'])
 
     promulgee_line = None
     ordonnance_line = None
@@ -185,7 +185,12 @@ def parse(html, url_senat=None, logfile=sys.stderr):
     if themes_box:
         data['themes'] = [x.text.strip() for x in themes_box.select('.theme')]
 
-    for t in ['financement de la sécurité', 'règlement des comptes', 'loi de finances rectificative']:
+    for t in [
+            'financement de la sécurité',
+            'règlement des comptes',
+            'loi de finances rectificative',
+            'de loi constitutionnelle'
+        ]:
         if t in data['long_title']:
             data['use_old_procedure'] = True
     if 'plfss' in data.get('senat_id', '') or 'pjlf' in data.get('senat_id', ''):
