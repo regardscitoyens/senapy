@@ -419,7 +419,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                             if step.get('step') == 'commission':
                                 url = 'http://www.assemblee-nationale.fr/{}/ta-commission/r{:04d}-a0.asp'
                             elif step.get('step') == 'depot':
-                                if step.get('proposal_type') == 'PJL':
+                                if data.get('proposal_type') == 'PJL':
                                     url = 'http://www.assemblee-nationale.fr/{}/projets/pl{:04d}.asp'
                                 else:
                                     url = 'http://www.assemblee-nationale.fr/{}/propositions/pion{:04d}.asp'
