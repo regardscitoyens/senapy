@@ -188,7 +188,10 @@ def parse(html, url_senat=None, logfile=sys.stderr):
     for t in [
             'financement de la sécurité',
             'règlement des comptes',
+            'règlement du budget',
+            'approbation des comptes',
             'loi de finances rectificative',
+            'loi de financement rectificative',
             'de loi constitutionnelle'
         ]:
         if t in data['long_title']:
