@@ -56,7 +56,7 @@ def cli_parse(url, enable_cache):
 
 
 @cli.command()
-@click.option('--min-year', default=2009)
+@click.option('--min-year', default=2008)
 @click.option('--max-year', default=None)
 @click.option('--filter-on-promulgation', is_flag=True)
 @click.option('--in-discussion', is_flag=True)
