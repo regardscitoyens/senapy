@@ -12,6 +12,7 @@ from lawfactory_utils.urls import pre_clean_url, clean_url, download
 re_clean_spaces = re.compile(r'\s+')
 clean_spaces = lambda x: re_clean_spaces.sub(' ', x)
 
+
 def format_date(date):
     parsed = dateparser.parse(date, languages=['fr'])
     return parsed.strftime("%Y-%m-%d")
@@ -26,18 +27,22 @@ def parse_table_concordance(url):
 
     rows = soup.select('div[align="center"] > table tr') + soup.select('div[align="left"] > table tr')
 
+    def normalize(entry):
+        if entry.lower() in ('unique', '1'):
+            return '1er'
+        return entry
+
     def add(old, adopted):
         nonlocal old_to_adopted, confusing_entries
         if ' et ' in old:
             for el in old.split(' et '):
                 add(el, adopted)
             return
+        adopted, old = normalize(adopted), normalize(old)
         if adopted.lower() in ('id', 'idem'):  # id: Abbreviation of the Latin idem (“same”)
             adopted = old
         if adopted == '':
             adopted = 'supprimé'
-        if adopted.lower() in ('unique', '1'):
-            adopted = '1er'
         if 'suppr' in adopted.lower():
             adopted = adopted.lower()
         if old in old_to_adopted:
