@@ -1,7 +1,7 @@
 """
 Test if the parser has regressions by comparing the output with verified output
 """
-import os, random, json, difflib, sys
+import os, json, difflib
 from os.path import join
 
 from senapy.dosleg.parser import parse
