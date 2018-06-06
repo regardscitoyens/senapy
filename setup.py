@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import os
-from setuptools import setup
+from setuptools import setup, find_packages
 from codecs import open
 from os import path
 
@@ -43,7 +42,7 @@ setup(
 
     keywords='scraping politics data',
 
-    packages=['senapy', 'senapy.parsing'],
+    packages=find_packages(),
 
     install_requires=requirements,
 
