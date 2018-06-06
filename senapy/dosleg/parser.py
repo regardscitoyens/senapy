@@ -478,6 +478,14 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                     step['source_url'] = step['source_url']
                 steps_to_add.append(step)
 
+            # CMP commission has two urls: one for the Senate and one for the AN
+            if step.get('stage') == 'CMP' and step.get('step') == 'commission':
+                match = re.search(r"numéro de dépôt à l'Assemblée Nationale : (\d+)", clean_spaces(item.text))
+                if match:
+                    text_no = int(match.group(1))
+                    step['cmp_commission_other_url'] = 'http://www.assemblee-nationale.fr/{}/ta-commission/r{:04d}-a0.asp'\
+                                                            .format(data['assemblee_legislature'], text_no)
+
             # remove CMP.CMP.hemicycle if it's a fail
             if step.get('stage') == 'CMP' and step.get('step') == 'hemicycle':
                 if not good_urls:

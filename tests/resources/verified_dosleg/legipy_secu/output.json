@@ -55,6 +55,7 @@
       "step": "hemicycle"
     },
     {
+      "cmp_commission_other_url": "http://www.assemblee-nationale.fr/13/ta-commission/r0416-a0.asp",
       "date": "2007-11-20",
       "institution": "CMP",
       "source_url": "https://www.senat.fr/rap/l07-087/l07-087.html",
