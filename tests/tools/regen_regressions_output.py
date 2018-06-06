@@ -1,7 +1,6 @@
-import json, os
+import json
+import os
 from os.path import join
-
-import requests
 
 from senapy.dosleg.parser import parse
 from compare_thelawfactory_and_me import compare
@@ -11,7 +10,7 @@ from compare_with_legipy import compare as compare_legipy
 from anpy.dossier_like_senapy import parse as parse_an
 from anpy.utils import json_dumps
 
-from lawfactory_utils.urls import download, enable_requests_cache
+from lawfactory_utils.urls import enable_requests_cache
 
 enable_requests_cache()
 
@@ -23,10 +22,9 @@ for file in os.listdir(DIR):
     output = parse(open(path+'/input.html'))
     json.dump(output, open(DIR+file+'/output.json', 'w'), ensure_ascii=False, indent=2, sort_keys=True)
 
-    if True: # enable this if you want to regen anpy.json
+    if True:  # enable this if you want to regen anpy.json
         if os.path.exists(join(path, 'anpy.json')):
-            html = download(output['url_dossier_assemblee']).text # oulala, can change !
-            result = parse_an(html, output['url_dossier_assemblee'])[0]
+            result = parse_an(output['url_dossier_assemblee'])[0]
             open(DIR+file+'/anpy.json', 'w').write(json_dumps(result, ensure_ascii=False, indent=4, sort_keys=True))
 
     if os.path.exists(join(path, 'lawfactory.json')):

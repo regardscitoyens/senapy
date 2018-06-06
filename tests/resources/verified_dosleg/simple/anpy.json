@@ -1,6 +1,7 @@
 {
-    "assemblee_id": "allemagne_vehicules",
+    "assemblee_id": "13-allemagne_vehicules",
     "assemblee_legislature": 13,
+    "assemblee_slug": "allemagne_vehicules",
     "beginning": "2008-07-23",
     "long_title": "Allemagne : échange de renseignements sur les titulaires du certificat d'immatriculation de véhicules",
     "steps": [
