@@ -322,11 +322,13 @@ def parse(html, url_senat=None, logfile=sys.stderr):
             if step.get('step') == 'congrès': continue
 
             # add a legislature guess if missing
-            if curr_institution == 'assemblee' and not data.get('assemblee_legislature') and step['date']:
+            if curr_institution == 'assemblee' and step['date']:
                 if '2007-06-20' <= step['date'] <= '2012-06-19':
                     data['assemblee_legislature'] = 13
                 elif '2012-06-20' <= step['date'] <= '2017-06-20':
                     data['assemblee_legislature'] = 14
+                elif '2017-06-21' <= step['date'] <= '2022-06-20':
+                    data['assemblee_legislature'] = 15
 
 
             good_urls = []
