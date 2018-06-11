@@ -170,7 +170,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
         if 'Assemblée' in link.text:
             url_an = link.attrs['href'].split('#')[0]
             if 'documents/index-' not in url_an:
-                data['url_dossier_assemblee'] = url_an
+                data['url_dossier_assemblee'] = clean_url(url_an)
                 data['assemblee_id'] = url_an.split('/')[-1].replace('.asp', '')
                 legislature = url_an.split('.fr/')[1].split('/')[0]
                 try:
