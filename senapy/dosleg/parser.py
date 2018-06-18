@@ -7,7 +7,7 @@ import requests
 import dateparser
 from bs4 import BeautifulSoup, Comment
 
-from lawfactory_utils.urls import pre_clean_url, clean_url, download
+from lawfactory_utils.urls import pre_clean_url, clean_url, download, parse_national_assembly_url
 
 re_clean_spaces = re.compile(r'\s+')
 clean_spaces = lambda x: re_clean_spaces.sub(' ', x)
@@ -171,11 +171,10 @@ def parse(html, url_senat=None, logfile=sys.stderr):
             url_an = link.attrs['href'].split('#')[0]
             if 'documents/index-' not in url_an:
                 data['url_dossier_assemblee'] = clean_url(url_an)
-                data['assemblee_id'] = url_an.split('/')[-1].replace('.asp', '')
-                legislature = url_an.split('.fr/')[1].split('/')[0]
-                try:
-                    data['assemblee_legislature'] = int(legislature)
-                except ValueError:  # strange link (old dosleg)
+                legislature, slug = parse_national_assembly_url(url_an)
+                if legislature:
+                    data['assemblee_legislature'] = legislature
+                else:
                     log_error('NO LEGISLATURE IN AN LINK: ' + url_an)
             else:
                 log_error('INVALID URL AN: ' + url_an)
