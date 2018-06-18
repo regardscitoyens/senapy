@@ -8,6 +8,7 @@ __pycache__/
 # pytest
 .cache
 .coverage
+.pytest_cache/
 
 # pip
 /build/

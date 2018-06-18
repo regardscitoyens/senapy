@@ -1,6 +1,7 @@
 {
-  "assemblee_id": "securite_interieure_lutte_terrorisme",
+  "assemblee_id": "15-securite_interieure_lutte_terrorisme",
   "assemblee_legislature": 15,
+  "assemblee_slug": "securite_interieure_lutte_terrorisme",
   "beginning": "2017-06-22",
   "end": "2017-10-31",
   "law_name": "Loi n° 2017-1510 du 30 octobre 2017",

@@ -171,11 +171,12 @@ def parse(html, url_senat=None, logfile=sys.stderr):
             url_an = link.attrs['href'].split('#')[0]
             if 'documents/index-' not in url_an:
                 data['url_dossier_assemblee'] = clean_url(url_an)
-                legislature, slug = parse_national_assembly_url(url_an)
+                legislature, data['assemblee_slug'] = parse_national_assembly_url(data['url_dossier_assemblee'])
                 if legislature:
                     data['assemblee_legislature'] = legislature
                 else:
                     log_error('NO LEGISLATURE IN AN LINK: ' + url_an)
+                data['assemblee_id'] = '%d-%s' % (data.get('assemblee_legislature', ''), data['assemblee_slug'])
             else:
                 log_error('INVALID URL AN: ' + url_an)
 

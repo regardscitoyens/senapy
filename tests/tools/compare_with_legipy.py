@@ -19,12 +19,13 @@ def compare(proc, me, verbose=True):
     test('url_senat', 'senat_url')
     test('legislature', 'assemblee_legislature')
     test('legislature')
-    test('id_an', 'assemblee_id')
+    test('id_an', 'assemblee_slug')
 
     myprint('NOK:', scores['nok'])
     myprint('OK:', scores['ok'])
 
     return scores['nok'], scores['ok']
+
 
 if __name__ == '__main__':
     proc = json.load(open(sys.argv[1]))
