@@ -105,6 +105,7 @@
       "step": "hemicycle"
     },
     {
+      "cmp_commission_other_url": "http://www.assemblee-nationale.fr/14/ta-commission/r0130-a0.asp",
       "date": "2012-07-26",
       "institution": "CMP",
       "source_url": "https://www.senat.fr/leg/pjl11-712.html",

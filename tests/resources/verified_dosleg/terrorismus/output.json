@@ -56,6 +56,7 @@
       "step": "hemicycle"
     },
     {
+      "cmp_commission_other_url": "http://www.assemblee-nationale.fr/15/ta-commission/r0265-a0.asp",
       "date": "2017-10-09",
       "institution": "CMP",
       "source_url": "https://www.senat.fr/leg/pjl17-017.html",
