@@ -168,7 +168,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
     # TODO: selecteur foireux ?
     for link in soup.select('h4.title.title-06.link-type-02 a'):
         if 'Assemblée' in link.text:
-            url_an = link.attrs['href'].split('#')[0]
+            url_an = link.attrs['href']
             if 'documents/index-' not in url_an:
                 data['url_dossier_assemblee'] = clean_url(url_an)
                 legislature, data['assemblee_slug'] = parse_national_assembly_url(data['url_dossier_assemblee'])
