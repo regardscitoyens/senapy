@@ -26,9 +26,18 @@ for file in os.listdir(DIR):
 
     if True:  # enable this if you want to regen anpy.json
         if os.path.exists(join(path, 'anpy.json')):
-            result = parse_an(output['url_dossier_assemblee'])[0]
+            results = parse_an(output['url_dossier_assemblee'])
+
+            # find the right corresponding dosleg
+            an_dos = results[0]
+            if len(results) > 1:
+                for result in results:
+                    if result.get('url_dossier_senat') == output['url_dossier_senat']:
+                        an_dos = result
+                        break
+
             with open(DIR + file + '/anpy.json', 'w') as f:
-                f.write(json_dumps(result, ensure_ascii=False, indent=4, sort_keys=True))
+                f.write(json_dumps(an_dos, ensure_ascii=False, indent=4, sort_keys=True))
 
     if os.path.exists(join(path, 'lawfactory.json')):
         with open(join(path, 'lawfactory.json')) as f:
