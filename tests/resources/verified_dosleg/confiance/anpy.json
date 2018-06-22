@@ -106,13 +106,6 @@
         {
             "date": "2017-08-09",
             "institution": "assemblee",
-            "source_url": "http://www.assemblee-nationale.fr/15/rapports/r0145.asp",
-            "stage": "l. définitive",
-            "step": "commission"
-        },
-        {
-            "date": "2017-08-09",
-            "institution": "assemblee",
             "source_url": "http://www.assemblee-nationale.fr/15/ta/ta0018.asp",
             "stage": "l. définitive",
             "step": "hemicycle"

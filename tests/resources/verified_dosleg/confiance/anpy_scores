@@ -4,7 +4,6 @@ OK url_jo ( https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT00003
 OK urgence ( True )
 
 STEPS:
-!! NOK !! DIFFERENT NUMBER OF STEPS: 18 VS 17
 
  - step 1
 OK institution ( senat )
@@ -93,27 +92,20 @@ OK source_url ( https://www.assemblee-nationale.fr/15/ta/ta0017.asp )
  - step 15
 OK institution ( assemblee )
 OK stage ( l. définitive )
-!! NOK !! step  diff: commission VS hemicycle
-!! NOK !! source_url  diff: https://www.assemblee-nationale.fr/15/rapports/r0145.asp VS https://www.assemblee-nationale.fr/15/ta/ta0018.asp
+OK step ( hemicycle )
+OK source_url ( https://www.assemblee-nationale.fr/15/ta/ta0018.asp )
 
  - step 16
-!! NOK !! institution  diff: assemblee VS conseil constitutionnel
-!! NOK !! stage  diff: l. définitive VS constitutionnalité
-!! NOK !! step  diff: hemicycle VS None
-!! NOK !! source_url  diff: https://www.assemblee-nationale.fr/15/ta/ta0018.asp VS https://www.conseil-constitutionnel.fr/conseil-constitutionnel/francais/les-decisions/acces-par-date/decisions-depuis-1959/2017/2017-753-dc/decision-n-2017-753-dc-du-8-septembre-2017.149689.html
+OK institution ( conseil constitutionnel )
+OK stage ( constitutionnalité )
+OK step ( None )
+OK source_url ( https://www.conseil-constitutionnel.fr/conseil-constitutionnel/francais/les-decisions/acces-par-date/decisions-depuis-1959/2017/2017-753-dc/decision-n-2017-753-dc-du-8-septembre-2017.149689.html )
 
  - step 17
-!! NOK !! institution  diff: conseil constitutionnel VS gouvernement
-!! NOK !! stage  diff: constitutionnalité VS promulgation
+OK institution ( gouvernement )
+OK stage ( promulgation )
 OK step ( None )
-!! NOK !! source_url  diff: https://www.conseil-constitutionnel.fr/conseil-constitutionnel/francais/les-decisions/acces-par-date/decisions-depuis-1959/2017/2017-753-dc/decision-n-2017-753-dc-du-8-septembre-2017.149689.html VS https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000035567936&categorieLien=id
+OK source_url ( https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000035567936&categorieLien=id )
 
- - step 18
-  - step not in mine
-!! NOK !! institution  diff: gouvernement VS None
-!! NOK !! stage  diff: promulgation VS None
-OK step ( None )
-!! NOK !! source_url  diff: https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000035567936&categorieLien=id VS None
-
-NOK: 13
-OK: 63
+NOK: 1
+OK: 71
