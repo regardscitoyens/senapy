@@ -1,0 +1,182 @@
+{
+  "assemblee_id": "14-transparence_vie_publique_pjl",
+  "assemblee_legislature": 14,
+  "assemblee_slug": "transparence_vie_publique_pjl",
+  "beginning": "2013-04-24",
+  "end": "2013-12-03",
+  "law_name": "Loi n° 2013-907 du 11 octobre 2013",
+  "legifrance_cidTexte": "JORFTEXT000028056315",
+  "long_title": "projet de loi relatif à la transparence de la vie publique",
+  "long_title_descr": "Loi relative à la transparence de la vie publique",
+  "objet_du_texte": "Le présent projet de loi a pour objet de prévenir les conflits d'intérêts et garantir la transparence de la vie publique pour les membres du gouvernement, les titulaires d'un mandat électif et les personnes chargées d'une mission de service public. Un projet de loi organique relatif à la transparence de la vie publique accompagne ce projet de loi ordinaire afin de définir les obligations des parlementaires, députés et sénateurs, en la matière.Pour parvenir à cet objectif le texte propose notamment d'obliger les membres du gouvernement, les titulaires d'un mandat électif et les personnes chargées d'une mission de service public à exercer leurs fonctions « avec dignité, probité et impartialité » et à « veiller à prévenir ou à faire cesser immédiatement les conflits d'intérêts » (article 1er) ; la notion de conflit d'intérêt étant définie à l'article 2 du projet de loi.Les membres du gouvernement doivent remettre personnellement au président de la Haute autorité de la transparence de la vie publique une déclaration de situation patrimoniale et une déclaration d'intérêts, dès leur nomination, ainsi qu'à l'occasion de tout changement substantiel de leur patrimoine ou des intérêts qu'ils détiennent (article 3). Ces déclarations seront ensuite rendues publiques (article 4). Dès leur nomination, les membres du gouvernement font l'objet d'une vérification de leur situation fiscale (article 8).L'article 10 du projet de loi dresse la liste des autres acteurs publics également assujettis à l'obligation de déclaration de situation patrimoniale et d'intérêts. L'article 11 est relatif à la publicité de ces déclarations. Des infractions pénales sont définies aux articles 18 à 20 en cas d'infraction liée aux déclarations.Une Haute autorité de la transparence de la vie publique est instituée par l'article 12 du projet de loi qui définit sa composition et son organisation. L'article 13 définit ses missions ainsi que les conditions de sa saisine. Pour exercer ses missions, la Haute autorité de la transparence de la vie publique peut obtenir les déclarations fiscales (article 5). Elle dispose également d'un pouvoir d'injonction lorsqu'elle constate un conflit d'intérêts (article 9).Le projet de loi consacre une section à la position des fonctionnaires investis d'un mandat parlementaire (article 16).Il entend également protéger les lanceurs d'alerte (article 17).",
+  "proposal_type": "PJL",
+  "senat_id": "pjl12-689",
+  "short_title": "Transparence de la vie publique",
+  "steps": [
+    {
+      "date": "2013-04-24",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/14/projets/pl1005.asp",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2013-06-05",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/14/ta-commission/r1109-a0.asp",
+      "stage": "1ère lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2013-06-25",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0162.asp",
+      "stage": "1ère lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2013-06-26",
+      "institution": "senat",
+      "source_url": "https://www.senat.fr/leg/pjl12-689.html",
+      "stage": "1ère lecture",
+      "step": "depot"
+    },
+    {
+      "date": "2013-07-03",
+      "institution": "senat",
+      "source_url": "https://www.senat.fr/leg/pjl12-724.html",
+      "stage": "1ère lecture",
+      "step": "commission"
+    },
+    {
+      "date": "2013-07-15",
+      "institution": "senat",
+      "source_url": "https://www.senat.fr/leg/tas12-193.html",
+      "stage": "1ère lecture",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2013-07-16",
+      "institution": "CMP",
+      "source_url": "https://www.senat.fr/leg/pjl12-772.html",
+      "stage": "CMP",
+      "step": "commission"
+    },
+    {
+      "date": "2013-07-17",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/14/projets/pl1250.asp",
+      "stage": "nouv. lect.",
+      "step": "depot"
+    },
+    {
+      "date": "2013-07-17",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/14/ta-commission/r1280-a0.asp",
+      "stage": "nouv. lect.",
+      "step": "commission"
+    },
+    {
+      "date": "2013-07-23",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0192.asp",
+      "stage": "nouv. lect.",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2013-07-23",
+      "institution": "senat",
+      "source_url": "https://www.senat.fr/leg/pjl12-798.html",
+      "stage": "nouv. lect.",
+      "step": "depot"
+    },
+    {
+      "date": "2013-07-24",
+      "institution": "senat",
+      "source_url": "https://www.senat.fr/leg/pjl12-803.html",
+      "stage": "nouv. lect.",
+      "step": "commission"
+    },
+    {
+      "date": "2013-07-25",
+      "institution": "senat",
+      "source_url": "https://www.senat.fr/leg/tas12-211.html",
+      "stage": "nouv. lect.",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2013-07-26",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0192.asp",
+      "stage": "l. définitive",
+      "step": "depot"
+    },
+    {
+      "date": "2013-09-17",
+      "institution": "assemblee",
+      "source_url": "http://www.assemblee-nationale.fr/14/ta/ta0208.asp",
+      "stage": "l. définitive",
+      "step": "hemicycle"
+    },
+    {
+      "date": "2013-10-09",
+      "decision": "partiellement conforme",
+      "institution": "conseil constitutionnel",
+      "source_url": "http://www.conseil-constitutionnel.fr/conseil-constitutionnel/francais/les-decisions/acces-par-date/decisions-depuis-1959/2013/2013-676-dc/decision-n-2013-676-dc-du-9-octobre-2013.138228.html",
+      "stage": "constitutionnalité"
+    },
+    {
+      "date": "2013-12-03",
+      "institution": "gouvernement",
+      "source_url": "https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000028056315&categorieLien=id",
+      "stage": "promulgation"
+    }
+  ],
+  "table_concordance": {
+    "10": "11",
+    "11": "12",
+    "11 bis": "14",
+    "11 bis A": "13",
+    "11 quater": "17",
+    "11 quater A": "16",
+    "11 quinquies": "18",
+    "11 ter": "15",
+    "12": "19",
+    "13": "20",
+    "13 bis": "21",
+    "13 ter": "supprimé",
+    "14": "22",
+    "15": "23",
+    "16": "24",
+    "17": "25",
+    "18": "26",
+    "19": "27",
+    "19 bis": "supprimé",
+    "1er": "1er",
+    "2": "2",
+    "2 bis": "3",
+    "20": "28",
+    "21": "29",
+    "22": "30",
+    "22 bis": "31",
+    "22 bis A": "supprimé",
+    "22 ter": "32",
+    "23": "33",
+    "23 bis": "34",
+    "24": "35",
+    "3": "4",
+    "4": "5",
+    "5": "6",
+    "6": "7",
+    "7": "8",
+    "8": "9",
+    "9": "10"
+  },
+  "themes": [
+    "Pouvoirs publics et Constitution"
+  ],
+  "urgence": true,
+  "url_dossier_assemblee": "http://www.assemblee-nationale.fr/14/dossiers/transparence_vie_publique_pjl.asp",
+  "url_dossier_senat": "https://www.senat.fr/dossier-legislatif/pjl12-689.html",
+  "url_jo": "https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000028056315&categorieLien=id"
+}

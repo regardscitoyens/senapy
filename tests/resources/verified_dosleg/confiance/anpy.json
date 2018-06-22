@@ -1,0 +1,135 @@
+{
+    "assemblee_id": "15-retablissement_confiance_action_publique",
+    "assemblee_legislature": 15,
+    "assemblee_slug": "retablissement_confiance_action_publique",
+    "beginning": "2017-07-04",
+    "long_title": "Pouvoirs publics : confiance dans la vie politique",
+    "steps": [
+        {
+            "date": "2017-06-14",
+            "institution": "senat",
+            "source_url": "https://www.senat.fr/leg/pjl16-580.html",
+            "stage": "1ère lecture",
+            "step": "depot"
+        },
+        {
+            "date": "2017-07-04",
+            "institution": "senat",
+            "source_url": "https://www.senat.fr/leg/pjl16-608.html",
+            "stage": "1ère lecture",
+            "step": "commission"
+        },
+        {
+            "date": "2017-07-13",
+            "institution": "senat",
+            "source_url": "https://www.senat.fr/leg/tas16-114.html",
+            "stage": "1ère lecture",
+            "step": "hemicycle"
+        },
+        {
+            "date": "2017-07-13",
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/15/projets/pl0099.asp",
+            "stage": "1ère lecture",
+            "step": "depot"
+        },
+        {
+            "date": "2017-07-20",
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/15/ta-commission/r0105-a0.asp",
+            "stage": "1ère lecture",
+            "step": "commission"
+        },
+        {
+            "date": "2017-07-28",
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/15/ta/ta0009.asp",
+            "stage": "1ère lecture",
+            "step": "hemicycle"
+        },
+        {
+            "date": "2017-08-01",
+            "institution": "CMP",
+            "source_url": "http://www.assemblee-nationale.fr/15/rapports/r0121.asp",
+            "stage": "CMP",
+            "step": "commission"
+        },
+        {
+            "date": "2017-08-01",
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/15/projets/pl0122.asp",
+            "stage": "nouv. lect.",
+            "step": "depot"
+        },
+        {
+            "date": "2017-08-02",
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/15/ta-commission/r0124-a0.asp",
+            "stage": "nouv. lect.",
+            "step": "commission"
+        },
+        {
+            "date": "2017-08-03",
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/15/ta/ta0017.asp",
+            "stage": "nouv. lect.",
+            "step": "hemicycle"
+        },
+        {
+            "date": "2017-08-03",
+            "institution": "senat",
+            "source_url": "https://www.senat.fr/leg/pjl16-707.html",
+            "stage": "nouv. lect.",
+            "step": "depot"
+        },
+        {
+            "date": "2017-08-04",
+            "institution": "senat",
+            "source_url": "https://www.senat.fr/leg/pjl16-709.html",
+            "stage": "nouv. lect.",
+            "step": "commission"
+        },
+        {
+            "date": "2017-08-04",
+            "institution": "senat",
+            "source_url": "https://www.senat.fr/leg/tas16-128.html",
+            "stage": "nouv. lect.",
+            "step": "hemicycle"
+        },
+        {
+            "date": "2017-08-03",
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/15/ta/ta0017.asp",
+            "stage": "l. définitive",
+            "step": "depot"
+        },
+        {
+            "date": "2017-08-09",
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/15/rapports/r0145.asp",
+            "stage": "l. définitive",
+            "step": "commission"
+        },
+        {
+            "date": "2017-08-09",
+            "institution": "assemblee",
+            "source_url": "http://www.assemblee-nationale.fr/15/ta/ta0018.asp",
+            "stage": "l. définitive",
+            "step": "hemicycle"
+        },
+        {
+            "institution": "conseil constitutionnel",
+            "source_url": "http://www.conseil-constitutionnel.fr/conseil-constitutionnel/francais/les-decisions/acces-par-date/decisions-depuis-1959/2017/2017-753-dc/decision-n-2017-753-dc-du-8-septembre-2017.149689.html",
+            "stage": "constitutionnalité"
+        },
+        {
+            "institution": "gouvernement",
+            "source_url": "https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000035567936&categorieLien=id",
+            "stage": "promulgation"
+        }
+    ],
+    "urgence": true,
+    "url_dossier_assemblee": "http://www.assemblee-nationale.fr/dyn/15/dossiers/retablissement_confiance_action_publique",
+    "url_dossier_senat": "https://www.senat.fr/dossier-legislatif/pjl16-580.html",
+    "url_jo": "https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000035567936&categorieLien=id"
+}
