@@ -106,13 +106,13 @@ OK stage ( l. définitive )
 !! NOK !! institution  diff: conseil constitutionnel VS assemblee
 !! NOK !! stage  diff: constitutionnalité VS l. définitive
 !! NOK !! step  diff: None VS hemicycle
-!! NOK !! source_url  diff: https://www.conseil-constitutionnel.fr/conseil-constitutionnel/francais/les-decisions/acces-par-date/decisions-depuis-1959/2013/2013-675-dc/decision-n-2013-675-dc-du-9-octobre-2013.138242.html VS https://www.assemblee-nationale.fr/14/ta/ta0209.asp
+!! NOK !! source_url  diff: https://www.conseil-constitutionnel.fr/decision/2013/2013675DC.htm VS https://www.assemblee-nationale.fr/14/ta/ta0209.asp
 
  - step 18
 !! NOK !! institution  diff: gouvernement VS conseil constitutionnel
 !! NOK !! stage  diff: promulgation VS constitutionnalité
 OK step ( None )
-!! NOK !! source_url  diff: https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000028056223&categorieLien=id VS https://www.conseil-constitutionnel.fr/conseil-constitutionnel/francais/les-decisions/acces-par-date/decisions-depuis-1959/2013/2013-675-dc/decision-n-2013-675-dc-du-9-octobre-2013.138242.html
+!! NOK !! source_url  diff: https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000028056223&categorieLien=id VS https://www.conseil-constitutionnel.fr/decision/2013/2013675DC.htm
 
 NOK: 36
 OK: 40

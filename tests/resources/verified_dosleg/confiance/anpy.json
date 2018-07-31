@@ -6,13 +6,6 @@
     "long_title": "Pouvoirs publics : confiance dans la vie politique",
     "steps": [
         {
-            "date": "2017-06-14",
-            "institution": "senat",
-            "source_url": "https://www.senat.fr/leg/pjl16-580.html",
-            "stage": "1ère lecture",
-            "step": "depot"
-        },
-        {
             "date": "2017-07-04",
             "institution": "senat",
             "source_url": "https://www.senat.fr/leg/pjl16-608.html",
@@ -112,7 +105,7 @@
         },
         {
             "institution": "conseil constitutionnel",
-            "source_url": "http://www.conseil-constitutionnel.fr/conseil-constitutionnel/francais/les-decisions/acces-par-date/decisions-depuis-1959/2017/2017-753-dc/decision-n-2017-753-dc-du-8-septembre-2017.149689.html",
+            "source_url": "https://www.conseil-constitutionnel.fr/decision/2017/2017753DC.htm",
             "stage": "constitutionnalité"
         },
         {

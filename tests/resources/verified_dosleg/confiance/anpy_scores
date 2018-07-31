@@ -4,12 +4,14 @@ OK url_jo ( https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT00003
 OK urgence ( True )
 
 STEPS:
+!! NOK !! DIFFERENT NUMBER OF STEPS: 16 VS 17
 
+   > missing first step in anpy version, added an empty step for fair comparaison
  - step 1
-OK institution ( senat )
-OK stage ( 1ère lecture )
-OK step ( depot )
-OK source_url ( https://www.senat.fr/leg/pjl16-580.html )
+!! NOK !! institution  diff: None VS senat
+!! NOK !! stage  diff: None VS 1ère lecture
+!! NOK !! step  diff: None VS depot
+!! NOK !! source_url  diff: None VS https://www.senat.fr/leg/pjl16-580.html
 
  - step 2
 OK institution ( senat )
@@ -99,7 +101,7 @@ OK source_url ( https://www.assemblee-nationale.fr/15/ta/ta0018.asp )
 OK institution ( conseil constitutionnel )
 OK stage ( constitutionnalité )
 OK step ( None )
-OK source_url ( https://www.conseil-constitutionnel.fr/conseil-constitutionnel/francais/les-decisions/acces-par-date/decisions-depuis-1959/2017/2017-753-dc/decision-n-2017-753-dc-du-8-septembre-2017.149689.html )
+OK source_url ( https://www.conseil-constitutionnel.fr/decision/2017/2017753DC.htm )
 
  - step 17
 OK institution ( gouvernement )
@@ -107,5 +109,5 @@ OK stage ( promulgation )
 OK step ( None )
 OK source_url ( https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000035567936&categorieLien=id )
 
-NOK: 1
-OK: 71
+NOK: 5
+OK: 67

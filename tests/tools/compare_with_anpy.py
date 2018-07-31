@@ -31,6 +31,14 @@ def compare(proc, me, verbose=True):
         myprint('!! NOK !! DIFFERENT NUMBER OF STEPS:', len(proc['steps']), 'VS', len(me['steps']))
     myprint()
 
+    # hack to re-align if missing a step
+    try:
+        if proc['steps'][0]['source_url'] == me['steps'][1]['source_url']:
+            proc['steps'] = [{}] + proc['steps']
+            myprint('   > missing first step in anpy version, added an empty step for fair comparaison')
+    except KeyError:
+        pass
+
     for i, step_proc in enumerate(proc['steps']):
         myprint(' - step', i + 1)
 
