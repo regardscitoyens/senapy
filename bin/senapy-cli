@@ -61,24 +61,22 @@ def cli_parse(url, enable_cache):
 @click.option('--filter-on-promulgation', is_flag=True)
 @click.option('--in-discussion', is_flag=True)
 def doslegs_urls(min_year, max_year, filter_on_promulgation, in_discussion):
-    urls = set()
-
+    urls_open_data = set()
     if not in_discussion:
         _log('finding urls in Open Data CSV...(keeping only doslegs in and after', min_year, ')')
         # rewrite columns titles to make it easier to work with
         lines = [{k.lower().replace(' ' , '_'): v for k, v in line.items()}
                     for line in opendata.fetch_csv()]
-        link_count = 0
         filter_on = 'date_promulgation' if filter_on_promulgation else 'date_initiale'
         for line in lines:
             date = line[filter_on]
             if date:
                 year = int(date.split('/')[-1])
                 if year >= min_year and (max_year is None or year <= max_year):
-                    link_count += 1
-                    urls.add(clean_url(line['url_du_dossier']))
-        _log('  =>', link_count, 'urls found in CSV')
+                    urls_open_data.add(clean_url(line['url_du_dossier']))
+        _log('  =>', len(urls_open_data), 'urls found in CSV')
 
+    urls_html = set()
     if max_year is None:
         base_url = 'http://www.senat.fr/dossiers-legislatifs/textes-recents.html'
         if in_discussion:
@@ -87,16 +85,14 @@ def doslegs_urls(min_year, max_year, filter_on_promulgation, in_discussion):
         html = download(base_url).text
         soup = BeautifulSoup(html, 'html5lib')
 
-        link_count = 0
         for link in soup.select('a'):
             href = link.attrs.get('href', '')
             if '/dossier-legislatif/' in href:
-                link_count += 1
                 url = urljoin(base_url, href)
-                urls.add(clean_url(url))
-        _log('  =>', link_count, 'doslegs found on website')
+                urls_html.add(clean_url(url))
+        _log('  =>', len(urls_html), 'doslegs found on website')
 
-    for url in sorted(urls):
+    for url in sorted(urls_open_data | urls_html):
         print(url)
 
 
