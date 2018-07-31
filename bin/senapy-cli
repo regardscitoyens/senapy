@@ -92,10 +92,11 @@ def doslegs_urls(min_year, max_year, filter_on_promulgation, in_discussion):
                 urls_html.add(clean_url(url))
         _log('  =>', len(urls_html), 'doslegs found on website')
 
-    if not in_discussion:
-        _log('  =>', len(urls_html), 'doslegs found in total')
+    urls = urls_open_data | urls_html
+    if len(urls) != len(urls_html):
+        _log('=>', len(urls), 'doslegs found in total')
 
-    for url in sorted(urls_open_data | urls_html):
+    for url in sorted(urls):
         print(url)
 
 
