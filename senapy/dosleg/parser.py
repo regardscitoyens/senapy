@@ -211,15 +211,21 @@ def parse(html, url_senat=None, logfile=sys.stderr):
     else:
         log_error('UNKNOWN PROPOSAL TYPE (PPL/PJL)')
 
+    steps_contents = []
+    for item in soup.select('#box-timeline > div div'):
+        if 'timeline-' in item.attrs.get('id', ''):
+            steps_contents.append(item)
+
     curr_institution = None
     curr_stage = None
     error_detection_last_date = None
-    for item in soup.select('#box-timeline > div div'):
-        if 'timeline-' in item.attrs.get('id', ''):
+    for timeline_index, step_shortcut in enumerate(steps_shortcuts):
+        if True: # kept only for a better diff, gonna be removed in the next diff
             step = {}
 
-            timeline_index = int(item.attrs['id'].split('-')[1]) - 1
-            step_shortcut = steps_shortcuts[timeline_index]
+            item = BeautifulSoup('', 'lxml') # no info block for steps in the futur
+            if len(steps_contents) > timeline_index:
+                item = steps_contents[timeline_index]
 
             section_title = item
             while section_title.previous_sibling and section_title.previous_sibling.name != 'h3':
@@ -231,13 +237,12 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                 date_text = step_shortcut.select('em')[-1].text.strip()
                 if '/' in date_text:
                     step['date'] = format_date(date_text)
-            if not step['date']:
+            if not step['date'] and item.text:
                 # TODO: date sometimes is not on the shortcut
                 log_error('SHORCUT WITHOUT DATE')
 
             if 'beginning' not in data and step['date']:
                 data['beginning'] = step['date']
-
 
             # TODO review this part
             step_step = step_shortcut.find('a').attrs['title'].split('|')[-1].split('-')[-1].lower().strip()
@@ -335,7 +340,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
 
             if 'Texte renvoyé en commission' in item.text:
                 step['echec'] = 'renvoi en commission'
-            else:
+            elif item.text:
                 # TROUVONS LES TEXTES
                 for link in item.select('a'):
                     line = link.parent
@@ -397,7 +402,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                                 'date': date,
                             })
 
-            if not good_urls:
+            if not good_urls and item.text:
                 # sinon prendre une url d'un peu moins bonne qualité
                 if 'source_url' not in step:
                     for link in item.select('.list-disc-02 a'):
