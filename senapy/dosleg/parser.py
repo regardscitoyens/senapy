@@ -420,12 +420,10 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                         text_no_match = re.search(r'Texte(?: de la commission)\s*n°\s*(?P<num>\d+)', item.text, re.I)
                         if text_no_match:
                             text_no = text_no_match.group('num')
-                            if step.get('step') in ('depot', 'commission'):
-                                prefix = data.get('proposal_type').lower()
-                            elif step.get('step') == 'hemicycle':
-                                prefix = 'tas'
-                            year = step['date'][2:4]
-                            url = 'https://www.senat.fr/leg/{}{}-{}.html'.format(prefix, year, text_no)
+                            prefix = data['senat_id'].split('-')[0]
+                            if step.get('step') == 'hemicycle':
+                                prefix = prefix.replace(data.get('proposal_type').lower(), 'tas')
+                            url = 'https://www.senat.fr/leg/{}-{}.html'.format(prefix, text_no)
                             step['source_url'] = url
 
                     if 'source_url' not in step:
