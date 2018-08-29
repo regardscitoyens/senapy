@@ -3,6 +3,7 @@
     "assemblee_legislature": 15,
     "assemblee_slug": "retablissement_confiance_action_publique",
     "beginning": "2017-07-04",
+    "end": "2017-09-15",
     "long_title": "Pouvoirs publics : confiance dans la vie politique",
     "steps": [
         {
@@ -109,6 +110,7 @@
             "stage": "constitutionnalité"
         },
         {
+            "date": "2017-09-15",
             "institution": "gouvernement",
             "source_url": "https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000035567936&categorieLien=id",
             "stage": "promulgation"
