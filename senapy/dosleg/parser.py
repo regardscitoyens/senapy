@@ -402,17 +402,10 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                                 'date': date,
                             })
 
+
+
             if not good_urls and item.text:
                 # sinon prendre une url d'un peu moins bonne qualité
-                if 'source_url' not in step:
-                    for link in item.select('.list-disc-02 a'):
-                        if 'href' in link.attrs:
-                            href = link.attrs['href']
-                            href = pre_clean_url(href)
-                            nice_text = link.text.lower().strip()
-                            if nice_text == 'rapport' or nice_text == 'rapport général':
-                                step['source_url'] = urljoin(url_senat, href)
-                                break
 
                 if 'Texte retiré par' in item.text:
                     # texte retiré means all the previous steps become useless except the depot
@@ -422,7 +415,31 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                     step['echec'] = "rejet"
 
                 if 'source_url' not in step and not step.get('echec'):
-                    if step.get('institution') == 'assemblee' and 'assemblee_legislature' in data:
+                    # trouver les numeros dans le texte
+                    if curr_institution == 'senat' and step.get('date'):
+                        text_no_match = re.search(r'Texte(?: de la commission)\s*n°\s*(?P<num>\d+)', item.text, re.I)
+                        if text_no_match:
+                            text_no = text_no_match.group('num')
+                            if step.get('step') in ('depot', 'commission'):
+                                prefix = data.get('proposal_type').lower()
+                            elif step.get('step') == 'hemicycle':
+                                prefix = 'tas'
+                            year = step['date'][2:4]
+                            url = 'https://www.senat.fr/leg/{}{}-{}.html'.format(prefix, year, text_no)
+                            step['source_url'] = url
+
+                    if 'source_url' not in step:
+                        # prendre un rapport
+                        for link in item.select('.list-disc-02 a'):
+                            if 'href' in link.attrs:
+                                href = link.attrs['href']
+                                href = pre_clean_url(href)
+                                nice_text = link.text.lower().strip()
+                                if nice_text == 'rapport' or nice_text == 'rapport général':
+                                    step['source_url'] = urljoin(url_senat, href)
+                                    break
+
+                    if 'source_url' not in step and step.get('institution') == 'assemblee' and 'assemblee_legislature' in data:
                         legislature = data['assemblee_legislature']
                         text_no_match = re.search(r'(Texte|Rapport)\s*n°\s*(\d+)', item.text, re.I)
                         if text_no_match:
@@ -441,8 +458,8 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                             if url:
                                 step['source_url'] = url.format(legislature, int(text_no))
 
-                    if 'source_url' not in step:
-                        log_error('ITEM WITHOUT URL TO TEXT - %s.%s.%s' % (step['institution'], step.get('stage'), step.get('step')))
+                if 'source_url' not in step and not step.get('echec'):
+                    log_error('ITEM WITHOUT URL TO TEXT - %s.%s.%s' % (step['institution'], step.get('stage'), step.get('step')))
 
             # Decision Conseil Constitutionnel
             if curr_stage == 'constitutionnalité':
@@ -489,8 +506,6 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                         sub_step['date'] = url['date']
                     steps_to_add.append(sub_step)
             else:
-                if 'source_url' in step:
-                    step['source_url'] = step['source_url']
                 steps_to_add.append(step)
 
             # remove CMP.CMP.hemicycle if it's a fail
