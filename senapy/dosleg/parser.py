@@ -428,8 +428,8 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                                 text_year = int(step["date"][2:4])
                                 step_month = int(step["date"][5:7])
                                 if step_month < 10:
-                                    text_year += 1
-                            prefix = prefix[:-2] + text_year
+                                    text_year -= 1
+                            prefix = '%s%02d' % (prefix[:-2], int(text_year))
                             url = 'https://www.senat.fr/leg/{}-{}.html'.format(prefix, text_num)
                             step['source_url'] = url
 
