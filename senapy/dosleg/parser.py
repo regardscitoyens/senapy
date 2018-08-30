@@ -417,13 +417,20 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                 if 'source_url' not in step and not step.get('echec'):
                     # trouver les numeros dans le texte
                     if curr_institution == 'senat' and step.get('date'):
-                        text_no_match = re.search(r'Texte(?: de la commission)\s*n°\s*(?P<num>\d+)', item.text, re.I)
-                        if text_no_match:
-                            text_no = text_no_match.group('num')
+                        text_num_match = re.search(r'Texte(?: de la commission)\s*n°\s*(?P<num>\d+)\s*(\(\s*20(?P<year>\d\d)\s*-\s*20\d\d\s*\))?', item.text, re.I)
+                        if text_num_match:
+                            text_num = text_num_match.group('num')
                             prefix = data['senat_id'].split('-')[0]
                             if step.get('step') == 'hemicycle':
                                 prefix = prefix.replace(data.get('proposal_type').lower(), 'tas')
-                            url = 'https://www.senat.fr/leg/{}-{}.html'.format(prefix, text_no)
+                            text_year = text_num_match.group('year')
+                            if not text_year:
+                                text_year = int(step["date"][2:4])
+                                step_month = int(step["date"][5:7])
+                                if step_month < 10:
+                                    text_year += 1
+                            prefix = prefix[:-2] + text_year
+                            url = 'https://www.senat.fr/leg/{}-{}.html'.format(prefix, text_num)
                             step['source_url'] = url
 
                     if 'source_url' not in step:
@@ -439,9 +446,9 @@ def parse(html, url_senat=None, logfile=sys.stderr):
 
                     if 'source_url' not in step and step.get('institution') == 'assemblee' and 'assemblee_legislature' in data:
                         legislature = data['assemblee_legislature']
-                        text_no_match = re.search(r'(Texte|Rapport)\s*n°\s*(\d+)', item.text, re.I)
-                        if text_no_match:
-                            text_no = text_no_match.group(2)
+                        text_num_match = re.search(r'(Texte|Rapport)\s*n°\s*(\d+)', item.text, re.I)
+                        if text_num_match:
+                            text_num = text_num_match.group(2)
                             url = None
                             if step.get('step') == 'commission':
                                 url = 'http://www.assemblee-nationale.fr/{}/ta-commission/r{:04d}-a0.asp'
@@ -454,7 +461,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                                 url = 'http://www.assemblee-nationale.fr/{}/ta/ta{:04d}.asp'
 
                             if url:
-                                step['source_url'] = url.format(legislature, int(text_no))
+                                step['source_url'] = url.format(legislature, int(text_num))
 
                 if 'source_url' not in step and not step.get('echec'):
                     log_error('ITEM WITHOUT URL TO TEXT - %s.%s.%s' % (step['institution'], step.get('stage'), step.get('step')))
@@ -490,9 +497,9 @@ def parse(html, url_senat=None, logfile=sys.stderr):
             if step.get('stage') == 'CMP' and step.get('step') == 'commission':
                 match = re.search(r"numéro de dépôt à l'Assemblée Nationale : (\d+)", clean_spaces(item.text))
                 if match:
-                    text_no = int(match.group(1))
+                    text_num = int(match.group(1))
                     step['cmp_commission_other_url'] = 'http://www.assemblee-nationale.fr/{}/ta-commission/r{:04d}-a0.asp'\
-                                                            .format(data['assemblee_legislature'], text_no)
+                                                            .format(data['assemblee_legislature'], text_num)
 
             steps_to_add = []
             if good_urls:
