@@ -96,6 +96,31 @@ def find_date(line, curr_stage=None):
         return sorted(dates)[-1]
 
 
+def guess_senate_text_url(item_text, step, data):
+    text_num_match = re.search(r'(\n|^)Texte( de la commission)?\s*n°\s*'
+                               r'(?P<num>\d+)\s*'
+                               r'(\(\s*20(?P<year>\d\d)\s*-\s*20\d\d\s*\))?',
+                               item_text, re.I)
+    if text_num_match:
+        text_num = text_num_match.group('num')
+        prefix = data['senat_id'].split('-')[0]
+        if step.get('step') == 'hemicycle':
+            prefix = prefix.replace(data.get('proposal_type').lower(), 'tas')
+
+        # find text year in the item text
+        text_year = text_num_match.group('year')
+        if text_year:
+            text_year = int(text_year)
+        else:
+            # or guess it from the step date
+            text_year, step_month, _ = [int(x) for x in step["date"].split('-')]
+            if step_month < 10:
+                text_year -= 1
+
+        prefix = '%s%s' % (prefix[:-2], str(text_year)[-2:])
+        return 'https://www.senat.fr/leg/{}-{}.html'.format(prefix, text_num)
+
+
 def parse(html, url_senat=None, logfile=sys.stderr):
     data = {}
 
@@ -417,20 +442,8 @@ def parse(html, url_senat=None, logfile=sys.stderr):
                 if 'source_url' not in step and not step.get('echec'):
                     # trouver les numeros dans le texte
                     if curr_institution == 'senat' and step.get('date'):
-                        text_num_match = re.search(r'Texte(?: de la commission)\s*n°\s*(?P<num>\d+)\s*(\(\s*20(?P<year>\d\d)\s*-\s*20\d\d\s*\))?', item.text, re.I)
-                        if text_num_match:
-                            text_num = text_num_match.group('num')
-                            prefix = data['senat_id'].split('-')[0]
-                            if step.get('step') == 'hemicycle':
-                                prefix = prefix.replace(data.get('proposal_type').lower(), 'tas')
-                            text_year = text_num_match.group('year')
-                            if not text_year:
-                                text_year = int(step["date"][2:4])
-                                step_month = int(step["date"][5:7])
-                                if step_month < 10:
-                                    text_year -= 1
-                            prefix = '%s%02d' % (prefix[:-2], int(text_year))
-                            url = 'https://www.senat.fr/leg/{}-{}.html'.format(prefix, text_num)
+                        url = guess_senate_text_url(item.text, step, data)
+                        if url:
                             step['source_url'] = url
 
                     if 'source_url' not in step:
