@@ -15,6 +15,10 @@ def test_url_guessing():
     url = guess_senate_text_url(text, step, data)
     assert url == "https://www.senat.fr/leg/pjl16-328.html"
 
+    text = "\nTexte de la commission n° 666 (2007-2008)"
+    url = guess_senate_text_url(text, step, data)
+    assert url == "https://www.senat.fr/leg/pjl07-666.html"
+
     text = "\nTexte de la commission n° 666"
     url = guess_senate_text_url(text, step, data)
     assert url == "https://www.senat.fr/leg/pjl13-666.html"

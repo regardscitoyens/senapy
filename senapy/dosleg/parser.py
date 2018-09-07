@@ -109,15 +109,14 @@ def guess_senate_text_url(item_text, step, data):
 
         # find text year in the item text
         text_year = text_num_match.group('year')
-        if text_year:
-            text_year = int(text_year)
-        else:
-            # or guess it from the step date
-            text_year, step_month, _ = [int(x) for x in step["date"].split('-')]
+        # or guess it from the step date
+        if not text_year:
+            text_year = int(step["date"][2:4])
+            step_month = int(step["date"][5:7])
             if step_month < 10:
                 text_year -= 1
 
-        prefix = '%s%s' % (prefix[:-2], str(text_year)[-2:])
+        prefix = '%s%02d' % (prefix[:-2], int(text_year))
         return 'https://www.senat.fr/leg/{}-{}.html'.format(prefix, text_num)
 
 
