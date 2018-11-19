@@ -20,7 +20,7 @@ def format_date(date):
 
 def parse_table_concordance(url):
     html = download(url).text
-    soup = BeautifulSoup(html, 'lxml')
+    soup = BeautifulSoup(html, 'html5lib')
 
     old_to_adopted = {}
     confusing_entries = set()
