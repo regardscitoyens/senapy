@@ -1,7 +1,4 @@
 click < 6.8, >= 6.7
-requests < 2.21, >= 2.20
-beautifulsoup4 < 4.7, >= 4.6
-lxml < 4.2, >= 4.1
 html5lib < 1.1, >= 1.0
 dateparser < 0.8, >= 0.7
 
