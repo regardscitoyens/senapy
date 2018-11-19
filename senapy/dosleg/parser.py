@@ -126,7 +126,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
     def log_error(error):
         print('## ERROR ###', error, file=logfile)
 
-    soup = BeautifulSoup(html, 'lxml')
+    soup = BeautifulSoup(html, 'html5lib')
 
     data['short_title'] = clean_spaces(soup.select_one('.title-dosleg').text.strip())
 
