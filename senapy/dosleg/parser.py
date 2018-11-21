@@ -268,7 +268,8 @@ def parse(html, url_senat=None, logfile=sys.stderr):
             data['beginning'] = step['date']
 
         # TODO review this part
-        step_step = step_shortcut.find('a').attrs['title'].split('|')[-1].split('-')[-1].lower().strip()
+        step_shorcut_infos = step_shortcut.select_one('a[title]').attrs['title'].split('|')[-1].split('-')
+        step_step = step_shorcut_infos[-1].lower().strip()
         if 'commission' in step_step:
             step_step = 'commission'
         elif 'séance' in step_step:
@@ -283,7 +284,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
             if titre == 'loi' or 'promulgation' in titre:
                 curr_stage = 'promulgation'
             else:
-                curr_stage = step_shortcut.find('a').attrs['title'].split('|')[-1].split('-')[0].lower().strip()
+                curr_stage = step_shorcut_infos[0].lower().strip()
                 if curr_stage == 'cmp':
                     curr_stage = 'CMP'
 
