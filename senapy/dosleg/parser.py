@@ -13,6 +13,15 @@ re_clean_spaces = re.compile(r'\s+')
 clean_spaces = lambda x: re_clean_spaces.sub(' ', x)
 
 
+def guess_legislature(date):
+    if '2007-06-20' <= date <= '2012-06-19':
+        return 13
+    elif '2012-06-20' <= date <= '2017-06-20':
+        return 14
+    elif '2017-06-21' <= date <= '2022-06-20':
+        return 15
+
+
 def format_date(date):
     parsed = dateparser.parse(date, languages=['fr'])
     return parsed.strftime("%Y-%m-%d")
@@ -352,13 +361,9 @@ def parse(html, url_senat=None, logfile=sys.stderr):
 
         # add a legislature guess if missing
         if curr_institution == 'assemblee' and step['date']:
-            if '2007-06-20' <= step['date'] <= '2012-06-19':
-                data['assemblee_legislature'] = 13
-            elif '2012-06-20' <= step['date'] <= '2017-06-20':
-                data['assemblee_legislature'] = 14
-            elif '2017-06-21' <= step['date'] <= '2022-06-20':
-                data['assemblee_legislature'] = 15
-
+            legis = guess_legislature(step['date'])
+            if legis:
+                data['assemblee_legislature'] = legis
 
         good_urls = []
 
