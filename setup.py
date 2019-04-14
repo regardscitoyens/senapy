@@ -25,6 +25,7 @@ setup(
 
     description='Python client for senat.fr website',
     long_description=LONG_DESC,
+    long_description_content_type='text/markdown',
     license="MIT",
 
     url='https://github.com/regardscitoyens/senapy',
