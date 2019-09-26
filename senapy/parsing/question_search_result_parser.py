@@ -10,7 +10,7 @@ from ..model import QuestionSummary, QuestionSearchResult
 def extract_total_count(soup):
     p = soup.find('p', class_='results-number-global')
 
-    return int(re.findall('(\d+)\s*\n*questions', p.text)[0])
+    return int(re.findall(r'(\d+)\s*\n*questions', p.text)[0])
 
 
 def parse_question_search_result(url, html_content):
