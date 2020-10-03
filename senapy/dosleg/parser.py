@@ -170,6 +170,10 @@ def parse(html, url_senat=None, logfile=sys.stderr):
             url_jo_params = parse_qs(urlparse(data['url_jo']).query)
             if 'cidTexte' in url_jo_params:
                 data['legifrance_cidTexte'] = url_jo_params['cidTexte'][0]
+            else:
+                last_part = data['url_jo'].split('/')[-1]
+                if last_part.startswith('JORFTEXT'):
+                    data['legifrance_cidTexte'] = last_part
         else:
             log_error('NO JO LINK')
     # TOPARSE: ordonnance_line
