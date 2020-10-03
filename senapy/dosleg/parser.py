@@ -171,7 +171,7 @@ def parse(html, url_senat=None, logfile=sys.stderr):
             if 'cidTexte' in url_jo_params:
                 data['legifrance_cidTexte'] = url_jo_params['cidTexte'][0]
             else:
-                last_part = data['url_jo'].split('/')[-1]
+                last_part = [part for part in data['url_jo'].split('/') if part][-1]
                 if last_part.startswith('JORFTEXT'):
                     data['legifrance_cidTexte'] = last_part
         else:
