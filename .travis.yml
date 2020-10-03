@@ -8,5 +8,5 @@ python:
     - "3.5"
     - "3.6"
 install: pip install -r test_requirements.txt
-script: pytest --cov=senapy
+script: pytest --cov=senapy -s # don't capture output to avoid timeout
 after_success: coveralls
