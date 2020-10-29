@@ -351,6 +351,10 @@ def parse(html, url_senat=None, logfile=sys.stderr):
         # standardize on 1ère lecture / 2ème lecture
         curr_stage = curr_stage.replace('eme', 'ème')
 
+        # ignore step rejet like https://www.senat.fr/dossier-legislatif/ppl17-392.html
+        if step_step == 'rejet':
+            continue
+
         step['stage'] = curr_stage
         if curr_stage not in ('constitutionnalité', 'promulgation'):
             step['step'] = step_step
